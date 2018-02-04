@@ -1,0 +1,40 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var HitMoleMain = /** @class */ (function (_super) {
+    __extends(HitMoleMain, _super);
+    function HitMoleMain() {
+        var _this = _super.call(this) || this;
+        _this.hammer = new Hammer();
+        _this.hammer.visible = false;
+        _this.wellDone.visible = false;
+        _this.wellDoneY = _this.wellDone.y;
+        _this.wellDoneX = _this.wellDone.x;
+        _this.addChild(_this.hammer);
+        return _this;
+    }
+    HitMoleMain.prototype.showHammer = function (mole) {
+        this.hammer.visible = true;
+        this.hammer.play(mole.x + 20, mole.y - 10);
+        Laya.timer.once(1000, this, this.hidHammer);
+    };
+    HitMoleMain.prototype.hidHammer = function () {
+        this.hammer.visible = false;
+    };
+    HitMoleMain.prototype.showWellDone = function (that, callBack) {
+        this.wellDone.y = this.wellDoneY;
+        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
+        this.wellDone.scale(0, 0);
+        this.wellDone.visible = true;
+        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100 }, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
+    };
+    return HitMoleMain;
+}(ui.HitMoleUI));
+//# sourceMappingURL=HitMoleMain.js.map
