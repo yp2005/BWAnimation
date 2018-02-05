@@ -1,31 +1,34 @@
 // 老鼠类
 var Mole = /** @class */ (function () {
-    function Mole(normalState, hitState) {
-        this.downY = 21;
+    function Mole(normalState, hitState, wordBg, word) {
+        this.downY = 27;
         this.normalState = normalState;
         this.hitState = hitState;
+        this.wordBg = wordBg;
+        this.word = word;
         this.upY = this.normalState.y;
         this.reset();
     }
+    // 重置老鼠状态
     Mole.prototype.reset = function () {
         this.normalState.visible = false;
         this.hitState.visible = false;
-        if (this.text) {
-            this.text.visible = false;
-        }
+        this.wordBg.visible = false;
+        this.word.visible = false;
     };
-    // 设置显示的单词
+    // 设置声效文件
     Mole.prototype.setText = function (text) {
-        this.text = text;
-        this.text.visible = false;
+        this.word.text = text;
     };
+    // 设置声效文件
     Mole.prototype.setAudio = function (audio) {
         this.audio = audio;
     };
     // 显示老鼠
     Mole.prototype.show = function () {
         this.hitState.visible = false;
-        this.text.visible = true;
+        this.wordBg.visible = true;
+        this.word.visible = true;
         this.normalState.y = this.downY;
         this.normalState.visible = true;
         if (this.audio) {

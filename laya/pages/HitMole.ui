@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":42,
+    "selecteID":71,
     "props":{"width":800,"sceneColor":"#ffffff","height":600},
     "nodeParent":-1,
     "label":"View",
@@ -41,7 +41,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":17,"x":10,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":6,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -54,7 +54,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":22,"x":-6,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":6,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -76,6 +76,33 @@
                     "compId":5,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-23,"x":11,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":6,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":43,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-22,"x":11,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":6,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":52,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -93,7 +120,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":16,"x":12,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":8,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -106,7 +133,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-3,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":8,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -128,6 +155,33 @@
                     "compId":11,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-23,"x":11,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":8,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":57,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-22,"x":11,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":8,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":58,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -145,7 +199,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":16,"x":10,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":12,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -158,7 +212,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-5,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":12,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -180,6 +234,33 @@
                     "compId":15,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-26,"x":8,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":12,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":59,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-25,"x":8,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":12,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":60,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -197,9 +278,10 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":16,"x":10,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":16,
                     "label":"Image(normal)",
+                    "isOpen":true,
                     "isDirectory":false,
                     "isAniNode":true,
                     "hasChild":false,
@@ -210,7 +292,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-6,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":16,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -232,6 +314,33 @@
                     "compId":19,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-24,"x":8,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":16,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":61,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-23,"x":8,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":16,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":62,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -249,7 +358,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":16,"x":13,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":20,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -262,7 +371,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-2,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":20,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -284,6 +393,33 @@
                     "compId":23,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-23,"x":11,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":20,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":63,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-22,"x":11,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":20,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":64,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -301,7 +437,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":17,"x":9,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":24,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -314,7 +450,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-6,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":24,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -336,6 +472,33 @@
                     "compId":27,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-24,"x":6,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":24,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":65,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-22,"x":7,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":24,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":66,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -353,7 +516,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":16,"x":10,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":28,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -366,7 +529,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-6,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":28,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -389,6 +552,33 @@
                     "compId":31,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-22,"x":10,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":28,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":68,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-20,"x":11,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":28,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":67,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -406,7 +596,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":17,"x":9,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":32,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -419,7 +609,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-6,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":32,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -441,6 +631,33 @@
                     "compId":35,
                     "child":[
                         ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-25,"x":7,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":32,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":70,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-23,"x":8,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":32,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":69,
+                    "child":[
+                        ]
                 }]
         },
         {
@@ -458,7 +675,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":5,"skin":"HitMole/mouse_normal.png","name":"normal"},
+                    "props":{"y":17,"x":8,"skin":"HitMole/mouse_normal.png","name":"normal"},
                     "nodeParent":36,
                     "label":"Image(normal)",
                     "isDirectory":false,
@@ -471,7 +688,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":14,"x":6,"skin":"HitMole/mouse_hit.png","name":"hit"},
+                    "props":{"y":21,"x":-7,"skin":"HitMole/mouse_hit.png","name":"hit"},
                     "nodeParent":36,
                     "label":"Image(hit)",
                     "isDirectory":false,
@@ -491,6 +708,33 @@
                     "isAniNode":true,
                     "hasChild":false,
                     "compId":39,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":-23,"x":6,"width":110,"skin":"HitMole/word_bg.png","name":"wordBg","height":40},
+                    "nodeParent":36,
+                    "label":"Image(wordBg)",
+                    "isOpen":true,
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":72,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":-21,"x":7,"width":110,"name":"word","height":40,"fontSize":25,"color":"#fff","align":"center"},
+                    "nodeParent":36,
+                    "label":"Text(word)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":71,
                     "child":[
                         ]
                 }]

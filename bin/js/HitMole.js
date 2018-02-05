@@ -1,11 +1,11 @@
 // 打地鼠
-var Browser = Laya.Browser;
+//import Browser = Laya.Browser;
 var Stage = Laya.Stage;
 var WebGL = Laya.WebGL;
 var Sprite = Laya.Sprite;
 var HitMole = /** @class */ (function () {
     function HitMole() {
-        this.started = false;
+        this.started = false; // 游戏是否开始
         // 初始化舞台设置
         Laya.init(800, 600, WebGL);
         Laya.stage.alignV = Stage.ALIGN_MIDDLE;
@@ -19,6 +19,7 @@ var HitMole = /** @class */ (function () {
         ];
         Laya.loader.load(resArray, Laya.Handler.create(this, this.onload));
     }
+    // 游戏资源加载完成进行游戏初始化设置
     HitMole.prototype.onload = function () {
         this.hitMoleMain = new HitMoleMain();
         this.hitMoleMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
@@ -28,6 +29,7 @@ var HitMole = /** @class */ (function () {
         this.gameOver();
         this.hitMoleMain.replayBtn.visible = false;
     };
+    // 游戏开始
     HitMole.prototype.gameStart = function () {
         this.hitMoleMain.replayBtn.visible = false;
         this.hitMoleMain.startBtn.visible = false;
@@ -40,7 +42,7 @@ var HitMole = /** @class */ (function () {
             this.moles = new Array();
             for (var i = 0; i < HitMoleConfig.moleNumber; i++) {
                 var item = this.hitMoleMain.getChildByName("item" + i);
-                var mole = new Mole(item.getChildByName("normal"), item.getChildByName("hit"));
+                var mole = new Mole(item.getChildByName("normal"), item.getChildByName("hit"), item.getChildByName("wordBg"), item.getChildByName("word"));
                 mole.x = item.x;
                 mole.y = item.y;
                 this.moles.push(mole);
@@ -62,29 +64,18 @@ var HitMole = /** @class */ (function () {
         }
         for (var _i = 0, _a = HitMoleConfig.words; _i < _a.length; _i++) {
             var word = _a[_i];
-            var text = new Laya.Text();
-            text.text = word.text;
-            text.fontSize = 25;
-            text.color = "#fff";
-            text.bgColor = "#000";
-            text.align = "center";
-            text.height = 30;
-            text.padding = [0, 15, 0, 15];
             var position = word.position - 1;
             if (HitMoleConfig.position == "random") {
                 var positionIndex = Math.floor(Math.random() * pos.length);
                 position = pos[positionIndex];
                 pos.splice(positionIndex, 1);
             }
-            var item = this.hitMoleMain.getChildByName("item" + position);
-            text.x = item.width / 2 - text.width / 2;
-            text.y = item.height - 30;
-            item.addChild(text);
-            this.moles[position].setText(text);
+            this.moles[position].setText(word.text);
             this.moles[position].setAudio(word.audio);
             this.molesTemp.push(this.moles[position]);
         }
     };
+    // 显示老鼠
     HitMole.prototype.showMole = function () {
         if (!this.started) {
             return;
@@ -108,6 +99,7 @@ var HitMole = /** @class */ (function () {
             }
         }
     };
+    // 游戏结束
     HitMole.prototype.gameOver = function () {
         this.hitMoleMain.wellDone.visible = false;
         this.started = false;

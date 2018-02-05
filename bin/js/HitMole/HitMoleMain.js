@@ -8,6 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+// 游戏主界面
 var HitMoleMain = /** @class */ (function (_super) {
     __extends(HitMoleMain, _super);
     function HitMoleMain() {
@@ -20,14 +21,17 @@ var HitMoleMain = /** @class */ (function (_super) {
         _this.addChild(_this.hammer);
         return _this;
     }
+    // 显示锤子，出现捶打效果
     HitMoleMain.prototype.showHammer = function (mole) {
         this.hammer.visible = true;
         this.hammer.play(mole.x + 20, mole.y - 10);
         Laya.timer.once(1000, this, this.hidHammer);
     };
+    // 隐藏锤子
     HitMoleMain.prototype.hidHammer = function () {
         this.hammer.visible = false;
     };
+    // 显示well done文字效果
     HitMoleMain.prototype.showWellDone = function (that, callBack) {
         this.wellDone.y = this.wellDoneY;
         this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;

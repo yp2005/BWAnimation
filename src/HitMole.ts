@@ -55,7 +55,10 @@ class HitMole {
             this.moles = new Array<Mole>();
             for(let i = 0; i < HitMoleConfig.moleNumber; i++) {
                 let item = this.hitMoleMain.getChildByName("item" + i) as Laya.Box;
-                let mole = new Mole(item.getChildByName("normal") as Laya.Image, item.getChildByName("hit") as Laya.Image);
+                let mole = new Mole(item.getChildByName("normal") as Laya.Image,
+                                    item.getChildByName("hit") as Laya.Image,
+                                    item.getChildByName("wordBg") as Laya.Image,
+                                    item.getChildByName("word") as Laya.Text);
                 mole.x = item.x;
                 mole.y = item.y;
                 this.moles.push(mole);
@@ -77,27 +80,13 @@ class HitMole {
             pos.push(i);
         }
         for(let word of HitMoleConfig.words) {
-            let text: Laya.Text = new Laya.Text();
-            text.text = word.text;
-            text.fontSize = 25;
-            text.color = "#fff";
-            text.bgColor = "#000";
-            text.align = "center";
-            text.height = 30;
-            text.padding = [0, 15, 0, 15];
-
             let position  = word.position - 1;
             if(HitMoleConfig.position == "random") {
                 let positionIndex = Math.floor(Math.random() * pos.length);
                 position = pos[positionIndex];
                 pos.splice(positionIndex, 1);
             }
-
-            let item = this.hitMoleMain.getChildByName("item" + position) as Laya.Box;
-            text.x = item.width / 2 - text.width / 2;
-            text.y = item.height - 30;
-            item.addChild(text);
-            this.moles[position].setText(text);
+            this.moles[position].setText(word.text);
             this.moles[position].setAudio(word.audio);
             this.molesTemp.push(this.moles[position]);
         } 

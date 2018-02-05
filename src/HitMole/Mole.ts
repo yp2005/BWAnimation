@@ -3,15 +3,18 @@ class Mole {
     private normalState: Laya.Image; // 老鼠普通状态图片
     private hitState: Laya.Image; // 老鼠受击图片
     private upY: number;
-    private downY: number = 21;
-    private text: Laya.Text; // 显示单词
+    private downY: number = 27;
+    private wordBg: Laya.Image; // 显示单词
+    private word: Laya.Text; // 显示单词
     private audio: string; // 出现时的音效
     public x: number;
     public y: number;
 
-    constructor(normalState: Laya.Image, hitState: Laya.Image) {
+    constructor(normalState: Laya.Image, hitState: Laya.Image, wordBg: Laya.Image, word: Laya.Text) {
         this.normalState = normalState;
         this.hitState = hitState;
+        this.wordBg = wordBg;
+        this.word = word;
         this.upY = this.normalState.y;
         this.reset();
     }
@@ -20,15 +23,13 @@ class Mole {
     public reset() {
         this.normalState.visible = false;
         this.hitState.visible = false;
-        if(this.text) {
-            this.text.visible = false;
-        }
+        this.wordBg.visible = false;
+        this.word.visible = false;
     }
 
-    // 设置显示的单词
-    public setText(text: Laya.Text) {
-        this.text = text;
-        this.text.visible = false;
+    // 设置声效文件
+    public setText(text: string) {
+        this.word.text = text;
     }
 
     // 设置声效文件
@@ -39,7 +40,8 @@ class Mole {
     // 显示老鼠
     public show() {
         this.hitState.visible = false;
-        this.text.visible = true;
+        this.wordBg.visible = true;
+        this.word.visible = true;
         this.normalState.y = this.downY;
         this.normalState.visible = true;
         if(this.audio) {

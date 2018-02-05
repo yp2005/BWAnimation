@@ -8,11 +8,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+// 锤子类
 var Hammer = /** @class */ (function (_super) {
     __extends(Hammer, _super);
     function Hammer() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
+    // 播放捶打动画
     Hammer.prototype.play = function (x, y) {
         this.pos(x, y);
         this.hit.play(0, false);
