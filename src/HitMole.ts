@@ -15,7 +15,7 @@ class HitMole {
     constructor()
     {
         // 初始化舞台设置
-		Laya.init(800, 600, WebGL);
+		Laya.init(1024, 768, WebGL);
 		Laya.stage.alignV = Stage.ALIGN_MIDDLE;
 		Laya.stage.alignH = Stage.ALIGN_CENTER;
 		Laya.stage.scaleMode = "showall";
@@ -55,8 +55,7 @@ class HitMole {
             this.moles = new Array<Mole>();
             for(let i = 0; i < HitMoleConfig.moleNumber; i++) {
                 let item = this.hitMoleMain.getChildByName("item" + i) as Laya.Box;
-                let mole = new Mole(item.getChildByName("normal") as Laya.Image,
-                                    item.getChildByName("hit") as Laya.Image,
+                let mole = new Mole(item.getChildByName("ani") as Laya.Animation,
                                     item.getChildByName("wordBg") as Laya.Image,
                                     item.getChildByName("word") as Laya.Text);
                 mole.x = item.x;

@@ -1,18 +1,10 @@
 D .
 D HitMole
 P 96015AC9 btn_start.png
-P 7333C265 hammer.png
-R 90A90122 map_1.png
-P 83C94943 mask-01.png
-P 0F45384F mask-02.png
-P 523282A1 mask-03.png
-P A8EC9564 mask-04.png
-P 94786531 mask-05.png
-P D1DF9307 mask-06.png
-P 67588E33 mask-07.png
-P 3A23394E mask-08.png
-P FCE7954A mask-09.png
-P 6F6BF0D9 mouse_hit.png
-P 7A815EB3 mouse_normal.png
+P C350AC0B hammer.png
+R AD8ED4EC map_1.png
+P 305864E4 mouse_1.png
+P 57045DD4 mouse_2.png
+P ED6B845C mouse_3.png
 P EA6A5058 replay.png
 P 1B90368E word_bg.png

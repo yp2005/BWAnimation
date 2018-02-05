@@ -24,7 +24,7 @@ var HitMoleMain = /** @class */ (function (_super) {
     // 显示锤子，出现捶打效果
     HitMoleMain.prototype.showHammer = function (mole) {
         this.hammer.visible = true;
-        this.hammer.play(mole.x + 20, mole.y - 10);
+        this.hammer.play(mole.x + 70, mole.y - 20);
         Laya.timer.once(1000, this, this.hidHammer);
     };
     // 隐藏锤子

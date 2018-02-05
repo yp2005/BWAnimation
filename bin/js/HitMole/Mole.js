@@ -1,18 +1,14 @@
 // 老鼠类
 var Mole = /** @class */ (function () {
-    function Mole(normalState, hitState, wordBg, word) {
-        this.downY = 27;
-        this.normalState = normalState;
-        this.hitState = hitState;
+    function Mole(ani, wordBg, word) {
+        this.ani = ani;
         this.wordBg = wordBg;
         this.word = word;
-        this.upY = this.normalState.y;
         this.reset();
     }
     // 重置老鼠状态
     Mole.prototype.reset = function () {
-        this.normalState.visible = false;
-        this.hitState.visible = false;
+        this.ani.visible = false;
         this.wordBg.visible = false;
         this.word.visible = false;
     };
@@ -26,20 +22,17 @@ var Mole = /** @class */ (function () {
     };
     // 显示老鼠
     Mole.prototype.show = function () {
-        this.hitState.visible = false;
+        this.ani.visible = true;
         this.wordBg.visible = true;
         this.word.visible = true;
-        this.normalState.y = this.downY;
-        this.normalState.visible = true;
         if (this.audio) {
             Laya.SoundManager.playSound(this.audio, 1);
         }
-        Laya.Tween.to(this.normalState, { y: this.upY }, 500, Laya.Ease.backOut);
+        this.ani.play(0, false, "ani1");
     };
     // 老鼠受击
     Mole.prototype.hit = function () {
-        this.normalState.visible = false;
-        this.hitState.visible = true;
+        this.ani.play(0, false, "ani2");
     };
     return Mole;
 }());

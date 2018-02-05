@@ -1,6 +1,6 @@
 // 打地鼠配置
 const HitMoleConfig:any = {
-    moleNumber: 9, // 老鼠个数 -- 暂未实现老鼠个数可配置
+    moleNumber: 12, // 老鼠个数 -- 暂未实现老鼠个数可配置
     // 3、生成位置随机或手动设置；
     // 单词出现位置：default 按配置words中的配置出现在相应位置，random 随机位置
     position: "random", 

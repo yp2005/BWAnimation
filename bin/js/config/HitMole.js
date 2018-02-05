@@ -1,6 +1,6 @@
 // 打地鼠配置
 var HitMoleConfig = {
-    moleNumber: 9,
+    moleNumber: 12,
     // 3、生成位置随机或手动设置；
     // 单词出现位置：default 按配置words中的配置出现在相应位置，random 随机位置
     position: "random",

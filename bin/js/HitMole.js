@@ -7,7 +7,7 @@ var HitMole = /** @class */ (function () {
     function HitMole() {
         this.started = false; // 游戏是否开始
         // 初始化舞台设置
-        Laya.init(800, 600, WebGL);
+        Laya.init(1024, 768, WebGL);
         Laya.stage.alignV = Stage.ALIGN_MIDDLE;
         Laya.stage.alignH = Stage.ALIGN_CENTER;
         Laya.stage.scaleMode = "showall";
@@ -42,7 +42,7 @@ var HitMole = /** @class */ (function () {
             this.moles = new Array();
             for (var i = 0; i < HitMoleConfig.moleNumber; i++) {
                 var item = this.hitMoleMain.getChildByName("item" + i);
-                var mole = new Mole(item.getChildByName("normal"), item.getChildByName("hit"), item.getChildByName("wordBg"), item.getChildByName("word"));
+                var mole = new Mole(item.getChildByName("ani"), item.getChildByName("wordBg"), item.getChildByName("word"));
                 mole.x = item.x;
                 mole.y = item.y;
                 this.moles.push(mole);

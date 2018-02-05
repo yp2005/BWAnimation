@@ -16,7 +16,7 @@ class HitMoleMain extends ui.HitMoleUI {
     // 显示锤子，出现捶打效果
     public showHammer(mole: Mole) {
         this.hammer.visible = true;
-        this.hammer.play(mole.x + 20, mole.y - 10);
+        this.hammer.play(mole.x + 70, mole.y - 20);
         Laya.timer.once(1000, this, this.hidHammer);
     }
 
