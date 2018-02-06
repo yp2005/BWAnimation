@@ -5,8 +5,8 @@ class Mole {
     // private upY: number;
     // private downY: number = 27;
     private ani: Laya.Animation; // 老鼠出洞动画
-    private wordBg: Laya.Image; // 显示单词
-    private word: Laya.Text; // 显示单词
+    private wordBg: Laya.Image; // 显示单词背景
+    private word: Laya.Text; // 显示的单词
     private audio: string; // 出现时的音效
     public x: number;
     public y: number;
@@ -25,7 +25,7 @@ class Mole {
         this.word.visible = false;
     }
 
-    // 设置声效文件
+    // 设置显示的单词
     public setText(text: string) {
         this.word.text = text;
     }
