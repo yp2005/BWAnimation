@@ -18,9 +18,29 @@ var HitMoleMain = /** @class */ (function (_super) {
         _this.wellDone.visible = false;
         _this.wellDoneY = _this.wellDone.y;
         _this.wellDoneX = _this.wellDone.x;
+        _this.configView = new ConfigView(_this.configBox);
+        _this.tip.visible = false;
         _this.addChild(_this.hammer);
+        _this.setting.on(Laya.Event.CLICK, _this, _this.showConfigView);
         return _this;
     }
+    // 显示提示
+    HitMoleMain.prototype.showTip = function (text) {
+        this.tip.text = text;
+        this.tip.visible = true;
+        Laya.timer.once(1500, this, this.hideTip);
+    };
+    HitMoleMain.prototype.hideTip = function () {
+        this.tip.visible = false;
+    };
+    // 显示游戏配置页面 
+    HitMoleMain.prototype.showConfigView = function () {
+        this.configView.show();
+    };
+    // 设置设置按钮是否显示
+    HitMoleMain.prototype.showSetting = function (state) {
+        this.setting.visible = state;
+    };
     // 显示锤子，出现捶打效果
     HitMoleMain.prototype.showHammer = function (mole) {
         this.hammer.visible = true;

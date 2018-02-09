@@ -25,6 +25,7 @@
                 ]
         },
         {
+            "x":15,
             "type":"GraphicNode",
             "props":{},
             "nodeParent":1,
@@ -117,6 +118,12 @@
                                 "key":"skin",
                                 "index":2
                             }]
+                    }
+                },
+                {
+                    "target":9,
+                    "keyframes":{
+
                     }
                 }],
             "name":"ani1",

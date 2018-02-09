@@ -1,10 +1,33 @@
 D .
 D HitMole
 P 96015AC9 btn_start.png
+P 5A05FAAE configBG.png
 P C350AC0B hammer.png
-R AD8ED4EC map_1.png
+P BC4E3960 img_radio_checked.png
+P 838697A5 img_radio_notCheck.png
+R 0B37EEC3 mainBG.jpg
+P 3E0FDE98 mask1.png
+P CD33FCE7 mask10.png
+P B3D2DF95 mask11.png
+P 6DCEEC4D mask12.png
+P 418EE795 mask2.png
+P B6FB1EE2 mask3.png
+P 47044E78 mask4.png
+P C3F40DA3 mask5.png
+P 9DE730C4 mask6.png
+P 0CF131AF mask7.png
+P 66414130 mask8.png
+P CE2DEC95 mask9.png
+P BFA6B8B2 mouse.png
 P 305864E4 mouse_1.png
 P 57045DD4 mouse_2.png
 P ED6B845C mouse_3.png
+P F4FE58D2 picture1.png
 P EA6A5058 replay.png
+P 6F2E1E3C setting.png
 P 1B90368E word_bg.png
+D template
+D template/ButtonTab
+P AE499BA2 btn_LargeTabButton_Middle.png
+D template/Text
+R 1E74727C TextBox.png
