@@ -25,14 +25,7 @@ class ConfigView {
         this.submitBtn = configBox.getChildByName("submitBtn") as Laya.Image;
         this.closeBtn = configBox.getChildByName("closeBtn") as Laya.Text;
         this.game = HitMole.gameConfig.game;
-        if(this.game == "word") {
-            this.picLabel.visible = false;
-            this.wordLabel.visible = true;
-        }
-        else if (this.game == "picture"){
-            this.picLabel.visible = true;
-            this.wordLabel.visible = false;
-        }
+        this.resetSwich();
         this.wordRadio.on(Laya.Event.CLICK, this, this.switchWord);
         this.wordRadioImg.on(Laya.Event.CLICK, this, this.switchWord);
         this.picRadio.on(Laya.Event.CLICK, this, this.switchPic);
@@ -41,14 +34,33 @@ class ConfigView {
         this.closeBtn.on(Laya.Event.CLICK, this, this.hide);
     }
 
+// 显示配置
     public show() {
         this.configBox.visible = true;
     }
 
+// 隐藏配置
     public hide() {
         this.configBox.visible = false;
     }
 
+// 复位配置面板
+    private resetSwich(){
+        if(this.game == "word") {
+            this.wordRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.picRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.picLabel.visible = false;
+            this.wordLabel.visible = true;
+        }
+        else if (this.game == "picture"){
+            this.wordRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.picRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.picLabel.visible = true;
+            this.wordLabel.visible = false;
+        }
+    }
+
+// 点击单词单选
     private switchWord() {
         if(this.game == "picture") {
             this.game = "word";
@@ -60,6 +72,7 @@ class ConfigView {
         }
     }
 
+// 点击图片单选
     private switchPic() {
         if(this.game == "word") {
             this.game = "picture";
@@ -71,6 +84,7 @@ class ConfigView {
         }
     }
 
+// 提交配置
     private submit() {
         let texts = this.textInput.text.split(",");
         if(texts.length < 2 || texts.length > 12) {

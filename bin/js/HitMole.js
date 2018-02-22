@@ -84,6 +84,8 @@ var HitMole = /** @class */ (function () {
                 var positionIndex = Math.floor(Math.random() * pos.length);
                 var position = pos[positionIndex];
                 pos.splice(positionIndex, 1);
+                //设置改为word后需要把图片设置为地鼠
+                this.moles[position].setPic("HitMole/mouse.png");
                 this.moles[position].setText(word);
                 this.molesTemp.push(this.moles[position]);
             }

@@ -1,4 +1,22 @@
 D .
+D HitFish
+R F7D06829 bg.png
+P 38F88381 count1-0.png
+P F14B4896 count1-1.png
+P E70A5B1D count2-0.png
+P C42DB186 count2-1.png
+P EBECD28B count3-0.png
+P 865AA1C3 count3-1.png
+P 1EA9FD0A count4-0.png
+P C1FFB618 count4-1.png
+P 43807F77 count5-0.png
+P 74A39279 count5-1.png
+R AFF672FD fish-1.png
+R 38F2DC85 fish-2.png
+R 49D35FC8 fish-3.png
+R 282315B1 fish-4.png
+P CC671F9B fish-5.png
+P 3F6B8200 wordbg.png
 D HitMole
 P 96015AC9 btn_start.png
 P 5A05FAAE configBG.png
@@ -22,7 +40,7 @@ P BFA6B8B2 mouse.png
 P 305864E4 mouse_1.png
 P 57045DD4 mouse_2.png
 P ED6B845C mouse_3.png
-P F4FE58D2 picture1.png
+R F4FE58D2 picture1.png
 P EA6A5058 replay.png
 P 6F2E1E3C setting.png
 P 1B90368E word_bg.png

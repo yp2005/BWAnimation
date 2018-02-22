@@ -13,14 +13,7 @@ var ConfigView = /** @class */ (function () {
         this.submitBtn = configBox.getChildByName("submitBtn");
         this.closeBtn = configBox.getChildByName("closeBtn");
         this.game = HitMole.gameConfig.game;
-        if (this.game == "word") {
-            this.picLabel.visible = false;
-            this.wordLabel.visible = true;
-        }
-        else if (this.game == "picture") {
-            this.picLabel.visible = true;
-            this.wordLabel.visible = false;
-        }
+        this.resetSwich();
         this.wordRadio.on(Laya.Event.CLICK, this, this.switchWord);
         this.wordRadioImg.on(Laya.Event.CLICK, this, this.switchWord);
         this.picRadio.on(Laya.Event.CLICK, this, this.switchPic);
@@ -28,12 +21,30 @@ var ConfigView = /** @class */ (function () {
         this.submitBtn.on(Laya.Event.CLICK, this, this.submit);
         this.closeBtn.on(Laya.Event.CLICK, this, this.hide);
     }
+    // 显示配置
     ConfigView.prototype.show = function () {
         this.configBox.visible = true;
     };
+    // 隐藏配置
     ConfigView.prototype.hide = function () {
         this.configBox.visible = false;
     };
+    // 复位配置面板
+    ConfigView.prototype.resetSwich = function () {
+        if (this.game == "word") {
+            this.wordRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.picRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.picLabel.visible = false;
+            this.wordLabel.visible = true;
+        }
+        else if (this.game == "picture") {
+            this.wordRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.picRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.picLabel.visible = true;
+            this.wordLabel.visible = false;
+        }
+    };
+    // 点击单词单选
     ConfigView.prototype.switchWord = function () {
         if (this.game == "picture") {
             this.game = "word";
@@ -44,6 +55,7 @@ var ConfigView = /** @class */ (function () {
             this.wordLabel.visible = true;
         }
     };
+    // 点击图片单选
     ConfigView.prototype.switchPic = function () {
         if (this.game == "word") {
             this.game = "picture";
@@ -54,6 +66,7 @@ var ConfigView = /** @class */ (function () {
             this.wordLabel.visible = false;
         }
     };
+    // 提交配置
     ConfigView.prototype.submit = function () {
         var texts = this.textInput.text.split(",");
         if (texts.length < 2 || texts.length > 12) {

@@ -2,6 +2,25 @@
 import View=laya.ui.View;
 import Dialog=laya.ui.Dialog;
 module ui {
+    export class FishUI extends View {
+		public wordBg:Laya.Image;
+		public fishImg:Laya.Image;
+		public fishWord:laya.display.Text;
+
+        public static  uiView:any ={"type":"View","props":{"width":250,"height":200},"child":[{"type":"Image","props":{"y":56,"x":11,"var":"wordBg","skin":"HitFish/wordbg.png"}},{"type":"Image","props":{"y":12,"x":3,"var":"fishImg","skin":"HitFish/fish-5.png"}},{"type":"Text","props":{"y":59,"x":25,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"Helvetica","color":"#fff","align":"center"}}]};
+        constructor(){ super()}
+        createChildren():void {
+        			View.regComponent("Text",laya.display.Text);
+
+            super.createChildren();
+            this.createView(ui.FishUI.uiView);
+
+        }
+
+    }
+}
+
+module ui {
     export class HammerUI extends View {
 		public hit:Laya.FrameAnimation;
 
@@ -11,6 +30,33 @@ module ui {
         
             super.createChildren();
             this.createView(ui.HammerUI.uiView);
+
+        }
+
+    }
+}
+
+module ui {
+    export class HitFishUI extends View {
+		public theCounter:Laya.Animation;
+		public fishConfig:Laya.Box;
+		public rightInput:Laya.TextInput;
+		public fishSubmitBtn:Laya.Button;
+		public closeBtn:laya.display.Text;
+		public leftInput:Laya.TextInput;
+		public fishTip:laya.display.Text;
+		public fishConfigBtn:Laya.Image;
+		public startBtn:Laya.Button;
+		public replayBtn:Laya.Image;
+		public wellDone:laya.display.Text;
+
+        public static  uiView:any ={"type":"View","props":{"width":1024,"height":768},"child":[{"type":"Image","props":{"top":0,"skin":"HitFish/bg.png","right":0,"left":0,"bottom":0}},{"type":"Animation","props":{"y":120,"x":446,"var":"theCounter","source":"Counter.ani","name":"theCounter"}},{"type":"Box","props":{"y":124,"x":581,"width":985,"var":"fishConfig","pivotY":100,"pivotX":554,"height":242},"child":[{"type":"Image","props":{"y":9,"x":332,"width":653,"skin":"HitMole/configBG.png","height":233,"alpha":1}},{"type":"Label","props":{"y":119,"x":370,"text":"右边单词：","fontSize":20,"color":"#2a2121"}},{"type":"Label","props":{"y":54,"x":370,"text":"左边单词：","fontSize":20,"color":"#2a2121"}},{"type":"Image","props":{"y":110,"x":470,"width":470,"skin":"template/Text/TextBox.png","height":39}},{"type":"TextInput","props":{"y":113,"x":490,"width":430,"var":"rightInput","text":"app,adfs,orange","height":31,"fontSize":16,"color":"#3b3232"}},{"type":"Button","props":{"y":166,"x":490,"width":86,"var":"fishSubmitBtn","skin":"template/ButtonTab/btn_LargeTabButton_Middle.png","labelSize":20,"labelColors":"#007AFF,#007AFF,#FFFFFF","label":"提交","height":32}},{"type":"Text","props":{"y":3,"x":947,"width":40,"var":"closeBtn","text":"+","rotation":45,"pivotY":-1,"pivotX":-10,"height":40,"fontSize":40,"color":"#5d5454","bold":false,"align":"center"}},{"type":"Image","props":{"y":46,"x":470,"width":470,"skin":"template/Text/TextBox.png","height":39}},{"type":"TextInput","props":{"y":51,"x":490,"width":430,"var":"leftInput","text":"app,adfs","height":31,"fontSize":16,"color":"#3b3232"}}]},{"type":"Text","props":{"y":94,"x":83,"wordWrap":true,"width":265,"var":"fishTip","text":"左右两边单词个数分别在1-6之间","pivotY":2,"pivotX":8,"height":88,"fontSize":30,"color":"#ffffff","align":"center"}},{"type":"Image","props":{"y":24,"x":27,"width":30,"var":"fishConfigBtn","skin":"HitMole/setting.png","height":30}},{"type":"Button","props":{"y":356,"x":433,"var":"startBtn","stateNum":2,"skin":"HitMole/btn_start.png"}},{"type":"Image","props":{"y":358,"x":436,"var":"replayBtn","skin":"HitMole/replay.png"}},{"type":"Text","props":{"y":430,"x":372,"width":300,"var":"wellDone","text":"well done!","height":60,"fontSize":50,"font":"Microsoft YaHei","color":"#b8e017","bold":true,"align":"center"}}]};
+        constructor(){ super()}
+        createChildren():void {
+        			View.regComponent("Text",laya.display.Text);
+
+            super.createChildren();
+            this.createView(ui.HitFishUI.uiView);
 
         }
 
