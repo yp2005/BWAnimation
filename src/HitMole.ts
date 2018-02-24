@@ -16,6 +16,7 @@ class HitMole {
     
     constructor(config: any)
     {
+        // 如果没有传入配置，使用默认配置
         if(!config || !config.game) {
             config = {
                 game: "word",
@@ -61,6 +62,7 @@ class HitMole {
         HitMole.hitMoleMain.startBtn.visible = false;
         this.initWords();
         Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
+        // 晚一点开始游戏，否则点击开始按钮就会触发舞台点击事件，调用showMole方法
         Laya.timer.once(500, this, this.setStartState);
     }
 
@@ -71,7 +73,7 @@ class HitMole {
 
     // 初始化老鼠
     private initMoles() {
-        if(!this.moles || this.moles.length == 0) {
+        if(!this.moles || this.moles.length == 0) { // 第一次初始化
             this.moles = new Array<Mole>();
             for(let i = 0; i < 12; i++) {
                 let item = HitMole.hitMoleMain.getChildByName("item" + i) as Laya.Box;
@@ -83,7 +85,7 @@ class HitMole {
                 this.moles.push(mole);
             }
         }
-        else {
+        else { // 初始化过，只重置状态
             for(let mole of this.moles) {
                 mole.reset();
             }
@@ -101,6 +103,7 @@ class HitMole {
         // 如果是单词游戏进行单词初始化
         if(HitMole.gameConfig.game == "word") {
             for(let word of HitMole.gameConfig.words) {
+                // 为每个单词分配随机不重复的位置
                 let positionIndex = Math.floor(Math.random() * pos.length);
                 let position = pos[positionIndex];
                 pos.splice(positionIndex, 1);
