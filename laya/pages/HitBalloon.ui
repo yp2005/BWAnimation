@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":17,
+    "selecteID":18,
     "props":{"width":1024,"sceneColor":"#ffffff","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"HitBalloon/btn_start.png"},
+            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
             "nodeParent":1,
             "label":"Button(startBtn)",
             "isDirectory":false,
@@ -55,7 +55,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":348,"x":426,"var":"replayBtn","skin":"HitBalloon/replay.png"},
+            "props":{"y":348,"x":426,"var":"replayBtn","skin":"common/replay.png"},
             "nodeParent":1,
             "label":"Image(replayBtn)",
             "isDirectory":false,
@@ -75,6 +75,137 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":17,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Box",
+            "props":{"y":124,"x":581,"width":985,"var":"configBox","pivotY":100,"pivotX":554,"height":249},
+            "nodeParent":1,
+            "label":"Box(configBox)",
+            "isOpen":true,
+            "isDirectory":true,
+            "isAniNode":true,
+            "hasChild":true,
+            "compId":18,
+            "child":[
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":9,"x":514,"width":471,"skin":"common/configBG.png","height":235,"alpha":1},
+                    "nodeParent":18,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":19,
+                    "child":[
+                        ],
+                    "$LOCKED":true
+                },
+                {
+                    "x":30,
+                    "type":"Label",
+                    "props":{"y":75,"x":558,"text":"单词：","fontSize":20,"color":"#2a2121"},
+                    "nodeParent":18,
+                    "label":"Label",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":20,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Image",
+                    "props":{"y":66,"x":626,"width":315,"skin":"template/Text/TextBox.png","height":39},
+                    "nodeParent":18,
+                    "label":"Image",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":27,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"TextInput",
+                    "props":{"y":69,"x":641,"width":286,"name":"textInput","height":31,"fontSize":16,"color":"#3b3232"},
+                    "nodeParent":18,
+                    "label":"TextInput(textInput)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":28,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Button",
+                    "props":{"y":151,"x":645,"width":86,"skin":"template/ButtonTab/btn_LargeTabButton_Middle.png","name":"submitBtn","labelSize":20,"labelColors":"#007AFF,#007AFF,#FFFFFF","label":"提交","height":32},
+                    "nodeParent":18,
+                    "label":"Button(submitBtn)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":29,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":3,"x":947,"width":40,"text":"+","rotation":45,"pivotY":-1,"pivotX":-10,"name":"closeBtn","height":40,"fontSize":40,"color":"#5d5454","bold":false,"align":"center"},
+                    "nodeParent":18,
+                    "label":"Text(closeBtn)",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":30,
+                    "child":[
+                        ]
+                },
+                {
+                    "x":30,
+                    "type":"Text",
+                    "props":{"y":112,"x":634,"text":"示例：car:car1.png,car2.png;ball:ball.png","fontSize":17,"color":"#666666"},
+                    "nodeParent":18,
+                    "label":"Text",
+                    "isDirectory":false,
+                    "isAniNode":true,
+                    "hasChild":false,
+                    "compId":33,
+                    "child":[
+                        ]
+                }]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "props":{"y":135,"x":141,"width":300,"var":"tip","text":"操作不正确！","pivotY":2,"pivotX":8,"height":30,"fontSize":30,"color":"#17a817","align":"center"},
+            "nodeParent":1,
+            "label":"Text(tip)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":31,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":24,"x":27,"width":30,"var":"setting","skin":"common/setting.png","height":30},
+            "nodeParent":1,
+            "label":"Image(setting)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":32,
             "child":[
                 ]
         }],

@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":1,
-    "selecteID":298,
+    "selectedBox":298,
+    "selecteID":291,
     "props":{"width":1024,"sceneColor":"#ffffff","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -799,7 +799,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"HitMole/btn_start.png"},
+            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
             "nodeParent":1,
             "label":"Button(startBtn)",
             "isDirectory":false,
@@ -829,7 +829,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":348,"x":426,"var":"replayBtn","skin":"HitMole/replay.png"},
+            "props":{"y":348,"x":426,"var":"replayBtn","skin":"common/replay.png"},
             "nodeParent":1,
             "label":"Image(replayBtn)",
             "isDirectory":false,
@@ -844,7 +844,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":14,"x":17,"width":30,"var":"setting","skin":"HitMole/setting.png","height":30},
+            "props":{"y":14,"x":17,"width":30,"var":"setting","skin":"common/setting.png","height":30},
             "nodeParent":1,
             "label":"Image(setting)",
             "isDirectory":false,
@@ -869,7 +869,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":9,"x":514,"width":471,"skin":"HitMole/configBG.png","height":233,"alpha":1},
+                    "props":{"y":9,"x":514,"width":471,"skin":"common/configBG.png","height":233,"alpha":1},
                     "nodeParent":298,
                     "label":"Image",
                     "isDirectory":false,
@@ -948,7 +948,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":54,"x":656,"width":20,"skin":"HitMole/img_radio_checked.png","name":"wordRadioImg","height":20},
+                    "props":{"y":54,"x":656,"width":20,"skin":"common/img_radio_checked.png","name":"wordRadioImg","height":20},
                     "nodeParent":298,
                     "label":"Image(wordRadioImg)",
                     "isDirectory":false,
@@ -961,7 +961,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":54,"x":759,"width":20,"skin":"HitMole/img_radio_notCheck.png","name":"picRadioImg","height":20},
+                    "props":{"y":54,"x":759,"width":20,"skin":"common/img_radio_notCheck.png","name":"picRadioImg","height":20},
                     "nodeParent":298,
                     "label":"Image(picRadioImg)",
                     "isDirectory":false,
@@ -987,7 +987,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":113,"x":649,"width":292,"text":"app,adfs,orange","name":"textInput","height":31,"fontSize":16,"color":"#3b3232"},
+                    "props":{"y":113,"x":649,"width":292,"name":"textInput","height":31,"fontSize":16,"color":"#3b3232"},
                     "nodeParent":298,
                     "label":"TextInput(textInput)",
                     "isDirectory":false,

@@ -1,5 +1,5 @@
 // 配置界面
-class ConfigView {
+class HMConfigView {
     private configBox: Laya.Box; // 配置页面容器
     private wordLabel: Laya.Label; // 单词标签
     private picLabel: Laya.Label; // 图片标签
@@ -25,8 +25,6 @@ class ConfigView {
         this.textInput = configBox.getChildByName("textInput") as Laya.TextInput;
         this.submitBtn = configBox.getChildByName("submitBtn") as Laya.Image;
         this.closeBtn = configBox.getChildByName("closeBtn") as Laya.Text;
-        this.game = HitMole.gameConfig.game;
-        this.resetSwich();
         // 添加事件监听
         this.wordRadio.on(Laya.Event.CLICK, this, this.switchWord);
         this.wordRadioImg.on(Laya.Event.CLICK, this, this.switchWord);
@@ -38,6 +36,7 @@ class ConfigView {
 
     // 显示配置
     public show() {
+        this.init();
         this.configBox.visible = true;
     }
 
@@ -46,19 +45,22 @@ class ConfigView {
         this.configBox.visible = false;
     }
 
-    // 复位配置面板
-    private resetSwich(){
+    // 初始化
+    private init() {
+        this.game = HitMole.gameConfig.game;
         if(this.game == "word") {
-            this.wordRadioImg.skin = "HitMole/img_radio_checked.png";
-            this.picRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.wordRadioImg.skin = "common/img_radio_checked.png";
+            this.picRadioImg.skin = "common/img_radio_notCheck.png";
             this.picLabel.visible = false;
             this.wordLabel.visible = true;
+            this.textInput.text = HitMole.gameConfig.words;
         }
         else if (this.game == "picture"){
-            this.wordRadioImg.skin = "HitMole/img_radio_notCheck.png";
-            this.picRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.wordRadioImg.skin = "common/img_radio_notCheck.png";
+            this.picRadioImg.skin = "common/img_radio_checked.png";
             this.picLabel.visible = true;
             this.wordLabel.visible = false;
+            this.textInput.text = HitMole.gameConfig.pictures;
         }
     }
 
@@ -66,10 +68,11 @@ class ConfigView {
     private switchWord() {
         if(this.game == "picture") {
             this.game = "word";         
-            this.wordRadioImg.skin = "HitMole/img_radio_checked.png";
-            this.picRadioImg.skin = "HitMole/img_radio_notCheck.png";
+            this.wordRadioImg.skin = "common/img_radio_checked.png";
+            this.picRadioImg.skin = "common/img_radio_notCheck.png";
             this.picLabel.visible = false;
             this.wordLabel.visible = true;
+            this.textInput.text = "";
         }
     }
 
@@ -77,10 +80,11 @@ class ConfigView {
     private switchPic() {
         if(this.game == "word") {
             this.game = "picture";
-            this.wordRadioImg.skin = "HitMole/img_radio_notCheck.png";
-            this.picRadioImg.skin = "HitMole/img_radio_checked.png";
+            this.wordRadioImg.skin = "common/img_radio_notCheck.png";
+            this.picRadioImg.skin = "common/img_radio_checked.png";
             this.picLabel.visible = true;
             this.wordLabel.visible = false;
+            this.textInput.text = "";
         }
     }
 

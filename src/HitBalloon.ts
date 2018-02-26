@@ -13,12 +13,15 @@ class HitBalloon {
         // 如果没有传入配置，使用默认配置
         if(!config) {
             config = {
-                "car": ["car.png"],
-                "train": ["train.png"],
-                "doll": ["doll.png"],
-                "computer": ["computer.png"],
-                "bike": ["bike.png"],
-                "ball": ["ball.png"]
+                gameModel: false,
+                words: [
+                    {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
+                    {word: "train", pictures: ["train.png"]},
+                    {word: "doll", pictures: ["doll.png"]},
+                    {word: "computer", pictures: ["computer.png"]},
+                    {word: "bike", pictures: ["bike.png"]},
+                    {word: "ball", pictures: ["ball.png"]}
+                ]
             };
         }
         HitBalloon.gameConfig = config;
@@ -32,8 +35,11 @@ class HitBalloon {
         
         // 加载游戏资源
         let resArray: any[] = [
+            {url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS},
             {url: "res/atlas/HitBalloon.atlas", type: Laya.Loader.ATLAS},
-            {url: "HitBalloon/mainBG.png", type: Laya.Loader.IMAGE}
+            {url: "HitBalloon/mainBG.png", type: Laya.Loader.IMAGE},
+            {url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE},
+            {url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE}
         ];
         
         Laya.loader.load(resArray, Laya.Handler.create(this, this.onload));     
@@ -50,6 +56,7 @@ class HitBalloon {
 
     // 游戏开始
     private gameStart() {
+        HitBalloon.hitBalloonMain.showSetting(false);
         HitBalloon.hitBalloonMain.replayBtn.visible = false;
         HitBalloon.hitBalloonMain.startBtn.visible = false;
         this.init();  
@@ -59,31 +66,33 @@ class HitBalloon {
     private init() {
         let balloons: Balloon[] = new Array<Balloon>();
         let pictures: Picture[] = new Array<Picture>();
-        for(let word in HitBalloon.gameConfig) {
-            let balloon = new Balloon(word, HitBalloon.gameConfig[word].length);
+        for(let word of HitBalloon.gameConfig.words) {
+            let balloon = new Balloon(word.word, word.pictures.length);
             balloons.push(balloon);
-            for(let pic of HitBalloon.gameConfig[word]) {
-                let picture = new Picture(word, pic);
+            for(let pic of word.pictures) {
+                let picture = new Picture(word.word, pic);
                 pictures.push(picture);
             }  
         }
         HitBalloon.hitBalloonMain.addElement(balloons, pictures);
     }
 }
-// let config: any = {
-//     "car": ["car.png","car.png"],
-//     "train": ["train.png"],
-//     "doll": ["doll.png"],
-//     "computer": ["computer.png"],
-//     "bike": ["bike.png"],
-//     "ball": ["ball.png"]
-// };
 let config: any = {
-    "car": ["car.png","car.png","car.png","car.png","car.png"],
-    "train": ["train.png"],
-    "doll": ["doll.png"],
-    "computer": ["computer.png"],
-    "bike": ["bike.png"],
-    "ball": ["ball.png"]
+    gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
+    words: [
+        {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
+        {word: "train", pictures: ["train.png"]},
+        {word: "doll", pictures: ["doll.png"]},
+        {word: "computer", pictures: ["computer.png"]},
+        {word: "bike", pictures: ["bike.png"]},
+        {word: "ball", pictures: ["ball.png"]}
+    ]
 };
+// let config: any = {
+//     gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
+//     words: [
+//         {word: "car", pictures: ["car.png"]},
+//         {word: "ball", pictures: ["ball.png"]}
+//     ]
+// };
 new HitBalloon(config);

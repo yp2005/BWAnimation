@@ -19,6 +19,7 @@ class HitMole {
         // 如果没有传入配置，使用默认配置
         if(!config || !config.game) {
             config = {
+                gameModel: false,
                 game: "word",
                 words: ["red", "pink", "orange", "green", "black", "white"],
                 pictures: [],
@@ -35,6 +36,7 @@ class HitMole {
         
         // 加载游戏资源
         let resArray: any[] = [
+            {url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS},
             {url: "res/atlas/HitMole.atlas", type: Laya.Loader.ATLAS},
             {url: "HitMole/mainBG.jpg", type: Laya.Loader.IMAGE},
             {url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE},
@@ -114,7 +116,7 @@ class HitMole {
                 this.molesTemp.push(this.moles[position]);
             } 
         }
-        else if(HitMole.gameConfig.game == "picture") {
+        else if(HitMole.gameConfig.game == "picture") { // 图片游戏进行图片初始化
             for(let pic of HitMole.gameConfig.pictures) {
                 let positionIndex = Math.floor(Math.random() * pos.length);
                 let position = pos[positionIndex];
@@ -130,13 +132,13 @@ class HitMole {
         if(!HitMole.started) {
             return;
         }
-        if(this.currentMole) {
+        if(this.currentMole) { // 已经有老鼠冒出来，敲打老鼠
             this.currentMole.hit(HitMole.gameConfig.game);
             HitMole.hitMoleMain.showHammer(this.currentMole);
             this.currentMole = null;
         }
-        else {
-            if(this.molesTemp.length > 0) {
+        else { // 还没有老鼠冒出来，随机一个老鼠出洞
+            if(this.molesTemp.length > 0) { // 还有老鼠未出洞
                 let showMoleIndex = Math.floor(Math.random() * this.molesTemp.length);
                 // TODO 随机一个生效文件
                 let audio = "";
@@ -150,7 +152,7 @@ class HitMole {
                 this.currentMole = this.molesTemp[showMoleIndex];
                 this.molesTemp.splice(showMoleIndex, 1);
             }
-            else {
+            else { // 老鼠都已出洞结束游戏
                 this.initMoles();
                 Laya.stage.off(Laya.Event.CLICK, this, this.showMole);
                 HitMole.hitMoleMain.showWellDone(this, this.gameOver);
@@ -169,7 +171,8 @@ class HitMole {
 
 }
 let config: any = {
-    game: "picture", // word 地鼠单词，picture 图片
+    gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
+    game: "word", // word 地鼠单词，picture 图片
     words: ["red", "pink", "orange", "green", "black", "white"],
     pictures: ["picture1.png", "picture1.png", "picture1.png"],
 };

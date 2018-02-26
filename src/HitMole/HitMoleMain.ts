@@ -1,7 +1,7 @@
 // 游戏主界面
 class HitMoleMain extends ui.HitMoleUI {
     private hammer: Hammer; // 锤子
-    private configView: ConfigView;
+    private configView: HMConfigView;
     private wellDoneY: number; // well done效果Y坐标
     private wellDoneX: number; // well done效果X坐标
     constructor() {
@@ -11,10 +11,13 @@ class HitMoleMain extends ui.HitMoleUI {
         this.wellDone.visible = false;
         this.wellDoneY = this.wellDone.y;
         this.wellDoneX = this.wellDone.x;
-        this.configView = new ConfigView(this.configBox);
+        this.configView = new HMConfigView(this.configBox);
         this.tip.visible = false;
         this.addChild(this.hammer);
         this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
+        if(HitMole.gameConfig.gameModel) {
+            this.setting.visible = false;    
+        }
     }
 
     // 显示提示
@@ -24,6 +27,7 @@ class HitMoleMain extends ui.HitMoleUI {
         Laya.timer.once(1500, this, this.hideTip);
     }
 
+    // 隐藏提示
     private hideTip() {
         this.tip.visible = false;
     }
@@ -35,7 +39,9 @@ class HitMoleMain extends ui.HitMoleUI {
 
     // 设置设置按钮是否显示
     public showSetting(state: boolean) {
-        this.setting.visible = state;
+        if(!HitMole.gameConfig.gameModel) {
+            this.setting.visible = state;
+        }
     }
 
     // 显示锤子，出现捶打效果

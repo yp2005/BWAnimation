@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":3,
+    "selecteID":27,
     "props":{"width":1024,"sceneColor":"#000000","sceneBg":"laya/views/HitFish.png","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -53,7 +53,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":9,"x":332,"width":653,"skin":"HitMole/configBG.png","height":233,"alpha":1},
+                    "props":{"y":9,"x":332,"width":653,"skin":"common/configBG.png","height":233,"alpha":1},
                     "nodeParent":8,
                     "label":"Image",
                     "isDirectory":false,
@@ -185,7 +185,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":24,"x":27,"width":30,"var":"fishConfigBtn","skin":"HitMole/setting.png","height":30},
+            "props":{"y":24,"x":27,"width":30,"var":"fishConfigBtn","skin":"common/setting.png","height":30},
             "nodeParent":1,
             "label":"Image(fishConfigBtn)",
             "isDirectory":false,
@@ -198,7 +198,7 @@
         {
             "x":15,
             "type":"Button",
-            "props":{"y":356,"x":433,"var":"startBtn","stateNum":"2","skin":"HitMole/btn_start.png"},
+            "props":{"y":356,"x":433,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
             "nodeParent":1,
             "label":"Button(startBtn)",
             "isDirectory":false,
@@ -213,7 +213,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":358,"x":436,"var":"replayBtn","skin":"HitMole/replay.png"},
+            "props":{"y":358,"x":436,"var":"replayBtn","skin":"common/replay.png"},
             "nodeParent":1,
             "label":"Image(replayBtn)",
             "isDirectory":false,

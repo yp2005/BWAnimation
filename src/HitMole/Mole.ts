@@ -1,11 +1,5 @@
 // 老鼠类
 class Mole {
-    // private normalState: Laya.Image; // 老鼠普通状态图片
-    // private hitState: Laya.Image; // 老鼠受击图片
-    // private upY: number;
-    // private downY: number = 27;
-    //private box: Laya.Box; // 老鼠的页面容器
-    //private ani: Laya.Animation; // 老鼠出洞动画
     private mouseImg: Laya.Image; // 老鼠图片
     private wordBg: Laya.Image; // 显示单词背景
     private word: Laya.Text; // 显示的单词
@@ -13,29 +7,17 @@ class Mole {
     public y: number;
 
     constructor(mouseImg: Laya.Image, wordBg: Laya.Image, word: Laya.Text) {
-        //this.box = box;
         this.mouseImg = mouseImg;
         this.wordBg = wordBg;
         this.word = word;
         this.reset();
     }
 
-    // // 显示老鼠页面容器
-    // showBox() {
-    //     this.box.visible = true;
-    // }
-
-    // // 隐藏老鼠页面容器
-    // hidBox() {
-    //     this.box.visible = false;
-    // }
-
     // 重置老鼠状态
     public reset() {
         this.mouseImg.visible = false;
         this.wordBg.visible = false;
         this.word.visible = false;
-        //this.box.visible = false;
     }
 
     // 设置显示的单词

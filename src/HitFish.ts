@@ -32,7 +32,7 @@ class HitFish {
         
         // 加载游戏资源
         let resArray: any[] = [
-            {url: "res/atlas/HitMole.atlas", type: Laya.Loader.ATLAS},
+            {url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS},
             {url: "res/atlas/HitFish.atlas", type: Laya.Loader.ATLAS},
             {url: "HitFish/bg.png", type: Laya.Loader.IMAGE},
             {url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE}
