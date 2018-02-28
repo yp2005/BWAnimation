@@ -5,8 +5,10 @@ var WebGL = Laya.WebGL;
 var Sprite = Laya.Sprite;
 var HitMole = /** @class */ (function () {
     function HitMole(config) {
+        // 如果没有传入配置，使用默认配置
         if (!config || !config.game) {
             config = {
+                gameModel: false,
                 game: "word",
                 words: ["red", "pink", "orange", "green", "black", "white"],
                 pictures: [],
@@ -21,6 +23,7 @@ var HitMole = /** @class */ (function () {
         Laya.stage.bgColor = "#ffffff";
         // 加载游戏资源
         var resArray = [
+            { url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS },
             { url: "res/atlas/HitMole.atlas", type: Laya.Loader.ATLAS },
             { url: "HitMole/mainBG.jpg", type: Laya.Loader.IMAGE },
             { url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE },
@@ -45,6 +48,7 @@ var HitMole = /** @class */ (function () {
         HitMole.hitMoleMain.startBtn.visible = false;
         this.initWords();
         Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
+        // 晚一点开始游戏，否则点击开始按钮就会触发舞台点击事件，调用showMole方法
         Laya.timer.once(500, this, this.setStartState);
     };
     // 设置游戏开始状态
@@ -81,6 +85,7 @@ var HitMole = /** @class */ (function () {
         if (HitMole.gameConfig.game == "word") {
             for (var _i = 0, _a = HitMole.gameConfig.words; _i < _a.length; _i++) {
                 var word = _a[_i];
+                // 为每个单词分配随机不重复的位置
                 var positionIndex = Math.floor(Math.random() * pos.length);
                 var position = pos[positionIndex];
                 pos.splice(positionIndex, 1);
@@ -144,7 +149,8 @@ var HitMole = /** @class */ (function () {
     return HitMole;
 }());
 var config = {
-    game: "picture",
+    gameModel: false,
+    game: "word",
     words: ["red", "pink", "orange", "green", "black", "white"],
     pictures: ["picture1.png", "picture1.png", "picture1.png"],
 };

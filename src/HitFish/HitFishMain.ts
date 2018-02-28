@@ -1,27 +1,14 @@
 // 游戏主界面
 class HitFishMain extends ui.HitFishUI {
-    // private configView: ConfigView;
     private wellDoneY: number; // well done效果Y坐标
     private wellDoneX: number; // well done效果X坐标
     
     constructor() {
         super();
         this.initConfig();
-        // this.theCounter.visible = false;
-        // this.hammer = new Hammer();
-        // this.hammer.visible = false;
         this.wellDone.visible = false;
         this.wellDoneY = this.wellDone.y;
         this.wellDoneX = this.wellDone.x;
-        // this.configView = new ConfigView(this.configBox);
-        // this.tip.visible = false;
-        // this.addChild(this.hammer);
-        // this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
-
-
-        // this.theCounter.loop = false;
-        // this.theCounter.on(Laya.Event.COMPLETE,this,this.countEnd);
-        // this.on(Laya.Event.CLICK,this,this.doCount);
     }
 
     // 初始化配置
@@ -32,9 +19,13 @@ class HitFishMain extends ui.HitFishUI {
         this.fishConfigBtn.on(Laya.Event.CLICK,this,this.showConfig);
         this.fishSubmitBtn.on(Laya.Event.CLICK,this,this.submitConfig);
         this.closeBtn.on(Laya.Event.CLICK,this,this.hideConfig);
+
+        if(HitFish.gameConfig.gameModel) {
+            this.fishConfigBtn.visible = false;    
+        }
     }
 
-// 提交配置
+    // 提交配置
     private submitConfig() {
         let lefts = this.leftInput.text.split(",");
         let rights = this.rightInput.text.split(",");
@@ -44,20 +35,20 @@ class HitFishMain extends ui.HitFishUI {
             return;
         }
 
-        HitFish.gameConfig = {
-                leftWords: lefts,
-                rightWords: rights,
-            }
+        HitFish.gameConfig.leftWords = lefts;
+        HitFish.gameConfig.rightWords = rights;
 
         this.showTip("提交成功！");
         this.hideConfig();
     }
 
+    // 开始倒数
     public startCount(){
         this.theCounter.visible = true;
         this.theCounter.play();
     }
 
+    // 停止倒数
     public stopCount(){
         this.theCounter.stop();
         this.theCounter.visible =  false;
@@ -70,6 +61,7 @@ class HitFishMain extends ui.HitFishUI {
         Laya.timer.once(1500, this, this.hideTip);
     }
 
+    // 隐藏提示
     private hideTip() {
         this.fishTip.visible = false;
     }
@@ -89,7 +81,9 @@ class HitFishMain extends ui.HitFishUI {
 
     // 显示游戏配置页按钮
     public showSetting(state:boolean) {
-        this.fishConfigBtn.visible = state;
+        if(HitFish.gameConfig.gameModel) {
+            this.fishConfigBtn.visible = state;    
+        }
     }
     
     // 显示well done文字效果

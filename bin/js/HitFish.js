@@ -1,5 +1,4 @@
-// 
-//import Browser = Laya.Browser;
+// 双排鱼
 var Stage = Laya.Stage;
 var WebGL = Laya.WebGL;
 var Sprite = Laya.Sprite;
@@ -7,6 +6,7 @@ var HitFish = /** @class */ (function () {
     function HitFish(config) {
         if (!config || !config.game) {
             config = {
+                gameModel: false,
                 leftWords: ["red", "pink", "orange"],
                 rightWords: ["pink", "orange", "green", "black", "white", "ssss"],
             };
@@ -20,7 +20,7 @@ var HitFish = /** @class */ (function () {
         Laya.stage.bgColor = "#ffffff";
         // 加载游戏资源
         var resArray = [
-            { url: "res/atlas/HitMole.atlas", type: Laya.Loader.ATLAS },
+            { url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS },
             { url: "res/atlas/HitFish.atlas", type: Laya.Loader.ATLAS },
             { url: "HitFish/bg.png", type: Laya.Loader.IMAGE },
             { url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE }
@@ -67,34 +67,42 @@ var HitFish = /** @class */ (function () {
     };
     // 初始化单词
     HitFish.prototype.initWords = function () {
-        //y范围-30到600
         var totalY = 768;
         var fishHeigthL = totalY / HitFish.gameConfig.leftWords.length;
         var fishHeigthR = totalY / HitFish.gameConfig.rightWords.length;
+        var arr = [1, 2, 3, 4, 5, 6].sort(function (a, b) {
+            return Math.random() > .5 ? -1 : 1;
+        });
+        console.log(JSON.stringify(arr));
         for (var i = 0; i < HitFish.gameConfig.leftWords.length; i++) {
+            //TODO 随机图片
             // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
-            var fish = new Fish(i + 1, HitFish.gameConfig.leftWords[i]);
+            var fish = new Fish(arr[i], HitFish.gameConfig.leftWords[i]);
             fish.x = 155;
             fish.y = fishHeigthL * i + (fishHeigthL - 200) / 2;
             Laya.stage.addChild(fish);
             HitFish.gameFish.push(fish);
         }
+        arr = [1, 2, 3, 4, 5, 6].sort(function (a, b) {
+            return Math.random() > .5 ? -1 : 1;
+        });
+        console.log(JSON.stringify(arr));
         for (var i = 0; i < HitFish.gameConfig.rightWords.length; i++) {
             // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
-            var fish = new Fish(i + 1, HitFish.gameConfig.rightWords[i]);
+            var fish = new Fish(arr[i], HitFish.gameConfig.rightWords[i]);
             fish.x = 610;
             fish.y = fishHeigthR * i + (fishHeigthR - 200) / 2;
-            // fish.y = fishHeigthR*(i+0.5) -130;
-            // fish.y = fishHeigthR*i -30;
             Laya.stage.addChild(fish);
             HitFish.gameFish.push(fish);
         }
     };
+    // 倒数结束回调
     HitFish.prototype.countEnd = function () {
         HitFish.hitFishMain.stopCount();
         // 延迟两秒，让老师可以点击单词变回图片
         Laya.timer.once(2000, this, this.checkWellDone);
     };
+    // 判断是否完成游戏
     HitFish.prototype.checkWellDone = function () {
         var isAllRight = true;
         for (var i = 0; i < HitFish.gameFish.length; i++) {
@@ -112,6 +120,7 @@ var HitFish = /** @class */ (function () {
     return HitFish;
 }());
 var config = {
+    gameModel: true,
     leftWords: ["red", "pink", "orange", "green"],
     rightWords: ["pink", "orange", "green", "black", "white"],
 };

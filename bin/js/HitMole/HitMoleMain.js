@@ -18,10 +18,13 @@ var HitMoleMain = /** @class */ (function (_super) {
         _this.wellDone.visible = false;
         _this.wellDoneY = _this.wellDone.y;
         _this.wellDoneX = _this.wellDone.x;
-        _this.configView = new ConfigView(_this.configBox);
+        _this.configView = new HMConfigView(_this.configBox);
         _this.tip.visible = false;
         _this.addChild(_this.hammer);
         _this.setting.on(Laya.Event.CLICK, _this, _this.showConfigView);
+        if (HitMole.gameConfig.gameModel) {
+            _this.setting.visible = false;
+        }
         return _this;
     }
     // 显示提示
@@ -30,6 +33,7 @@ var HitMoleMain = /** @class */ (function (_super) {
         this.tip.visible = true;
         Laya.timer.once(1500, this, this.hideTip);
     };
+    // 隐藏提示
     HitMoleMain.prototype.hideTip = function () {
         this.tip.visible = false;
     };
@@ -39,7 +43,9 @@ var HitMoleMain = /** @class */ (function (_super) {
     };
     // 设置设置按钮是否显示
     HitMoleMain.prototype.showSetting = function (state) {
-        this.setting.visible = state;
+        if (!HitMole.gameConfig.gameModel) {
+            this.setting.visible = state;
+        }
     };
     // 显示锤子，出现捶打效果
     HitMoleMain.prototype.showHammer = function (mole) {

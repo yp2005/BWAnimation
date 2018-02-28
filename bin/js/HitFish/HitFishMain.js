@@ -14,20 +14,10 @@ var HitFishMain = /** @class */ (function (_super) {
     function HitFishMain() {
         var _this = _super.call(this) || this;
         _this.initConfig();
-        // this.theCounter.visible = false;
-        // this.hammer = new Hammer();
-        // this.hammer.visible = false;
         _this.wellDone.visible = false;
         _this.wellDoneY = _this.wellDone.y;
         _this.wellDoneX = _this.wellDone.x;
         return _this;
-        // this.configView = new ConfigView(this.configBox);
-        // this.tip.visible = false;
-        // this.addChild(this.hammer);
-        // this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
-        // this.theCounter.loop = false;
-        // this.theCounter.on(Laya.Event.COMPLETE,this,this.countEnd);
-        // this.on(Laya.Event.CLICK,this,this.doCount);
     }
     // 初始化配置
     HitFishMain.prototype.initConfig = function () {
@@ -37,6 +27,9 @@ var HitFishMain = /** @class */ (function (_super) {
         this.fishConfigBtn.on(Laya.Event.CLICK, this, this.showConfig);
         this.fishSubmitBtn.on(Laya.Event.CLICK, this, this.submitConfig);
         this.closeBtn.on(Laya.Event.CLICK, this, this.hideConfig);
+        if (HitFish.gameConfig.gameModel) {
+            this.fishConfigBtn.visible = false;
+        }
     };
     // 提交配置
     HitFishMain.prototype.submitConfig = function () {
@@ -46,17 +39,17 @@ var HitFishMain = /** @class */ (function (_super) {
             this.showTip("左右两边单词个数分别在1-6之间");
             return;
         }
-        HitFish.gameConfig = {
-            leftWords: lefts,
-            rightWords: rights,
-        };
+        HitFish.gameConfig.leftWords = lefts;
+        HitFish.gameConfig.rightWords = rights;
         this.showTip("提交成功！");
         this.hideConfig();
     };
+    // 开始倒数
     HitFishMain.prototype.startCount = function () {
         this.theCounter.visible = true;
         this.theCounter.play();
     };
+    // 停止倒数
     HitFishMain.prototype.stopCount = function () {
         this.theCounter.stop();
         this.theCounter.visible = false;
@@ -67,6 +60,7 @@ var HitFishMain = /** @class */ (function (_super) {
         this.fishTip.visible = true;
         Laya.timer.once(1500, this, this.hideTip);
     };
+    // 隐藏提示
     HitFishMain.prototype.hideTip = function () {
         this.fishTip.visible = false;
     };
@@ -83,7 +77,9 @@ var HitFishMain = /** @class */ (function (_super) {
     };
     // 显示游戏配置页按钮
     HitFishMain.prototype.showSetting = function (state) {
-        this.fishConfigBtn.visible = state;
+        if (HitFish.gameConfig.gameModel) {
+            this.fishConfigBtn.visible = state;
+        }
     };
     // 显示well done文字效果
     HitFishMain.prototype.showWellDone = function (that, callBack) {

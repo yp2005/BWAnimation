@@ -1,15 +1,5 @@
-// 老鼠类
+// 鱼类
 class Fish extends ui.FishUI {
-    // private normalState: Laya.Image; // 老鼠普通状态图片
-    // private hitState: Laya.Image; // 老鼠受击图片
-    // private upY: number;
-    // private downY: number = 27;
-    //private box: Laya.Box; // 老鼠的页面容器
-    //private ani: Laya.Animation; // 老鼠出洞动画
-    // private fishImg: Laya.Image; // 鱼图片
-    // private wordBg: Laya.Image; // 显示单词背景
-    // private word: Laya.Text; // 显示的单词
-
     public isRight: boolean; //单词是否已经被答中
     public x: number;
     public y: number;
@@ -25,6 +15,7 @@ class Fish extends ui.FishUI {
         this.isRight = false;
     }
 
+    // 显示单词
     private showWord(){
         this.fishImg.visible = false;
         this.wordBg.visible = true;
@@ -33,6 +24,7 @@ class Fish extends ui.FishUI {
         this.isRight = true;
     }
 
+    // 隐藏单词
     private hideWord(){
         this.fishImg.visible = true;
         this.wordBg.visible = false;
@@ -41,7 +33,7 @@ class Fish extends ui.FishUI {
         this.isRight = false;
     }
 
-    // 重置老鼠状态
+    // 重置状态
     public reset() {
         this.fishImg.visible = true;
         this.wordBg.visible = false;

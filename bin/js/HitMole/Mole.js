@@ -1,26 +1,16 @@
 // 老鼠类
 var Mole = /** @class */ (function () {
     function Mole(mouseImg, wordBg, word) {
-        //this.box = box;
         this.mouseImg = mouseImg;
         this.wordBg = wordBg;
         this.word = word;
         this.reset();
     }
-    // // 显示老鼠页面容器
-    // showBox() {
-    //     this.box.visible = true;
-    // }
-    // // 隐藏老鼠页面容器
-    // hidBox() {
-    //     this.box.visible = false;
-    // }
     // 重置老鼠状态
     Mole.prototype.reset = function () {
         this.mouseImg.visible = false;
         this.wordBg.visible = false;
         this.word.visible = false;
-        //this.box.visible = false;
     };
     // 设置显示的单词
     Mole.prototype.setText = function (text) {

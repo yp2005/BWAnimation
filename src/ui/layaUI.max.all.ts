@@ -128,6 +128,25 @@ module ui {
 }
 
 module ui {
+    export class HitSpiderUI extends View {
+		public startBtn:Laya.Button;
+		public replayBtn:Laya.Image;
+		public wellDone:laya.display.Text;
+
+        public static  uiView:any ={"type":"View","props":{"width":1024,"height":768},"child":[{"type":"Image","props":{"width":1024,"skin":"HitSpider/bg.png","height":768}},{"type":"Button","props":{"y":366,"x":443,"var":"startBtn","stateNum":2,"skin":"common/btn_start.png"}},{"type":"Image","props":{"y":368,"x":446,"var":"replayBtn","skin":"common/replay.png"}},{"type":"Text","props":{"y":440,"x":382,"width":300,"var":"wellDone","text":"well done!","height":60,"fontSize":50,"font":"Microsoft YaHei","color":"#b8e017","bold":true,"align":"center"}}]};
+        constructor(){ super()}
+        createChildren():void {
+        			View.regComponent("Text",laya.display.Text);
+
+            super.createChildren();
+            this.createView(ui.HitSpiderUI.uiView);
+
+        }
+
+    }
+}
+
+module ui {
     export class PictureUI extends View {
 		public picture:Laya.Image;
 

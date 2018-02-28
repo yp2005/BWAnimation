@@ -8,7 +8,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-// 老鼠类
+// 鱼类
 var Fish = /** @class */ (function (_super) {
     __extends(Fish, _super);
     function Fish(picNo, word) {
@@ -22,6 +22,7 @@ var Fish = /** @class */ (function (_super) {
         _this.isRight = false;
         return _this;
     }
+    // 显示单词
     Fish.prototype.showWord = function () {
         this.fishImg.visible = false;
         this.wordBg.visible = true;
@@ -29,6 +30,7 @@ var Fish = /** @class */ (function (_super) {
         HitFish.hitFishMain.startCount();
         this.isRight = true;
     };
+    // 隐藏单词
     Fish.prototype.hideWord = function () {
         this.fishImg.visible = true;
         this.wordBg.visible = false;
@@ -36,7 +38,7 @@ var Fish = /** @class */ (function (_super) {
         HitFish.hitFishMain.stopCount();
         this.isRight = false;
     };
-    // 重置老鼠状态
+    // 重置状态
     Fish.prototype.reset = function () {
         this.fishImg.visible = true;
         this.wordBg.visible = false;

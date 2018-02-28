@@ -1,5 +1,4 @@
-// 
-//import Browser = Laya.Browser;
+// 双排鱼
 import Stage = Laya.Stage;
 import WebGL   = Laya.WebGL;
 import Sprite = Laya.Sprite;
@@ -11,12 +10,13 @@ class HitFish {
     private static fishType: number; //鱼的类型
     public static gameFish: Fish[]; // 存放这次游戏的鱼
     public static started: boolean = false; // 游戏是否开始
-    private theCounter: Laya.Animation;
+    private theCounter: Laya.Animation; //倒数动画
     
     constructor(config: any)
     {
         if(!config || !config.game) {
             config = {
+                gameModel: false,
                 leftWords: ["red", "pink", "orange"],
                 rightWords: ["pink", "orange", "green", "black", "white", "ssss"],
             }
@@ -87,24 +87,24 @@ class HitFish {
 
     // 初始化单词
     public initWords() { 
-        //y范围-30到600
         let totalY = 768;
         let fishHeigthL = totalY/HitFish.gameConfig.leftWords.length;
         let fishHeigthR = totalY/HitFish.gameConfig.rightWords.length;
 
+        // 初始化左边
+        let arr = this.getRandomArr();
         for(let i = 0; i< HitFish.gameConfig.leftWords.length;i++){
-            //TODO 随机图片
-            // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
-            let fish = new Fish(i+1,HitFish.gameConfig.leftWords[i]);
+            let fish = new Fish(arr[i],HitFish.gameConfig.leftWords[i]);
             fish.x = 155;
             fish.y = fishHeigthL * i + (fishHeigthL-200)/2;
             Laya.stage.addChild(fish);
             HitFish.gameFish.push(fish);
         }
 
+        // 初始化右边
+        arr = this.getRandomArr();
         for(let i = 0; i< HitFish.gameConfig.rightWords.length;i++){
-            // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
-            let fish = new Fish(i+1,HitFish.gameConfig.rightWords[i]);
+            let fish = new Fish(arr[i],HitFish.gameConfig.rightWords[i]);
             fish.x = 610;
             fish.y = fishHeigthR * i + (fishHeigthR-200)/2;
             Laya.stage.addChild(fish);
@@ -112,12 +112,25 @@ class HitFish {
         }
     }
 
+    // 返回随机数组
+    private getRandomArr(){
+        let arr = [];
+        for(var i = 0;i<HitFish.fishType;i++){
+            arr.push(i+1);
+        }
+        return arr.sort((a,b)=>{
+            return Math.random()>.5 ? -1 : 1
+        });
+    }
+
+    // 倒数结束回调
     public countEnd(){
         HitFish.hitFishMain.stopCount();
         // 延迟两秒，让老师可以点击单词变回图片
         Laya.timer.once(2000, this, this.checkWellDone);
     }
 
+    // 判断是否完成游戏
     public checkWellDone(){
         let isAllRight = true;
         for(let i = 0;i<HitFish.gameFish.length;i++){
@@ -136,6 +149,7 @@ class HitFish {
 }
 
 let config: any = {
+        gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
         leftWords: ["red", "pink", "orange", "green"],
         rightWords: ["pink", "orange", "green", "black", "white"],
     }
