@@ -32,6 +32,7 @@ class Balloon extends ui.BalloonUI {
     private showBlast() {
         this.picture.visible = false;
         this.blastImg.visible = true;
+        Laya.SoundManager.playSound("res/audio/blast.mp3", 1);
         Laya.timer.once(300, this, this.showWord);
     }
 
