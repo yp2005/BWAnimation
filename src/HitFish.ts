@@ -147,10 +147,3 @@ class HitFish {
     }
 
 }
-
-let config: any = {
-        gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
-        leftWords: ["red", "pink", "orange", "green"],
-        rightWords: ["pink", "orange", "green", "black", "white"],
-    }
-new HitFish(config);

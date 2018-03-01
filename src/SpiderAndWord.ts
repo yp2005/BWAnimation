@@ -2,8 +2,8 @@
 import Stage = Laya.Stage;
 import WebGL   = Laya.WebGL;
 import Sprite = Laya.Sprite;
-class HitSpider {
-    public static hitSpiderMain: HitSpiderMain; // 游戏主界面
+class SpiderAndWord {
+    public static spiderAndWordMain: SpiderAndWordMain; // 游戏主界面
     public static currentSpider: Spider; // 当前蜘蛛对象
     public static currentPics: Array<HSPicture>; // 当前图片数组
     public static targetPos: any; //目标位置
@@ -38,7 +38,7 @@ class HitSpider {
                 word: "beautiful"
             };
         }
-        HitSpider.gameConfig = config;
+        SpiderAndWord.gameConfig = config;
 
         // 初始化舞台设置
 		Laya.init(1024, 768, WebGL);
@@ -50,8 +50,8 @@ class HitSpider {
         // 加载游戏资源
         let resArray: any[] = [
             {url: "res/atlas/common.atlas", type: Laya.Loader.ATLAS},
-            {url: "res/atlas/HitSpider.atlas", type: Laya.Loader.ATLAS},
-            {url: "HitSpider/bg.png", type: Laya.Loader.IMAGE},
+            {url: "res/atlas/SpiderAndWord.atlas", type: Laya.Loader.ATLAS},
+            {url: "SpiderAndWord/bg.png", type: Laya.Loader.IMAGE},
             {url: "template/Text/TextBox.png", type: Laya.Loader.IMAGE},
             {url: "template/ButtonTab/btn_LargeTabButton_Middle.png", type: Laya.Loader.IMAGE}
         ];
@@ -61,26 +61,26 @@ class HitSpider {
 
     // 游戏资源加载完成进行游戏初始化设置
     private onload() {
-        HitSpider.hitSpiderMain = new HitSpiderMain();
-        HitSpider.hitSpiderMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitSpider.hitSpiderMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        Laya.stage.addChild(HitSpider.hitSpiderMain);
-        HitSpider.hitSpiderMain.startBtn.visible = true;
-        HitSpider.hitSpiderMain.replayBtn.visible = false;
-        HitSpider.started = false;
+        SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
+        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        SpiderAndWord.spiderAndWordMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
+        SpiderAndWord.spiderAndWordMain.startBtn.visible = true;
+        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
+        SpiderAndWord.started = false;
 
         this.startPos.x = this.startPos.x+this.offset;
         this.startPos.y = this.startPos.y+this.offset;
         this.endPos.x = this.endPos.x+this.offset;
         this.endPos.y = this.endPos.y+this.offset;
 
-        HitSpider.currentSpider = new Spider();
-        HitSpider.currentSpider.visible = false;
-        HitSpider.currentSpider.zOrder = 1;
+        SpiderAndWord.currentSpider = new Spider();
+        SpiderAndWord.currentSpider.visible = false;
+        SpiderAndWord.currentSpider.zOrder = 1;
 
-        Laya.stage.addChild(HitSpider.currentSpider);
+        Laya.stage.addChild(SpiderAndWord.currentSpider);
 
-        HitSpider.posArr = HitSpider.posArr.map(p=>{
+        SpiderAndWord.posArr = SpiderAndWord.posArr.map(p=>{
             return {x:(p.x+this.offset),y:(p.y+this.offset)}
         })
     }
@@ -88,9 +88,9 @@ class HitSpider {
     // 图片点击事件
     private mouseClick(hsPic:HSPicture){
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
-        if(HitSpider.started && !this.isChecking){
-            // HitSpider.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
-            HitSpider.targetPos = {x:hsPic.x,y:hsPic.y};
+        if(SpiderAndWord.started && !this.isChecking){
+            // SpiderAndWord.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
+            SpiderAndWord.targetPos = {x:hsPic.x,y:hsPic.y};
             this.currentWord = hsPic.word;
             this.isChecking = true;
         }
@@ -98,15 +98,15 @@ class HitSpider {
 
     // 初始化
     private init() {
-        HitSpider.currentSpider.pos(this.startPos.x,this.startPos.y);
-        HitSpider.targetPos = this.endPos;
-        HitSpider.currentSpider.visible = true;
-        HitSpider.started = true;
+        SpiderAndWord.currentSpider.pos(this.startPos.x,this.startPos.y);
+        SpiderAndWord.targetPos = this.endPos;
+        SpiderAndWord.currentSpider.visible = true;
+        SpiderAndWord.started = true;
         this.isChecking = false;
 
-        HitSpider.currentPics = new Array<HSPicture>();
+        SpiderAndWord.currentPics = new Array<HSPicture>();
         let wordArr = this.wordArrs.find(arr => {
-            return (arr.indexOf(HitSpider.gameConfig.word) != -1);
+            return (arr.indexOf(SpiderAndWord.gameConfig.word) != -1);
         })
         // 获取一个1-8的随机数组
         let ranPos = CommonTools.getRandomArr(8);
@@ -125,19 +125,19 @@ class HitSpider {
             let picPos = ranPos[i]-1;
             // console.log(i+"===="+"spiderpic-"+picType+"-"+picNum+".png");
             let hsPic = new HSPicture(picType,"spiderpic-"+picType+"-"+picNum+".png");
-            hsPic.pos(HitSpider.posArr[picPos].x,HitSpider.posArr[picPos].y);
+            hsPic.pos(SpiderAndWord.posArr[picPos].x,SpiderAndWord.posArr[picPos].y);
             hsPic.body.on(Laya.Event.CLICK,this,this.mouseClick,[hsPic]);
             
-            HitSpider.currentPics.push(hsPic);
+            SpiderAndWord.currentPics.push(hsPic);
             Laya.stage.addChild(hsPic);
         }
     }
 
     // 游戏开始
     private gameStart() {
-        // HitSpider.hitSpiderMain.showSetting(false);
-        HitSpider.hitSpiderMain.replayBtn.visible = false;
-        HitSpider.hitSpiderMain.startBtn.visible = false;
+        // SpiderAndWord.spiderAndWordMain.showSetting(false);
+        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
+        SpiderAndWord.spiderAndWordMain.startBtn.visible = false;
         this.init();  
         
         //恢复游戏循环
@@ -147,38 +147,38 @@ class HitSpider {
 
     // 按帧循环，显示蜘蛛位置
     onLoop():void{
-        let spiderX = HitSpider.currentSpider.x;
-        let spiderY = HitSpider.currentSpider.y;
+        let spiderX = SpiderAndWord.currentSpider.x;
+        let spiderY = SpiderAndWord.currentSpider.y;
 
         //去程先横向移动，返程先纵向移动
         if(this.isBack){
-            if(spiderY != HitSpider.targetPos.y){
-                let _y = this.getDistanceValue(HitSpider.targetPos.y,spiderY);
-                HitSpider.currentSpider.pos(spiderX,spiderY + _y);
-            }else if(spiderX != HitSpider.targetPos.x){
-                let _x = this.getDistanceValue(HitSpider.targetPos.x,spiderX);
-                HitSpider.currentSpider.pos(spiderX + _x,spiderY);
+            if(spiderY != SpiderAndWord.targetPos.y){
+                let _y = this.getDistanceValue(SpiderAndWord.targetPos.y,spiderY);
+                SpiderAndWord.currentSpider.pos(spiderX,spiderY + _y);
+            }else if(spiderX != SpiderAndWord.targetPos.x){
+                let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
+                SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
             }
         }else{
-            if(spiderX != HitSpider.targetPos.x){
-                let _x = this.getDistanceValue(HitSpider.targetPos.x,spiderX);
-                HitSpider.currentSpider.pos(spiderX + _x,spiderY);
-            }else if(spiderY != HitSpider.targetPos.y){
-                let _y = this.getDistanceValue(HitSpider.targetPos.y,spiderY);
-                HitSpider.currentSpider.pos(spiderX,spiderY + _y);
+            if(spiderX != SpiderAndWord.targetPos.x){
+                let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
+                SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
+            }else if(spiderY != SpiderAndWord.targetPos.y){
+                let _y = this.getDistanceValue(SpiderAndWord.targetPos.y,spiderY);
+                SpiderAndWord.currentSpider.pos(spiderX,spiderY + _y);
             }
         }
 
         // 到达目标位置
-        if(spiderX === HitSpider.targetPos.x && spiderY === HitSpider.targetPos.y){
-            spiderX === this.endPos.x ? (HitSpider.targetPos = this.startPos) : (HitSpider.targetPos = this.endPos);
+        if(spiderX === SpiderAndWord.targetPos.x && spiderY === SpiderAndWord.targetPos.y){
+            spiderX === this.endPos.x ? (SpiderAndWord.targetPos = this.startPos) : (SpiderAndWord.targetPos = this.endPos);
             
             //如果是在来回线以下，即是返程
             if(spiderY != this.startPos.y){
                 this.isBack = true;
                 // 停留三秒
                 Laya.timer.clear(this,this.onLoop);
-                HitSpider.currentSpider.playAction(this.checkPic());
+                SpiderAndWord.currentSpider.playAction(this.checkPic());
                 Laya.timer.once(3000, this, this.resume);
             }else{
                 this.isBack = false;
@@ -191,14 +191,14 @@ class HitSpider {
     checkPic():string{
         //spider_wrong
         //spider_right
-        return (this.currentWord === HitSpider.gameConfig.word ? "spider_right" : "spider_wrong");
+        return (this.currentWord === SpiderAndWord.gameConfig.word ? "spider_right" : "spider_wrong");
     }
 
     // 重新开始游走循环
     resume():void {
         //恢复游戏循环
         Laya.timer.frameLoop(1,this,this.onLoop);
-        HitSpider.currentSpider.playAction("spider_move");
+        SpiderAndWord.currentSpider.playAction("spider_move");
     }
 
     // 获取当前点与目标点的坐标距离
@@ -209,8 +209,3 @@ class HitSpider {
         return (_value/Math.abs(_value)) * absValue;
     }
 }
-let config: any = {
-    gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
-    word: "happy"
-};
-new HitSpider(config);

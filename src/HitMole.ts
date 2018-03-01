@@ -170,10 +170,3 @@ class HitMole {
     }
 
 }
-let config: any = {
-    gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
-    game: "word", // word 地鼠单词，picture 图片
-    words: ["red", "pink", "orange", "green", "black", "white"],
-    pictures: ["picture1.png", "picture1.png", "picture1.png"],
-};
-new HitMole(config);

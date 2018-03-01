@@ -1,5 +1,5 @@
 // 游戏主界面
-class HitSpiderMain extends ui.HitSpiderUI {
+class SpiderAndWordMain extends ui.SpiderAndWordUI {
     private wellDoneY: number; // well done效果Y坐标
     private wellDoneX: number; // well done效果X坐标
     private configView: HSConfigView; // 配置页
@@ -12,7 +12,7 @@ class HitSpiderMain extends ui.HitSpiderUI {
         this.configView = new HSConfigView(this.configBox);
         this.tip.visible = false;
         this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
-        if(HitSpider.gameConfig.gameModel) {
+        if(SpiderAndWord.gameConfig.gameModel) {
             this.setting.visible = false;    
         }
     }
@@ -31,13 +31,13 @@ class HitSpiderMain extends ui.HitSpiderUI {
     // 显示游戏配置页面 
     private showConfigView() {
         this.setting.visible = false;
-        if(HitSpider.started){
-            HitSpider.currentSpider.visible = false;
-            for(let picture of HitSpider.currentPics) {
+        if(SpiderAndWord.started){
+            SpiderAndWord.currentSpider.visible = false;
+            for(let picture of SpiderAndWord.currentPics) {
                 picture.removeSelf();
                 picture.destroy();
             }
-            HitSpider.hitSpiderMain.replayBtn.visible = true;
+            SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         }
 
         this.configView.show();
@@ -45,7 +45,7 @@ class HitSpiderMain extends ui.HitSpiderUI {
 
     // 设置设置按钮是否显示
     public showSetting(state: boolean) {
-        if(!HitSpider.gameConfig.gameModel) {
+        if(!SpiderAndWord.gameConfig.gameModel) {
             this.setting.visible = state;
         }
     }

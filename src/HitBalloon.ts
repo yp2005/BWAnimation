@@ -77,22 +77,3 @@ class HitBalloon {
         HitBalloon.hitBalloonMain.addElement(balloons, pictures);
     }
 }
-let config: any = {
-    gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
-    words: [
-        {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
-        {word: "train", pictures: ["train.png"]},
-        {word: "doll", pictures: ["doll.png"]},
-        {word: "computer", pictures: ["computer.png"]},
-        {word: "bike", pictures: ["bike.png"]},
-        {word: "ball", pictures: ["ball.png"]}
-    ]
-};
-// let config: any = {
-//     gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
-//     words: [
-//         {word: "car", pictures: ["car.png"]},
-//         {word: "ball", pictures: ["ball.png"]}
-//     ]
-// };
-new HitBalloon(config);

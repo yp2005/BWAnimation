@@ -5,7 +5,7 @@ class HSPicture extends Laya.Sprite {
     constructor(word: string, pic: string) {
         super();
         this.word = word;
-        this.body = new Laya.Image("HitSpider/" + pic);
+        this.body = new Laya.Image("SpiderAndWord/" + pic);
         // var bound:Laya.Rectangle = this.body.getBounds();
         // this.body.pos(-bound.width/2,-bound.height/2);
         this.body.centerX = 0;
@@ -17,7 +17,7 @@ class HSPicture extends Laya.Sprite {
     }
     
     // private mouseClick(){
-    //     HitSpider.targetPos = {x:this.x,y:this.y};
-    //     console.log(JSON.stringify(HitSpider.targetPos));
+    //     SpiderAndWord.targetPos = {x:this.x,y:this.y};
+    //     console.log(JSON.stringify(SpiderAndWord.targetPos));
     // }
 }

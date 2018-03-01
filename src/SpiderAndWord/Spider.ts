@@ -18,15 +18,15 @@ class Spider extends Laya.Sprite {
         if(!Spider.cached){
             Spider.cached = true;
             //缓存移动动画
-            Laya.Animation.createFrames(["HitSpider/spider-move-1.png","HitSpider/spider-move-2.png","HitSpider/spider-move-3.png","HitSpider/spider-move-2.png"],"spider_move");
+            Laya.Animation.createFrames(["SpiderAndWord/spider-move-1.png","SpiderAndWord/spider-move-2.png","SpiderAndWord/spider-move-3.png","SpiderAndWord/spider-move-2.png"],"spider_move");
             
             //缓存选中动画
-            Laya.Animation.createFrames(["HitSpider/spider-right-1.png"],"spider_right");
+            Laya.Animation.createFrames(["SpiderAndWord/spider-right-1.png"],"spider_right");
 
             //缓存未选中动画
             let wrongArr = [];
             for(var i=1;i<16;i++){
-                wrongArr.push("HitSpider/spider-wrong-"+i+".png");
+                wrongArr.push("SpiderAndWord/spider-wrong-"+i+".png");
             }
             Laya.Animation.createFrames(wrongArr,"spider_wrong");
         }

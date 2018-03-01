@@ -19,7 +19,7 @@ class HSConfigView {
 
     // 初始化
     private init() {
-        let text = HitSpider.gameConfig.word;
+        let text = SpiderAndWord.gameConfig.word;
         this.textInput.text = text;
     }
 
@@ -39,12 +39,12 @@ class HSConfigView {
         let text = this.textInput.text;
         let wordArr = ["ugly","beautiful","happy","sad","old","young"];
         if(wordArr.indexOf(text) == -1) {
-            HitSpider.hitSpiderMain.showTip("正确单词只能是ugly，beautiful，happy，sad，old，young中的一个");
+            SpiderAndWord.spiderAndWordMain.showTip("正确单词只能是ugly，beautiful，happy，sad，old，young中的一个");
             return;
         }
-        HitSpider.gameConfig.word = text;
-        HitSpider.hitSpiderMain.showTip("提交成功！");
-        HitSpider.hitSpiderMain.showSetting(true);
+        SpiderAndWord.gameConfig.word = text;
+        SpiderAndWord.spiderAndWordMain.showTip("提交成功！");
+        SpiderAndWord.spiderAndWordMain.showSetting(true);
         this.hide();
     }
 }
