@@ -1,6 +1,6 @@
 // 配置界面
-var HBConfigView = /** @class */ (function () {
-    function HBConfigView(configBox) {
+var HSConfigView = /** @class */ (function () {
+    function HSConfigView(configBox) {
         this.configBox = configBox;
         this.hide();
         // 初始化配置页面元素
@@ -12,70 +12,32 @@ var HBConfigView = /** @class */ (function () {
         this.closeBtn.on(Laya.Event.CLICK, this, this.hide);
     }
     // 初始化
-    HBConfigView.prototype.init = function () {
-        var text = "";
-        for (var _i = 0, _a = HitBalloon.gameConfig.words; _i < _a.length; _i++) {
-            var word = _a[_i];
-            if (text == "") {
-                text = word.word + ":";
-            }
-            else {
-                text += ";" + word.word + ":";
-            }
-            var pictures = "";
-            for (var _b = 0, _c = word.pictures; _b < _c.length; _b++) {
-                var picture = _c[_b];
-                if (pictures == "") {
-                    pictures = picture;
-                }
-                else {
-                    pictures += "," + picture;
-                }
-            }
-            text += pictures;
-        }
+    HSConfigView.prototype.init = function () {
+        var text = HitSpider.gameConfig.word;
         this.textInput.text = text;
     };
     // 显示配置
-    HBConfigView.prototype.show = function () {
+    HSConfigView.prototype.show = function () {
         this.init();
         this.configBox.visible = true;
     };
     // 隐藏配置
-    HBConfigView.prototype.hide = function () {
+    HSConfigView.prototype.hide = function () {
         this.configBox.visible = false;
     };
     // 提交配置
-    HBConfigView.prototype.submit = function () {
-        var texts = this.textInput.text.split(";");
-        if (texts.length < 1 || texts.length > 8) {
-            HitBalloon.hitBalloonMain.showTip("单词个数在1-8之间！");
+    HSConfigView.prototype.submit = function () {
+        var text = this.textInput.text;
+        var wordArr = ["ugly", "beautiful", "happy", "sad", "old", "young"];
+        if (wordArr.indexOf(text) == -1) {
+            HitSpider.hitSpiderMain.showTip("正确单词只能是ugly，beautiful，happy，sad，old，young中的一个");
             return;
         }
-        var words = [];
-        var picNum = 0;
-        for (var _i = 0, texts_1 = texts; _i < texts_1.length; _i++) {
-            var text = texts_1[_i];
-            var textSp = text.split(":");
-            if (textSp.length != 2 || textSp[0] == "" || textSp[1] == "") {
-                HitBalloon.hitBalloonMain.showTip("配置格式错误，请参考示例！");
-                return;
-            }
-            var pictures = textSp[1].split(",");
-            words.push({
-                word: textSp[0],
-                pictures: pictures
-            });
-            picNum += pictures.length;
-        }
-        if (picNum < 1 || picNum > 10) {
-            HitBalloon.hitBalloonMain.showTip("图片个数在1-10之间！");
-            return;
-        }
-        HitBalloon.gameConfig.words = words;
-        HitBalloon.hitBalloonMain.showTip("提交成功！");
+        HitSpider.gameConfig.word = text;
+        HitSpider.hitSpiderMain.showTip("提交成功！");
+        HitSpider.hitSpiderMain.showSetting(true);
         this.hide();
     };
-    return HBConfigView;
+    return HSConfigView;
 }());
 //# sourceMappingURL=HSConfigView.js.map

@@ -70,25 +70,18 @@ var HitFish = /** @class */ (function () {
         var totalY = 768;
         var fishHeigthL = totalY / HitFish.gameConfig.leftWords.length;
         var fishHeigthR = totalY / HitFish.gameConfig.rightWords.length;
-        var arr = [1, 2, 3, 4, 5, 6].sort(function (a, b) {
-            return Math.random() > .5 ? -1 : 1;
-        });
-        console.log(JSON.stringify(arr));
+        // 初始化左边
+        var arr = CommonTools.getRandomArr(HitFish.fishType);
         for (var i = 0; i < HitFish.gameConfig.leftWords.length; i++) {
-            //TODO 随机图片
-            // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
             var fish = new Fish(arr[i], HitFish.gameConfig.leftWords[i]);
             fish.x = 155;
             fish.y = fishHeigthL * i + (fishHeigthL - 200) / 2;
             Laya.stage.addChild(fish);
             HitFish.gameFish.push(fish);
         }
-        arr = [1, 2, 3, 4, 5, 6].sort(function (a, b) {
-            return Math.random() > .5 ? -1 : 1;
-        });
-        console.log(JSON.stringify(arr));
+        // 初始化右边
+        arr = CommonTools.getRandomArr(HitFish.fishType);
         for (var i = 0; i < HitFish.gameConfig.rightWords.length; i++) {
-            // let fishIndex = Math.floor(Math.random() * HitFish.fishType);
             var fish = new Fish(arr[i], HitFish.gameConfig.rightWords[i]);
             fish.x = 610;
             fish.y = fishHeigthR * i + (fishHeigthR - 200) / 2;
@@ -96,6 +89,16 @@ var HitFish = /** @class */ (function () {
             HitFish.gameFish.push(fish);
         }
     };
+    // 返回随机数组
+    // private getRandomArr(){
+    //     let arr = [];
+    //     for(var i = 0;i<HitFish.fishType;i++){
+    //         arr.push(i+1);
+    //     }
+    //     return arr.sort((a,b)=>{
+    //         return Math.random()>.5 ? -1 : 1
+    //     });
+    // }
     // 倒数结束回调
     HitFish.prototype.countEnd = function () {
         HitFish.hitFishMain.stopCount();

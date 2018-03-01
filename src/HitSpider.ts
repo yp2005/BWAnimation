@@ -5,14 +5,17 @@ import Sprite = Laya.Sprite;
 class HitSpider {
     public static hitSpiderMain: HitSpiderMain; // 游戏主界面
     public static currentSpider: Spider; // 当前蜘蛛对象
+    public static currentPics: Array<HSPicture>; // 当前图片数组
     public static targetPos: any; //目标位置
     private speed: number = 5; //移动速度
     private offset: number = 50; //偏移量
-    private startPos: any = {x:25,y:50} //起始位置-左
-    private endPos: any = {x:800,y:50} //起始位置-右
-    private started: boolean = false; //游戏是否开始
+    private startPos: any = {x:40,y:50} //起始位置-左
+    private endPos: any = {x:880,y:50} //起始位置-右
+    public static started: boolean = false; //游戏是否开始
     private isBack: boolean = false; //是否返程
     private isChecking: boolean = false; //是否正在执行检查
+    private currentWord: string = ""; //当前选中的图片的单词
+    private wordArrs = [["ugly","beautiful"],["happy","sad"],["old","young"]]; //单词组合
     // 八个位置，第一排1234，第二排5678
     public static posArr: Array<any> = [
         {x:50,y:300},
@@ -32,17 +35,10 @@ class HitSpider {
         if(!config) {
             config = {
                 gameModel: false,
-                words: [
-                    {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
-                    {word: "train", pictures: ["train.png"]},
-                    {word: "doll", pictures: ["doll.png"]},
-                    {word: "computer", pictures: ["computer.png"]},
-                    {word: "bike", pictures: ["bike.png"]},
-                    {word: "ball", pictures: ["ball.png"]}
-                ]
+                word: "beautiful"
             };
         }
-        // HitSpider.gameConfig = config;
+        HitSpider.gameConfig = config;
 
         // 初始化舞台设置
 		Laya.init(1024, 768, WebGL);
@@ -71,7 +67,7 @@ class HitSpider {
         Laya.stage.addChild(HitSpider.hitSpiderMain);
         HitSpider.hitSpiderMain.startBtn.visible = true;
         HitSpider.hitSpiderMain.replayBtn.visible = false;
-        this.started = false;
+        HitSpider.started = false;
 
         this.startPos.x = this.startPos.x+this.offset;
         this.startPos.y = this.startPos.y+this.offset;
@@ -83,13 +79,19 @@ class HitSpider {
         HitSpider.currentSpider.zOrder = 1;
 
         Laya.stage.addChild(HitSpider.currentSpider);
+
+        HitSpider.posArr = HitSpider.posArr.map(p=>{
+            return {x:(p.x+this.offset),y:(p.y+this.offset)}
+        })
     }
 
     // 图片点击事件
     private mouseClick(hsPic:HSPicture){
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
-        if(this.started && !this.isChecking){
-            HitSpider.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
+        if(HitSpider.started && !this.isChecking){
+            // HitSpider.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
+            HitSpider.targetPos = {x:hsPic.x,y:hsPic.y};
+            this.currentWord = hsPic.word;
             this.isChecking = true;
         }
     }
@@ -99,15 +101,34 @@ class HitSpider {
         HitSpider.currentSpider.pos(this.startPos.x,this.startPos.y);
         HitSpider.targetPos = this.endPos;
         HitSpider.currentSpider.visible = true;
-        this.started = true;
+        HitSpider.started = true;
         this.isChecking = false;
 
-        let pictures: HSPicture[] = new Array<HSPicture>();
-        for(var i=0;i<8;i++){
-            let hsPic = new HSPicture("happy","fly-"+(i+1)+".png");
-            hsPic.pos(HitSpider.posArr[i].x,HitSpider.posArr[i].y);
+        HitSpider.currentPics = new Array<HSPicture>();
+        let wordArr = this.wordArrs.find(arr => {
+            return (arr.indexOf(HitSpider.gameConfig.word) != -1);
+        })
+        // 获取一个1-8的随机数组
+        let ranPos = CommonTools.getRandomArr(8);
+        let picArr1 = CommonTools.getRandomArr(4);
+        let picArr2 = CommonTools.getRandomArr(4);
+        // console.log(JSON.stringify(ranPos))
+        // console.log(JSON.stringify(picArr1))
+        // console.log(JSON.stringify(picArr2))
+        // 只取其中6个位置
+        for(var i=0;i<6;i++){
+            // 对的错的各三个
+            let picType = (i%2) ? wordArr[0] : wordArr[1];
+            // 对的错的各从4个图片中随机出来三个图
+            let picNum = (i%2) ? picArr1[Math.floor(i/2)] : picArr2[Math.floor(i/2)];
+            // 图片的位置随机获取
+            let picPos = ranPos[i]-1;
+            // console.log(i+"===="+"spiderpic-"+picType+"-"+picNum+".png");
+            let hsPic = new HSPicture(picType,"spiderpic-"+picType+"-"+picNum+".png");
+            hsPic.pos(HitSpider.posArr[picPos].x,HitSpider.posArr[picPos].y);
             hsPic.body.on(Laya.Event.CLICK,this,this.mouseClick,[hsPic]);
             
+            HitSpider.currentPics.push(hsPic);
             Laya.stage.addChild(hsPic);
         }
     }
@@ -170,7 +191,7 @@ class HitSpider {
     checkPic():string{
         //spider_wrong
         //spider_right
-        return "spider_right";
+        return (this.currentWord === HitSpider.gameConfig.word ? "spider_right" : "spider_wrong");
     }
 
     // 重新开始游走循环
@@ -190,13 +211,6 @@ class HitSpider {
 }
 let config: any = {
     gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
-    words: [
-        {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
-        {word: "train", pictures: ["train.png"]},
-        {word: "doll", pictures: ["doll.png"]},
-        {word: "computer", pictures: ["computer.png"]},
-        {word: "bike", pictures: ["bike.png"]},
-        {word: "ball", pictures: ["ball.png"]}
-    ]
+    word: "happy"
 };
 new HitSpider(config);

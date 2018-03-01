@@ -1,5 +1,5 @@
 // 配置界面
-class HBConfigView {
+class HSConfigView {
     private configBox: Laya.Box; // 配置页面容器
     private textInput: Laya.TextInput; // 输入框
     private submitBtn: Laya.Image; // 提交按钮
@@ -19,25 +19,7 @@ class HBConfigView {
 
     // 初始化
     private init() {
-        let text = "";
-        for(let word of HitBalloon.gameConfig.words) {
-            if(text == "") {
-                text = word.word + ":";
-            }
-            else {
-                text += ";" + word.word + ":";
-            }
-            let pictures = "";
-            for(let picture of word.pictures) {
-                if(pictures == "") {
-                    pictures = picture;
-                }
-                else {
-                    pictures += "," + picture;
-                }
-            }
-            text += pictures;
-        }
+        let text = HitSpider.gameConfig.word;
         this.textInput.text = text;
     }
 
@@ -54,32 +36,15 @@ class HBConfigView {
 
     // 提交配置
     private submit() {
-        let texts = this.textInput.text.split(";");
-        if(texts.length < 1 || texts.length > 8) {
-            HitBalloon.hitBalloonMain.showTip("单词个数在1-8之间！");
+        let text = this.textInput.text;
+        let wordArr = ["ugly","beautiful","happy","sad","old","young"];
+        if(wordArr.indexOf(text) == -1) {
+            HitSpider.hitSpiderMain.showTip("正确单词只能是ugly，beautiful，happy，sad，old，young中的一个");
             return;
         }
-        let words = [];
-        let picNum = 0;
-        for(let text of texts) {
-            let textSp = text.split(":");
-            if(textSp.length != 2 || textSp[0] == "" || textSp[1] == "") {
-                 HitBalloon.hitBalloonMain.showTip("配置格式错误，请参考示例！");
-                return;
-            }
-            let pictures = textSp[1].split(",");
-            words.push({
-                word: textSp[0],
-                pictures: pictures
-            });
-            picNum += pictures.length;
-        }
-        if(picNum < 1 || picNum > 10) {
-            HitBalloon.hitBalloonMain.showTip("图片个数在1-10之间！");
-            return;
-        }
-        HitBalloon.gameConfig.words = words;
-        HitBalloon.hitBalloonMain.showTip("提交成功！");
+        HitSpider.gameConfig.word = text;
+        HitSpider.hitSpiderMain.showTip("提交成功！");
+        HitSpider.hitSpiderMain.showSetting(true);
         this.hide();
     }
 }

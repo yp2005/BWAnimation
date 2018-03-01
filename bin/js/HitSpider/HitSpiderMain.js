@@ -16,32 +16,42 @@ var HitSpiderMain = /** @class */ (function (_super) {
         _this.wellDone.visible = false;
         _this.wellDoneY = _this.wellDone.y;
         _this.wellDoneX = _this.wellDone.x;
+        _this.configView = new HSConfigView(_this.configBox);
+        _this.tip.visible = false;
+        _this.setting.on(Laya.Event.CLICK, _this, _this.showConfigView);
+        if (HitSpider.gameConfig.gameModel) {
+            _this.setting.visible = false;
+        }
         return _this;
-        // this.configView = new HBConfigView(this.configBox);
-        // this.tip.visible = false;
-        // this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
-        // if(HitBalloon.gameConfig.gameModel) {
-        //     this.setting.visible = false;    
-        // }
     }
     // 显示提示
     HitSpiderMain.prototype.showTip = function (text) {
-        // this.tip.text = text;
-        // this.tip.visible = true;
+        this.tip.text = text;
+        this.tip.visible = true;
         Laya.timer.once(1500, this, this.hideTip);
     };
     HitSpiderMain.prototype.hideTip = function () {
-        // this.tip.visible = false;
+        this.tip.visible = false;
     };
     // 显示游戏配置页面 
     HitSpiderMain.prototype.showConfigView = function () {
+        this.setting.visible = false;
+        if (HitSpider.started) {
+            HitSpider.currentSpider.visible = false;
+            for (var _i = 0, _a = HitSpider.currentPics; _i < _a.length; _i++) {
+                var picture = _a[_i];
+                picture.removeSelf();
+                picture.destroy();
+            }
+            HitSpider.hitSpiderMain.replayBtn.visible = true;
+        }
         this.configView.show();
     };
     // 设置设置按钮是否显示
     HitSpiderMain.prototype.showSetting = function (state) {
-        // if(!HitBalloon.gameConfig.gameModel) {
-        //     this.setting.visible = state;
-        // }
+        if (!HitSpider.gameConfig.gameModel) {
+            this.setting.visible = state;
+        }
     };
     // 游戏结束
     HitSpiderMain.prototype.gameOver = function () {
@@ -55,18 +65,7 @@ var HitSpiderMain = /** @class */ (function (_super) {
     // 重置游戏为初始状态
     HitSpiderMain.prototype.reset = function () {
         this.wellDone.visible = false;
-        // for(let balloon of this.balloons) {
-        //     balloon.removeSelf();
-        //     balloon.destroy();
-        // }
-        // for(let picture of this.pictures) {
-        //     picture.line.removeSelf();
-        //     picture.line.destroy();
-        //     picture.removeSelf();
-        //     picture.destroy();
-        // }
-        HitSpider.hitSpiderMain.replayBtn.visible = true;
-        // this.showSetting(true);
+        this.showSetting(true);
     };
     return HitSpiderMain;
 }(ui.HitSpiderUI));

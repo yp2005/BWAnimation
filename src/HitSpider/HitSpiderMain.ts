@@ -1,45 +1,53 @@
 // 游戏主界面
 class HitSpiderMain extends ui.HitSpiderUI {
-    // private balloons: Balloon[]; // 所有的气球
-    // private pictures: Picture[]; // 所有的图片
     private wellDoneY: number; // well done效果Y坐标
     private wellDoneX: number; // well done效果X坐标
-    private configView: HBConfigView; // 配置页
+    private configView: HSConfigView; // 配置页
 
     constructor() {
         super(); 
         this.wellDone.visible = false;
         this.wellDoneY = this.wellDone.y;
         this.wellDoneX = this.wellDone.x;
-        // this.configView = new HBConfigView(this.configBox);
-        // this.tip.visible = false;
-        // this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
-        // if(HitBalloon.gameConfig.gameModel) {
-        //     this.setting.visible = false;    
-        // }
+        this.configView = new HSConfigView(this.configBox);
+        this.tip.visible = false;
+        this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
+        if(HitSpider.gameConfig.gameModel) {
+            this.setting.visible = false;    
+        }
     }
 
      // 显示提示
     public showTip(text: string) {
-        // this.tip.text = text;
-        // this.tip.visible = true;
+        this.tip.text = text;
+        this.tip.visible = true;
         Laya.timer.once(1500, this, this.hideTip);
     }
 
     private hideTip() {
-        // this.tip.visible = false;
+        this.tip.visible = false;
     }
 
     // 显示游戏配置页面 
     private showConfigView() {
+        this.setting.visible = false;
+        if(HitSpider.started){
+            HitSpider.currentSpider.visible = false;
+            for(let picture of HitSpider.currentPics) {
+                picture.removeSelf();
+                picture.destroy();
+            }
+            HitSpider.hitSpiderMain.replayBtn.visible = true;
+        }
+
         this.configView.show();
     }
 
     // 设置设置按钮是否显示
     public showSetting(state: boolean) {
-        // if(!HitBalloon.gameConfig.gameModel) {
-        //     this.setting.visible = state;
-        // }
+        if(!HitSpider.gameConfig.gameModel) {
+            this.setting.visible = state;
+        }
     }
 
     // 游戏结束
@@ -56,18 +64,7 @@ class HitSpiderMain extends ui.HitSpiderUI {
     // 重置游戏为初始状态
     private reset() {
         this.wellDone.visible = false;
-        // for(let balloon of this.balloons) {
-        //     balloon.removeSelf();
-        //     balloon.destroy();
-        // }
-        // for(let picture of this.pictures) {
-        //     picture.line.removeSelf();
-        //     picture.line.destroy();
-        //     picture.removeSelf();
-        //     picture.destroy();
-        // }
-        HitSpider.hitSpiderMain.replayBtn.visible = true;
-        // this.showSetting(true);
+        this.showSetting(true);
     }
 
 }

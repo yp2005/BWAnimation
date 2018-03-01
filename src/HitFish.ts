@@ -92,7 +92,7 @@ class HitFish {
         let fishHeigthR = totalY/HitFish.gameConfig.rightWords.length;
 
         // 初始化左边
-        let arr = this.getRandomArr();
+        let arr = CommonTools.getRandomArr(HitFish.fishType);
         for(let i = 0; i< HitFish.gameConfig.leftWords.length;i++){
             let fish = new Fish(arr[i],HitFish.gameConfig.leftWords[i]);
             fish.x = 155;
@@ -102,7 +102,7 @@ class HitFish {
         }
 
         // 初始化右边
-        arr = this.getRandomArr();
+        arr = CommonTools.getRandomArr(HitFish.fishType);
         for(let i = 0; i< HitFish.gameConfig.rightWords.length;i++){
             let fish = new Fish(arr[i],HitFish.gameConfig.rightWords[i]);
             fish.x = 610;
@@ -113,15 +113,15 @@ class HitFish {
     }
 
     // 返回随机数组
-    private getRandomArr(){
-        let arr = [];
-        for(var i = 0;i<HitFish.fishType;i++){
-            arr.push(i+1);
-        }
-        return arr.sort((a,b)=>{
-            return Math.random()>.5 ? -1 : 1
-        });
-    }
+    // private getRandomArr(){
+    //     let arr = [];
+    //     for(var i = 0;i<HitFish.fishType;i++){
+    //         arr.push(i+1);
+    //     }
+    //     return arr.sort((a,b)=>{
+    //         return Math.random()>.5 ? -1 : 1
+    //     });
+    // }
 
     // 倒数结束回调
     public countEnd(){

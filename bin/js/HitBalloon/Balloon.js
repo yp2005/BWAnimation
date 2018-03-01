@@ -17,6 +17,7 @@ var Balloon = /** @class */ (function (_super) {
         _this.word.text = word;
         _this.picNumber = picNumber;
         _this.word.visible = false;
+        _this.blastImg.visible = false;
         _this.picture.on(Laya.Event.CLICK, _this, _this.hit);
         Laya.timer.once(Math.floor(Math.random() * 1000), _this, _this.doShake);
         return _this;
@@ -32,11 +33,17 @@ var Balloon = /** @class */ (function (_super) {
         // 停止气球晃动，炸开气球显示单词
         this.shake.stop();
         this.blast.play(0, false);
-        Laya.timer.once(1200, this, this.showWord);
+        Laya.timer.once(1200, this, this.showBlast);
+    };
+    // 显示爆炸效果图片
+    Balloon.prototype.showBlast = function () {
+        this.picture.visible = false;
+        this.blastImg.visible = true;
+        Laya.timer.once(300, this, this.showWord);
     };
     // 显示单词
     Balloon.prototype.showWord = function () {
-        this.picture.visible = false;
+        this.blastImg.visible = false;
         this.word.visible = true;
         this.state = 0;
     };

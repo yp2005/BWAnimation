@@ -15,8 +15,10 @@ var HSPicture = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.word = word;
         _this.body = new Laya.Image("HitSpider/" + pic);
-        var bound = _this.body.getBounds();
-        _this.body.pos(-bound.width / 2, -bound.height / 2);
+        // var bound:Laya.Rectangle = this.body.getBounds();
+        // this.body.pos(-bound.width/2,-bound.height/2);
+        _this.body.centerX = 0;
+        _this.body.centerY = 0;
         _this.addChild(_this.body);
         return _this;
         // this.body.on(Laya.Event.CLICK,this,this.mouseClick);
