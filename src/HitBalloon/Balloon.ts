@@ -8,6 +8,7 @@ class Balloon extends ui.BalloonUI {
         this.word.text = word;
         this.picNumber = picNumber;
         this.word.visible = false;
+        this.blastImg.visible = false;
         this.picture.on(Laya.Event.CLICK, this, this.hit);
         Laya.timer.once(Math.floor(Math.random() * 1000), this, this.doShake);
     }
@@ -23,12 +24,20 @@ class Balloon extends ui.BalloonUI {
         // 停止气球晃动，炸开气球显示单词
         this.shake.stop();
         this.blast.play(0, false);
-        Laya.timer.once(1200, this, this.showWord);
+        Laya.timer.once(1200, this, this.showBlast);
+    }
+
+    // 显示爆炸效果图片
+
+    private showBlast() {
+        this.picture.visible = false;
+        this.blastImg.visible = true;
+        Laya.timer.once(300, this, this.showWord);
     }
 
     // 显示单词
     private showWord() {
-        this.picture.visible = false;
+        this.blastImg.visible = false;
         this.word.visible = true;
         this.state = 0;
     }
