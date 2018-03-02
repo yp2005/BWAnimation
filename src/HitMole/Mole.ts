@@ -56,7 +56,7 @@ class Mole {
     public hit(game: string) {
         if(game == "word") {
             this.mouseImg.y = 52;
-            Laya.Tween.to(this.mouseImg, {y: 118}, 500, Laya.Ease.backOut);
+            Laya.Tween.to(this.mouseImg, {y: 118}, 500, Laya.Ease.backOut, Laya.Handler.create(this, this.hideWord));
         }
         else if(game = "picture") {
             this.mouseImg.y = 40;
@@ -67,5 +67,11 @@ class Mole {
     // 隐藏图片
     private hidePic() {
         this.mouseImg.visible = false;
+    }
+
+    // 隐藏单词
+    private hideWord() {
+        this.wordBg.visible = false;
+        this.word.visible = false;
     }
 }
