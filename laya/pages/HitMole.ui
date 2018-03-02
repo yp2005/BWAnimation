@@ -1,8 +1,8 @@
 {
     "x":0,
     "type":"View",
-    "selectedBox":298,
-    "selecteID":291,
+    "selectedBox":269,
+    "selecteID":273,
     "props":{"width":1024,"sceneColor":"#ffffff","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -737,13 +737,14 @@
             "props":{"y":589,"x":377,"width":161,"name":"item11","height":180},
             "nodeParent":1,
             "label":"Box(item11)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":269,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":269,
@@ -757,6 +758,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
                     "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
                     "nodeParent":269,
@@ -769,8 +771,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
-                    "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
+                    "props":{"y":120,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":269,
                     "label":"Image(mouseImg)",
                     "isOpen":false,
@@ -782,8 +785,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
-                    "props":{"y":126,"x":-31,"skin":"HitMole/mask12.png"},
+                    "props":{"y":128,"x":-31,"skin":"HitMole/mask12.png"},
                     "nodeParent":269,
                     "label":"Image",
                     "isOpen":true,

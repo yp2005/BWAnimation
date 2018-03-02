@@ -140,8 +140,8 @@ class HitMole {
         else { // 还没有老鼠冒出来，随机一个老鼠出洞
             if(this.molesTemp.length > 0) { // 还有老鼠未出洞
                 let showMoleIndex = Math.floor(Math.random() * this.molesTemp.length);
-                // TODO 随机一个生效文件
-                let audio = "";
+                // 老鼠出洞音效文件
+                let audio = "res/audio/mole-out.mp3";
                 if(HitMole.gameConfig.game == "word") {
                     this.molesTemp[showMoleIndex].showMouse(audio);
                 }
