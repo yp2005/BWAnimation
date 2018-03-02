@@ -60,7 +60,7 @@
                                 "target":2,
                                 "label":null,
                                 "key":"y",
-                                "index":100
+                                "index":110
                             }],
                         "x":[
                             {
@@ -150,7 +150,7 @@
                                 "target":2,
                                 "label":null,
                                 "key":"x",
-                                "index":100
+                                "index":110
                             }],
                         "skin":[
                             {
@@ -240,7 +240,7 @@
                                 "target":2,
                                 "label":null,
                                 "key":"skin",
-                                "index":100
+                                "index":110
                             }]
                     }
                 }],

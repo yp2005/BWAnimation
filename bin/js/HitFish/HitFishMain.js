@@ -48,6 +48,7 @@ var HitFishMain = /** @class */ (function (_super) {
     HitFishMain.prototype.startCount = function () {
         this.theCounter.visible = true;
         this.theCounter.play();
+        Laya.SoundManager.stopAllSound();
         Laya.SoundManager.playSound("res/audio/fish_count.mp3", 1);
     };
     // 停止倒数

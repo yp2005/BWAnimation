@@ -47,6 +47,7 @@ class HitFishMain extends ui.HitFishUI {
     public startCount(){
         this.theCounter.visible = true;
         this.theCounter.play();
+        Laya.SoundManager.stopAllSound();
         Laya.SoundManager.playSound("res/audio/fish_count.mp3",1);
     }
 

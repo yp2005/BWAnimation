@@ -44,7 +44,7 @@ var Mole = /** @class */ (function () {
     Mole.prototype.hit = function (game) {
         if (game == "word") {
             this.mouseImg.y = 52;
-            Laya.Tween.to(this.mouseImg, { y: 118 }, 500, Laya.Ease.backOut);
+            Laya.Tween.to(this.mouseImg, { y: 118 }, 500, Laya.Ease.backOut, Laya.Handler.create(this, this.hideWord));
         }
         else if (game = "picture") {
             this.mouseImg.y = 40;
@@ -54,6 +54,11 @@ var Mole = /** @class */ (function () {
     // 隐藏图片
     Mole.prototype.hidePic = function () {
         this.mouseImg.visible = false;
+    };
+    // 隐藏单词
+    Mole.prototype.hideWord = function () {
+        this.wordBg.visible = false;
+        this.word.visible = false;
     };
     return Mole;
 }());
