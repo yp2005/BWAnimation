@@ -28,14 +28,15 @@ class Picture extends ui.PictureUI {
                 let toX: number = this.x + 102;
                 let toY: number;
                 if(this.position == "top") {
-                    fromY = HitBalloon.currentBalloon.y + 60;
+                    fromY = HitBalloon.currentBalloon.y + 50;
                     toY = this.y + this.height - 10;
                 }
                 else {
                     fromY = HitBalloon.currentBalloon.y + 95;
                     toY = this.y + this.height - this.picture.height - (this.height - this.picture.height) / 2 - 10;
                 }
-                line.graphics.drawLine(fromX, fromY, toX, toY, "#10b94c", 5); 
+                HitBalloon.hitBalloonMain.addChild(line);
+                line.graphics.drawLine(fromX, fromY, toX, toY, "#f63e10", 5); 
                 this.line = line;
                 HitBalloon.currentBalloon.linedNumber++;
                 // 单词应配对的图片都已连线，单词完成配对
