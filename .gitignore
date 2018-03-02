@@ -1,6 +1,7 @@
-
+/bin/
 /.laya/
 /.settings/
 /release/
 /.DS_Store
 
+!/bin/res/
