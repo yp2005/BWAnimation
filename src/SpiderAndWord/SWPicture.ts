@@ -1,19 +1,32 @@
 // 蜘蛛图片类
 class HSPicture extends Laya.Sprite {
     public body:Laya.Image;
+    public bg:Laya.Image;
     public word:string;
+    public isRight:boolean;
     constructor(word: string, pic: string) {
         super();
         this.word = word;
+        this.isRight = false;
         this.body = new Laya.Image("SpiderAndWord/" + pic);
-        // var bound:Laya.Rectangle = this.body.getBounds();
-        // this.body.pos(-bound.width/2,-bound.height/2);
+        this.bg = new Laya.Image("SpiderAndWord/spider_rightshadow.png");
+        this.body.zOrder = 2;
+        this.bg.zOrder = 1;
+        this.bg.visible = false;
+        this.bg.centerX = 0;
+        this.bg.centerY = 0;
+        this.addChild(this.bg);
         this.body.centerX = 0;
         this.body.centerY = 0;
         this.addChild(this.body);
 
 
         // this.body.on(Laya.Event.CLICK,this,this.mouseClick);
+    }
+
+    public showBg(){
+        this.isRight = true;
+        this.bg.visible = true;
     }
     
     // private mouseClick(){

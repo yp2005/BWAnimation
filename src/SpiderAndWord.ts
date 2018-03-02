@@ -5,9 +5,10 @@ import Sprite = Laya.Sprite;
 class SpiderAndWord {
     public static spiderAndWordMain: SpiderAndWordMain; // 游戏主界面
     public static currentSpider: Spider; // 当前蜘蛛对象
+    private currentPic: HSPicture; // 当前图片对象
     public static currentPics: Array<HSPicture>; // 当前图片数组
     public static targetPos: any; //目标位置
-    private speed: number = 5; //移动速度
+    private speed: number = 3; //移动速度
     private offset: number = 50; //偏移量
     private startPos: any = {x:40,y:50} //起始位置-左
     private endPos: any = {x:880,y:50} //起始位置-右
@@ -35,7 +36,8 @@ class SpiderAndWord {
         if(!config) {
             config = {
                 gameModel: false,
-                word: "beautiful"
+                word: "beautiful",
+                wordNum: 8
             };
         }
         SpiderAndWord.gameConfig = config;
@@ -76,7 +78,7 @@ class SpiderAndWord {
 
         SpiderAndWord.currentSpider = new Spider();
         SpiderAndWord.currentSpider.visible = false;
-        SpiderAndWord.currentSpider.zOrder = 1;
+        SpiderAndWord.currentSpider.zOrder = 10;
 
         Laya.stage.addChild(SpiderAndWord.currentSpider);
 
@@ -93,6 +95,8 @@ class SpiderAndWord {
             SpiderAndWord.targetPos = {x:hsPic.x,y:hsPic.y};
             this.currentWord = hsPic.word;
             this.isChecking = true;
+
+            this.currentPic = hsPic;
         }
     }
 
@@ -112,14 +116,18 @@ class SpiderAndWord {
         let ranPos = CommonTools.getRandomArr(8);
         let picArr1 = CommonTools.getRandomArr(4);
         let picArr2 = CommonTools.getRandomArr(4);
+
+        // 如果配置的是单数的话，也得随机。如配置5，随机出现正确2或者3
+        let ran = Math.random()>.5 ? 1:0;
+
         // console.log(JSON.stringify(ranPos))
         // console.log(JSON.stringify(picArr1))
         // console.log(JSON.stringify(picArr2))
-        // 只取其中6个位置
-        for(var i=0;i<6;i++){
-            // 对的错的各三个
-            let picType = (i%2) ? wordArr[0] : wordArr[1];
-            // 对的错的各从4个图片中随机出来三个图
+        // 只取其中SpiderAndWord.gameConfig.wordNum个位置
+        for(var i=0;i<SpiderAndWord.gameConfig.wordNum;i++){
+            // 对的错的间隔着,随机数ran随机出来0或者1，于是如果是单数张图片时，多出来的那张图随机出来是对或者错
+            let picType = ((i+ran)%2) ? wordArr[0] : wordArr[1];
+            // 对的错的各从4个图片中随机出来对应个图
             let picNum = (i%2) ? picArr1[Math.floor(i/2)] : picArr2[Math.floor(i/2)];
             // 图片的位置随机获取
             let picPos = ranPos[i]-1;
@@ -135,7 +143,7 @@ class SpiderAndWord {
 
     // 游戏开始
     private gameStart() {
-        // SpiderAndWord.spiderAndWordMain.showSetting(false);
+        SpiderAndWord.spiderAndWordMain.setting.visible = false;
         SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
         SpiderAndWord.spiderAndWordMain.startBtn.visible = false;
         this.init();  
@@ -156,6 +164,9 @@ class SpiderAndWord {
                 let _y = this.getDistanceValue(SpiderAndWord.targetPos.y,spiderY);
                 SpiderAndWord.currentSpider.pos(spiderX,spiderY + _y);
             }else if(spiderX != SpiderAndWord.targetPos.x){
+                // 不必回到起点才可以选择
+                this.isBack = false;
+                this.isChecking = false;
                 let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
                 SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
             }
@@ -191,7 +202,36 @@ class SpiderAndWord {
     checkPic():string{
         //spider_wrong
         //spider_right
-        return (this.currentWord === SpiderAndWord.gameConfig.word ? "spider_right" : "spider_wrong");
+        let _word = (this.currentWord === SpiderAndWord.gameConfig.word) ? "spider_right" : "spider_wrong";
+        if(_word === "spider_right"){
+            this.currentPic.showBg();
+        }
+
+        if(this.checkAllRight()){
+            Laya.timer.once(3000, this, this.showWellDone);
+        }
+
+        return _word;
+    }
+
+    showWellDone(){
+        SpiderAndWord.currentSpider.visible = false;
+        for(let picture of SpiderAndWord.currentPics) {
+            picture.removeSelf();
+            picture.destroy();
+        }
+        SpiderAndWord.spiderAndWordMain.showWellDone(this,this.gameOver);
+    }
+
+    // 验证是否所有对的图片都选出
+    checkAllRight(){
+        let isAllRight = true;
+        SpiderAndWord.currentPics.forEach(p => {
+            if(p.word === SpiderAndWord.gameConfig.word){
+                isAllRight = isAllRight && p.isRight;
+            }
+        })
+        return isAllRight;
     }
 
     // 重新开始游走循环
@@ -207,5 +247,13 @@ class SpiderAndWord {
         if(_value === 0) return 0;
         let absValue = Math.min(Math.abs(_value),this.speed)
         return (_value/Math.abs(_value)) * absValue;
+    }
+
+    // 游戏结束
+    public gameOver() {
+        SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
+        SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
+        SpiderAndWord.spiderAndWordMain.showSetting(true);
+        SpiderAndWord.started = false;
     }
 }

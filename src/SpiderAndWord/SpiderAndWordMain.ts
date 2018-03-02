@@ -54,11 +54,21 @@ class SpiderAndWordMain extends ui.SpiderAndWordUI {
     public gameOver() {
         // 显示well done文字效果
         this.wellDone.y = this.wellDoneY;
+        console.log("2222");
         this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
         this.wellDone.scale(0, 0);
         this.wellDone.visible = true;
         Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100}, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
    
+    }
+    
+    // 显示well done文字效果
+    public showWellDone(that, callBack: Function) {
+        this.wellDone.y = this.wellDoneY;
+        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
+        this.wellDone.scale(0, 0);
+        this.wellDone.visible = true;
+        Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100}, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
     }
 
     // 重置游戏为初始状态

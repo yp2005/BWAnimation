@@ -14,15 +14,25 @@ var HSPicture = /** @class */ (function (_super) {
     function HSPicture(word, pic) {
         var _this = _super.call(this) || this;
         _this.word = word;
+        _this.isRight = false;
         _this.body = new Laya.Image("SpiderAndWord/" + pic);
-        // var bound:Laya.Rectangle = this.body.getBounds();
-        // this.body.pos(-bound.width/2,-bound.height/2);
+        _this.bg = new Laya.Image("SpiderAndWord/spider_rightshadow.png");
+        _this.body.zOrder = 2;
+        _this.bg.zOrder = 1;
+        _this.bg.visible = false;
+        _this.bg.centerX = 0;
+        _this.bg.centerY = 0;
+        _this.addChild(_this.bg);
         _this.body.centerX = 0;
         _this.body.centerY = 0;
         _this.addChild(_this.body);
         return _this;
         // this.body.on(Laya.Event.CLICK,this,this.mouseClick);
     }
+    HSPicture.prototype.showBg = function () {
+        this.isRight = true;
+        this.bg.visible = true;
+    };
     return HSPicture;
 }(Laya.Sprite));
 //# sourceMappingURL=SWPicture.js.map
