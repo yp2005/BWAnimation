@@ -48,11 +48,13 @@ var HitFishMain = /** @class */ (function (_super) {
     HitFishMain.prototype.startCount = function () {
         this.theCounter.visible = true;
         this.theCounter.play();
+        Laya.SoundManager.playSound("res/audio/fish_count.mp3", 1);
     };
     // 停止倒数
     HitFishMain.prototype.stopCount = function () {
         this.theCounter.stop();
         this.theCounter.visible = false;
+        Laya.SoundManager.stopAllSound();
     };
     // 显示提示
     HitFishMain.prototype.showTip = function (text) {

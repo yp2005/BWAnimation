@@ -1,3 +1,4 @@
+
 // 游戏主界面
 class HitFishMain extends ui.HitFishUI {
     private wellDoneY: number; // well done效果Y坐标
@@ -46,12 +47,14 @@ class HitFishMain extends ui.HitFishUI {
     public startCount(){
         this.theCounter.visible = true;
         this.theCounter.play();
+        Laya.SoundManager.playSound("res/audio/fish_count.mp3",1);
     }
 
     // 停止倒数
     public stopCount(){
         this.theCounter.stop();
         this.theCounter.visible =  false;
+        Laya.SoundManager.stopAllSound();
     }
 
     // 显示提示
