@@ -2,6 +2,7 @@
 var Stage = Laya.Stage;
 var WebGL = Laya.WebGL;
 var Sprite = Laya.Sprite;
+var SoundManager = Laya.SoundManager;
 var HitFish = /** @class */ (function () {
     function HitFish(config) {
         if (!config || !config.game) {
@@ -44,10 +45,11 @@ var HitFish = /** @class */ (function () {
         this.gameOver();
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = true;
+        SoundManager.playMusic("res/audio/fish-bg.mp3", 1);
     };
     // 游戏开始
     HitFish.prototype.gameStart = function () {
-        HitFish.hitFishMain.showSetting(false);
+        HitFish.hitFishMain.fishConfigBtn.visible = false;
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = false;
         this.initWords();
@@ -122,10 +124,4 @@ var HitFish = /** @class */ (function () {
     HitFish.started = false; // 游戏是否开始
     return HitFish;
 }());
-var config = {
-    gameModel: true,
-    leftWords: ["red", "pink", "orange", "green"],
-    rightWords: ["pink", "orange", "green", "black", "white"],
-};
-new HitFish(config);
 //# sourceMappingURL=HitFish.js.map

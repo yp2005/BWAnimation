@@ -39,6 +39,7 @@ var Balloon = /** @class */ (function (_super) {
     Balloon.prototype.showBlast = function () {
         this.picture.visible = false;
         this.blastImg.visible = true;
+        Laya.SoundManager.playSound("res/audio/blast.mp3", 1);
         Laya.timer.once(300, this, this.showWord);
     };
     // 显示单词

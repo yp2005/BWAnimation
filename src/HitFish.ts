@@ -2,6 +2,7 @@
 import Stage = Laya.Stage;
 import WebGL   = Laya.WebGL;
 import Sprite = Laya.Sprite;
+import SoundManager = Laya.SoundManager;
 class HitFish {
     public static hitFishMain: HitFishMain; // 拍鱼游戏主界面
     // private leftFishs: Fish[]; // 左边鱼
@@ -60,11 +61,13 @@ class HitFish {
         this.gameOver();
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = true;
+
+        SoundManager.playMusic("res/audio/fish-bg.mp3",1);
     }
 
     // 游戏开始
     private gameStart() {
-        HitFish.hitFishMain.showSetting(false);
+        HitFish.hitFishMain.fishConfigBtn.visible = false;
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = false;
         this.initWords();

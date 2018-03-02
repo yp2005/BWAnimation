@@ -119,8 +119,8 @@ var HitMole = /** @class */ (function () {
         else {
             if (this.molesTemp.length > 0) {
                 var showMoleIndex = Math.floor(Math.random() * this.molesTemp.length);
-                // TODO 随机一个生效文件
-                var audio = "";
+                // 老鼠出洞音效文件
+                var audio = "res/audio/mole-out.mp3";
                 if (HitMole.gameConfig.game == "word") {
                     this.molesTemp[showMoleIndex].showMouse(audio);
                 }
@@ -148,11 +148,4 @@ var HitMole = /** @class */ (function () {
     HitMole.started = false; // 游戏是否开始
     return HitMole;
 }());
-var config = {
-    gameModel: false,
-    game: "word",
-    words: ["red", "pink", "orange", "green", "black", "white"],
-    pictures: ["picture1.png", "picture1.png", "picture1.png"],
-};
-new HitMole(config);
 //# sourceMappingURL=HitMole.js.map

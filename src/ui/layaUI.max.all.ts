@@ -129,28 +129,6 @@ module ui {
 }
 
 module ui {
-    export class HitSpiderUI extends View {
-		public startBtn:Laya.Button;
-		public replayBtn:Laya.Image;
-		public wellDone:laya.display.Text;
-		public setting:Laya.Image;
-		public tip:laya.display.Text;
-		public configBox:Laya.Box;
-
-        public static  uiView:any ={"type":"View","props":{"width":1024,"height":768},"child":[{"type":"Image","props":{"width":1024,"skin":"HitSpider/bg.png","height":768}},{"type":"Button","props":{"y":366,"x":443,"var":"startBtn","stateNum":2,"skin":"common/btn_start.png"}},{"type":"Image","props":{"y":368,"x":446,"var":"replayBtn","skin":"common/replay.png"}},{"type":"Text","props":{"y":440,"x":382,"width":300,"var":"wellDone","text":"well done!","height":60,"fontSize":50,"font":"Microsoft YaHei","color":"#b8e017","bold":true,"align":"center"}},{"type":"Image","props":{"y":34,"x":37,"width":30,"var":"setting","skin":"common/setting.png","height":30}},{"type":"Text","props":{"y":48,"x":93,"wordWrap":true,"width":291,"var":"tip","text":"正确单词只能是ugly，beautiful，happy，sad，old，young中的一个","pivotY":2,"pivotX":8,"height":144,"fontSize":30,"color":"#ffffff","align":"center"}},{"type":"Box","props":{"y":134,"x":591,"width":985,"var":"configBox","pivotY":100,"pivotX":554,"height":242},"child":[{"type":"Image","props":{"y":9,"x":332,"width":653,"skin":"common/configBG.png","height":133,"alpha":1}},{"type":"Label","props":{"y":39,"x":370,"text":"正确单词：","fontSize":20,"color":"#2a2121"}},{"type":"Image","props":{"y":30,"x":470,"width":470,"skin":"template/Text/TextBox.png","height":39}},{"type":"TextInput","props":{"y":33,"x":490,"width":430,"text":"ugly","name":"textInput","height":31,"fontSize":16,"color":"#3b3232"}},{"type":"Button","props":{"y":86,"x":490,"width":86,"skin":"template/ButtonTab/btn_LargeTabButton_Middle.png","name":"submitBtn","labelSize":20,"labelColors":"#007AFF,#007AFF,#FFFFFF","label":"提交","height":32}},{"type":"Text","props":{"y":3,"x":947,"width":40,"text":"+","rotation":45,"pivotY":-1,"pivotX":-10,"name":"closeBtn","height":40,"fontSize":40,"color":"#5d5454","bold":false,"align":"center"}}]}]};
-        constructor(){ super()}
-        createChildren():void {
-        			View.regComponent("Text",laya.display.Text);
-
-            super.createChildren();
-            this.createView(ui.HitSpiderUI.uiView);
-
-        }
-
-    }
-}
-
-module ui {
     export class PictureUI extends View {
 		public picture:Laya.Image;
 
@@ -160,6 +138,28 @@ module ui {
         
             super.createChildren();
             this.createView(ui.PictureUI.uiView);
+
+        }
+
+    }
+}
+
+module ui {
+    export class SpiderAndWordUI extends View {
+		public startBtn:Laya.Button;
+		public replayBtn:Laya.Image;
+		public wellDone:laya.display.Text;
+		public setting:Laya.Image;
+		public tip:laya.display.Text;
+		public configBox:Laya.Box;
+
+        public static  uiView:any ={"type":"View","props":{"width":1024,"height":768},"child":[{"type":"Image","props":{"width":1024,"skin":"SpiderAndWord/bg.png","height":768}},{"type":"Button","props":{"y":366,"x":443,"var":"startBtn","stateNum":2,"skin":"common/btn_start.png"}},{"type":"Image","props":{"y":368,"x":446,"var":"replayBtn","skin":"common/replay.png"}},{"type":"Text","props":{"y":440,"x":382,"width":300,"var":"wellDone","text":"well done!","height":60,"fontSize":50,"font":"Microsoft YaHei","color":"#b8e017","bold":true,"align":"center"}},{"type":"Image","props":{"y":34,"x":37,"width":30,"var":"setting","skin":"common/setting.png","height":30}},{"type":"Text","props":{"y":48,"x":93,"wordWrap":true,"width":291,"var":"tip","text":"正确单词只能是ugly，beautiful，happy，sad，old，young中的一个","pivotY":2,"pivotX":8,"height":144,"fontSize":30,"color":"#ffffff","align":"center"}},{"type":"Box","props":{"y":134,"x":591,"width":985,"var":"configBox","pivotY":100,"pivotX":554,"height":242},"child":[{"type":"Image","props":{"y":9,"x":332,"width":653,"skin":"common/configBG.png","height":133,"alpha":1}},{"type":"Label","props":{"y":39,"x":370,"text":"正确单词：","fontSize":20,"color":"#2a2121"}},{"type":"Image","props":{"y":30,"x":470,"width":470,"skin":"template/Text/TextBox.png","height":39}},{"type":"TextInput","props":{"y":33,"x":490,"width":430,"text":"ugly","name":"textInput","height":31,"fontSize":16,"color":"#3b3232"}},{"type":"Button","props":{"y":86,"x":490,"width":86,"skin":"template/ButtonTab/btn_LargeTabButton_Middle.png","name":"submitBtn","labelSize":20,"labelColors":"#007AFF,#007AFF,#FFFFFF","label":"提交","height":32}},{"type":"Text","props":{"y":3,"x":947,"width":40,"text":"+","rotation":45,"pivotY":-1,"pivotX":-10,"name":"closeBtn","height":40,"fontSize":40,"color":"#5d5454","bold":false,"align":"center"}}]}]};
+        constructor(){ super()}
+        createChildren():void {
+        			View.regComponent("Text",laya.display.Text);
+
+            super.createChildren();
+            this.createView(ui.SpiderAndWordUI.uiView);
 
         }
 
