@@ -45,7 +45,7 @@ var HitFish = /** @class */ (function () {
         this.gameOver();
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = true;
-        SoundManager.playMusic("res/audio/fish-bg.mp3", 1);
+        SoundManager.playMusic("res/audio/fish_bg.mp3", 1);
     };
     // 游戏开始
     HitFish.prototype.gameStart = function () {
