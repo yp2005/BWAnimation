@@ -16,14 +16,20 @@ class HitFishMain extends ui.HitFishUI {
     public initConfig() {
         this.fishConfig.visible = false;
         this.fishTip.visible = false;
-        this.fishConfigBtn.visible = true;
+        this.fishConfigBtn.visible = !HitFish.gameConfig.gameModel;
         this.fishConfigBtn.on(Laya.Event.CLICK,this,this.showConfig);
         this.fishSubmitBtn.on(Laya.Event.CLICK,this,this.submitConfig);
         this.closeBtn.on(Laya.Event.CLICK,this,this.hideConfig);
 
-        if(HitFish.gameConfig.gameModel) {
-            this.fishConfigBtn.visible = false;    
+        let leftTxt = "",rightTxt = "";
+        if(HitFish.gameConfig.leftWords){
+            leftTxt = HitFish.gameConfig.leftWords.join(",");
         }
+        if(HitFish.gameConfig.rightWords){
+            rightTxt = HitFish.gameConfig.rightWords.join(",");
+        }
+        this.leftInput.text = leftTxt;
+        this.rightInput.text = rightTxt;
     }
 
     // 提交配置
@@ -85,11 +91,11 @@ class HitFishMain extends ui.HitFishUI {
 
     // 显示游戏配置页按钮
     public showSetting(state:boolean) {
-        if(HitFish.gameConfig.gameModel) {
+        if(!HitFish.gameConfig.gameModel) {
             this.fishConfigBtn.visible = state;    
         }
     }
-    
+
     // 显示well done文字效果
     public showWellDone(that, callBack: Function) {
         this.wellDone.y = this.wellDoneY;

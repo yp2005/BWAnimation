@@ -15,7 +15,7 @@ class HitFish {
     
     constructor(config: any)
     {
-        if(!config || !config.game) {
+        if(!config) {
             config = {
                 gameModel: false,
                 leftWords: ["red", "pink", "orange"],
@@ -49,7 +49,7 @@ class HitFish {
         HitFish.hitFishMain = new HitFishMain();
         HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
         HitFish.hitFishMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitFish.hitFishMain.initConfig();
+        // HitFish.hitFishMain.initConfig();
 
         this.theCounter = HitFish.hitFishMain.getChildByName("theCounter") as Laya.Animation;
         // this.theCounter.stop();
@@ -69,12 +69,15 @@ class HitFish {
 
     // 游戏开始
     private gameStart() {
-        HitFish.hitFishMain.fishConfigBtn.visible = false;
-        HitFish.hitFishMain.replayBtn.visible = false;
-        HitFish.hitFishMain.startBtn.visible = false;
-        this.initWords();
-        // Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
-        Laya.timer.once(500, this, this.setStartState);
+        if(HitFish.gameConfig.leftWords && HitFish.gameConfig.leftWords.length>0 && HitFish.gameConfig.rightWords && HitFish.gameConfig.rightWords.length>0){
+            HitFish.hitFishMain.fishConfigBtn.visible = false;
+            HitFish.hitFishMain.replayBtn.visible = false;
+            HitFish.hitFishMain.startBtn.visible = false;
+            this.initWords();
+            Laya.timer.once(500, this, this.setStartState);
+        }else{
+            HitFish.hitFishMain.showTip("左右两边必须至少配置一个单词！");
+        }
     }
 
     // 设置游戏开始状态

@@ -23,13 +23,19 @@ var HitFishMain = /** @class */ (function (_super) {
     HitFishMain.prototype.initConfig = function () {
         this.fishConfig.visible = false;
         this.fishTip.visible = false;
-        this.fishConfigBtn.visible = true;
+        this.fishConfigBtn.visible = !HitFish.gameConfig.gameModel;
         this.fishConfigBtn.on(Laya.Event.CLICK, this, this.showConfig);
         this.fishSubmitBtn.on(Laya.Event.CLICK, this, this.submitConfig);
         this.closeBtn.on(Laya.Event.CLICK, this, this.hideConfig);
-        if (HitFish.gameConfig.gameModel) {
-            this.fishConfigBtn.visible = false;
+        var leftTxt = "", rightTxt = "";
+        if (HitFish.gameConfig.leftWords) {
+            leftTxt = HitFish.gameConfig.leftWords.join(",");
         }
+        if (HitFish.gameConfig.rightWords) {
+            rightTxt = HitFish.gameConfig.rightWords.join(",");
+        }
+        this.leftInput.text = leftTxt;
+        this.rightInput.text = rightTxt;
     };
     // 提交配置
     HitFishMain.prototype.submitConfig = function () {
@@ -80,7 +86,7 @@ var HitFishMain = /** @class */ (function (_super) {
     };
     // 显示游戏配置页按钮
     HitFishMain.prototype.showSetting = function (state) {
-        if (HitFish.gameConfig.gameModel) {
+        if (!HitFish.gameConfig.gameModel) {
             this.fishConfigBtn.visible = state;
         }
     };

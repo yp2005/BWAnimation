@@ -50,6 +50,8 @@ var HitBalloonMain = /** @class */ (function (_super) {
         this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
         this.wellDone.scale(0, 0);
         this.wellDone.visible = true;
+        this.wellDone.removeSelf();
+        this.addChild(this.wellDone);
         Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100 }, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
     };
     // 重置游戏为初始状态
@@ -96,6 +98,15 @@ var HitBalloonMain = /** @class */ (function (_super) {
             }
             balloon.x = index * balloonWidth + (balloonWidth - balloon.width) / 2;
             balloon.y = 330;
+            // 根据气球个数设置单词字号
+            balloon.word.width = balloonWidth;
+            balloon.word.x = (128 - balloonWidth) / 2;
+            if (this.balloons.length < 8) {
+                balloon.word.fontSize = 40;
+            }
+            else {
+                balloon.word.fontSize = 30;
+            }
             this.addChild(balloon);
         }
         indexes = new Array();
