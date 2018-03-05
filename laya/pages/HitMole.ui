@@ -41,7 +41,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":0,"x":5,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
+                    "props":{"y":-10,"x":5,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":9,
                     "label":"Image(wordBg)",
                     "isOpen":true,
@@ -55,7 +55,7 @@
                 {
                     "x":30,
                     "type":"Text",
-                    "props":{"y":3,"x":5,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-7,"x":5,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
                     "nodeParent":9,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -109,7 +109,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
+                    "props":{"y":0,"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":219,
                     "label":"Image(wordBg)",
                     "isOpen":true,
