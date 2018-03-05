@@ -10,9 +10,12 @@ class HitMole {
     private moles: Mole[]; // 所有老鼠
     //private words: string[]; // 所有单词
     public static gameConfig: any;
-    private molesTemp: Mole[]; // 存放这次游戏随机出来的老鼠
+    //private molesTemp: Mole[]; // 存放这次游戏随机出来的老鼠
     private currentMole: Mole; // 当前显示的老鼠
+    private currentMoleIndex: number; // 当前显示的老鼠的位置
     public static started: boolean = false; // 游戏是否开始
+    private wordTmp: string[]; // 本轮游戏剩余要显示的单词
+    private pictureTmp: string[]; // 本轮游戏剩余要显示的图片
     
     constructor(config: any)
     {
@@ -62,7 +65,9 @@ class HitMole {
         HitMole.hitMoleMain.showSetting(false);
         HitMole.hitMoleMain.replayBtn.visible = false;
         HitMole.hitMoleMain.startBtn.visible = false;
-        this.initWords();
+        //this.initWords();
+        this.wordTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.words));
+        this.pictureTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.pictures));
         Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
         // 晚一点开始游戏，否则点击开始按钮就会触发舞台点击事件，调用showMole方法
         Laya.timer.once(500, this, this.setStartState);
@@ -91,41 +96,40 @@ class HitMole {
             for(let mole of this.moles) {
                 mole.reset();
             }
-        }
-        
+        }  
     }
 
     // 初始化单词
-    private initWords() { 
-        this.molesTemp = new Array<Mole>();
-        let pos = new Array<number>();
-        for(let i = 0; i < 12; i++) {
-            pos.push(i);
-        }
-        // 如果是单词游戏进行单词初始化
-        if(HitMole.gameConfig.game == "word") {
-            for(let word of HitMole.gameConfig.words) {
-                // 为每个单词分配随机不重复的位置
-                let positionIndex = Math.floor(Math.random() * pos.length);
-                let position = pos[positionIndex];
-                pos.splice(positionIndex, 1);
+    // private initWords() { 
+    //     this.molesTemp = new Array<Mole>();
+    //     let pos = new Array<number>();
+    //     for(let i = 0; i < 12; i++) {
+    //         pos.push(i);
+    //     }
+    //     // 如果是单词游戏进行单词初始化
+    //     if(HitMole.gameConfig.game == "word") {
+    //         for(let word of HitMole.gameConfig.words) {
+    //             // 为每个单词分配随机不重复的位置
+    //             let positionIndex = Math.floor(Math.random() * pos.length);
+    //             let position = pos[positionIndex];
+    //             pos.splice(positionIndex, 1);
 
-                //设置改为word后需要把图片设置为地鼠
-                this.moles[position].setPic("HitMole/mouse.png");
-                this.moles[position].setText(word);
-                this.molesTemp.push(this.moles[position]);
-            } 
-        }
-        else if(HitMole.gameConfig.game == "picture") { // 图片游戏进行图片初始化
-            for(let pic of HitMole.gameConfig.pictures) {
-                let positionIndex = Math.floor(Math.random() * pos.length);
-                let position = pos[positionIndex];
-                pos.splice(positionIndex, 1);
-                this.moles[position].setPic("HitMole/" + pic);
-                this.molesTemp.push(this.moles[position]);
-            } 
-        }
-    }
+    //             //设置改为word后需要把图片设置为地鼠
+    //             this.moles[position].setPic("HitMole/mouse.png");
+    //             this.moles[position].setText(word);
+    //             this.molesTemp.push(this.moles[position]);
+    //         } 
+    //     }
+    //     else if(HitMole.gameConfig.game == "picture") { // 图片游戏进行图片初始化
+    //         for(let pic of HitMole.gameConfig.pictures) {
+    //             let positionIndex = Math.floor(Math.random() * pos.length);
+    //             let position = pos[positionIndex];
+    //             pos.splice(positionIndex, 1);
+    //             this.moles[position].setPic("HitMole/" + pic);
+    //             this.molesTemp.push(this.moles[position]);
+    //         } 
+    //     }
+    // }
 
     // 显示老鼠
     private showMole() {
@@ -137,22 +141,42 @@ class HitMole {
             HitMole.hitMoleMain.showHammer(this.currentMole);
             this.currentMole = null;
         }
-        else { // 还没有老鼠冒出来，随机一个老鼠出洞
-            if(this.molesTemp.length > 0) { // 还有老鼠未出洞
-                let showMoleIndex = Math.floor(Math.random() * this.molesTemp.length);
+        else { // 当前没有出洞的老鼠
+            if((HitMole.gameConfig.game == "word" && this.wordTmp.length > 0) 
+                    || (HitMole.gameConfig.game == "picture" && this.pictureTmp.length > 0)) { // 还有单词或图片没显示
                 // 老鼠出洞音效文件
                 let audio = "res/audio/mole-out.mp3";
+                // 随机一个地洞位置和上次位置不同
+                let molePositionIndex;
+                while(true) {
+                    molePositionIndex = Math.floor(Math.random() * 12);
+                    if(molePositionIndex != this.currentMoleIndex) {
+                        break;
+                    }
+                }
+                this.currentMoleIndex = molePositionIndex;
+                this.currentMole = this.moles[molePositionIndex];
                 if(HitMole.gameConfig.game == "word") {
-                    this.molesTemp[showMoleIndex].showMouse(audio);
+                    // 随机一个单词出来
+                    let positionIndex = Math.floor(Math.random() * this.wordTmp.length);
+                    let word = this.wordTmp[positionIndex];
+                    this.wordTmp.splice(positionIndex, 1);
+                    
+                    this.currentMole.setPic("HitMole/mouse.png");
+                    this.currentMole.setText(word);
+                    this.currentMole.showMouse(audio);  
                 }
-                else if(HitMole.gameConfig.game == "picture") {
-                    this.molesTemp[showMoleIndex].showPic(audio);
+                else if(HitMole.gameConfig.game == "picture") { // 图片游戏进行图片初始化
+                    // 随机一张图片
+                    let positionIndex = Math.floor(Math.random() * this.pictureTmp.length);
+                    let picture = this.pictureTmp[positionIndex];
+                    this.pictureTmp.splice(positionIndex, 1);
+                    
+                    this.currentMole.setPic("HitMole/" + picture);
+                    this.currentMole.showPic(audio);
                 }
-                
-                this.currentMole = this.molesTemp[showMoleIndex];
-                this.molesTemp.splice(showMoleIndex, 1);
             }
-            else { // 老鼠都已出洞结束游戏
+            else { // 单词或图片都已经显示，游戏结束
                 this.initMoles();
                 Laya.stage.off(Laya.Event.CLICK, this, this.showMole);
                 HitMole.hitMoleMain.showWellDone(this, this.gameOver);

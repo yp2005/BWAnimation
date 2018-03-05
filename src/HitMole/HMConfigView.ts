@@ -91,8 +91,8 @@ class HMConfigView {
     // 提交配置
     private submit() {
         let texts = this.textInput.text.split(",");
-        if(texts.length < 2 || texts.length > 12) {
-            HitMole.hitMoleMain.showTip((this.game == "word" ? "单词" : "图片") + "个数在2-12之间！");
+        if(texts.length < 2) {
+            HitMole.hitMoleMain.showTip((this.game == "word" ? "单词" : "图片") + "个数须大于2！");
             return;
         }
         if(this.game == "word") {
