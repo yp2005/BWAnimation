@@ -46,7 +46,9 @@ var HitMole = /** @class */ (function () {
         HitMole.hitMoleMain.showSetting(false);
         HitMole.hitMoleMain.replayBtn.visible = false;
         HitMole.hitMoleMain.startBtn.visible = false;
-        this.initWords();
+        //this.initWords();
+        this.wordTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.words));
+        this.pictureTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.pictures));
         Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
         // 晚一点开始游戏，否则点击开始按钮就会触发舞台点击事件，调用showMole方法
         Laya.timer.once(500, this, this.setStartState);
@@ -75,37 +77,35 @@ var HitMole = /** @class */ (function () {
         }
     };
     // 初始化单词
-    HitMole.prototype.initWords = function () {
-        this.molesTemp = new Array();
-        var pos = new Array();
-        for (var i = 0; i < 12; i++) {
-            pos.push(i);
-        }
-        // 如果是单词游戏进行单词初始化
-        if (HitMole.gameConfig.game == "word") {
-            for (var _i = 0, _a = HitMole.gameConfig.words; _i < _a.length; _i++) {
-                var word = _a[_i];
-                // 为每个单词分配随机不重复的位置
-                var positionIndex = Math.floor(Math.random() * pos.length);
-                var position = pos[positionIndex];
-                pos.splice(positionIndex, 1);
-                //设置改为word后需要把图片设置为地鼠
-                this.moles[position].setPic("HitMole/mouse.png");
-                this.moles[position].setText(word);
-                this.molesTemp.push(this.moles[position]);
-            }
-        }
-        else if (HitMole.gameConfig.game == "picture") {
-            for (var _b = 0, _c = HitMole.gameConfig.pictures; _b < _c.length; _b++) {
-                var pic = _c[_b];
-                var positionIndex = Math.floor(Math.random() * pos.length);
-                var position = pos[positionIndex];
-                pos.splice(positionIndex, 1);
-                this.moles[position].setPic("HitMole/" + pic);
-                this.molesTemp.push(this.moles[position]);
-            }
-        }
-    };
+    // private initWords() { 
+    //     this.molesTemp = new Array<Mole>();
+    //     let pos = new Array<number>();
+    //     for(let i = 0; i < 12; i++) {
+    //         pos.push(i);
+    //     }
+    //     // 如果是单词游戏进行单词初始化
+    //     if(HitMole.gameConfig.game == "word") {
+    //         for(let word of HitMole.gameConfig.words) {
+    //             // 为每个单词分配随机不重复的位置
+    //             let positionIndex = Math.floor(Math.random() * pos.length);
+    //             let position = pos[positionIndex];
+    //             pos.splice(positionIndex, 1);
+    //             //设置改为word后需要把图片设置为地鼠
+    //             this.moles[position].setPic("HitMole/mouse.png");
+    //             this.moles[position].setText(word);
+    //             this.molesTemp.push(this.moles[position]);
+    //         } 
+    //     }
+    //     else if(HitMole.gameConfig.game == "picture") { // 图片游戏进行图片初始化
+    //         for(let pic of HitMole.gameConfig.pictures) {
+    //             let positionIndex = Math.floor(Math.random() * pos.length);
+    //             let position = pos[positionIndex];
+    //             pos.splice(positionIndex, 1);
+    //             this.moles[position].setPic("HitMole/" + pic);
+    //             this.molesTemp.push(this.moles[position]);
+    //         } 
+    //     }
+    // }
     // 显示老鼠
     HitMole.prototype.showMole = function () {
         if (!HitMole.started) {
@@ -117,18 +117,37 @@ var HitMole = /** @class */ (function () {
             this.currentMole = null;
         }
         else {
-            if (this.molesTemp.length > 0) {
-                var showMoleIndex = Math.floor(Math.random() * this.molesTemp.length);
+            if ((HitMole.gameConfig.game == "word" && this.wordTmp.length > 0)
+                || (HitMole.gameConfig.game == "picture" && this.pictureTmp.length > 0)) {
                 // 老鼠出洞音效文件
                 var audio = "res/audio/mole-out.mp3";
+                // 随机一个地洞位置和上次位置不同
+                var molePositionIndex = void 0;
+                while (true) {
+                    molePositionIndex = Math.floor(Math.random() * 12);
+                    if (molePositionIndex != this.currentMoleIndex) {
+                        break;
+                    }
+                }
+                this.currentMoleIndex = molePositionIndex;
+                this.currentMole = this.moles[molePositionIndex];
                 if (HitMole.gameConfig.game == "word") {
-                    this.molesTemp[showMoleIndex].showMouse(audio);
+                    // 随机一个单词出来
+                    var positionIndex = Math.floor(Math.random() * this.wordTmp.length);
+                    var word = this.wordTmp[positionIndex];
+                    this.wordTmp.splice(positionIndex, 1);
+                    this.currentMole.setPic("HitMole/mouse.png");
+                    this.currentMole.setText(word);
+                    this.currentMole.showMouse(audio);
                 }
                 else if (HitMole.gameConfig.game == "picture") {
-                    this.molesTemp[showMoleIndex].showPic(audio);
+                    // 随机一张图片
+                    var positionIndex = Math.floor(Math.random() * this.pictureTmp.length);
+                    var picture = this.pictureTmp[positionIndex];
+                    this.pictureTmp.splice(positionIndex, 1);
+                    this.currentMole.setPic("HitMole/" + picture);
+                    this.currentMole.showPic(audio);
                 }
-                this.currentMole = this.molesTemp[showMoleIndex];
-                this.molesTemp.splice(showMoleIndex, 1);
             }
             else {
                 this.initMoles();

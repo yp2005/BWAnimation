@@ -28,6 +28,10 @@ class HSPicture extends Laya.Sprite {
         this.isRight = true;
         this.bg.visible = true;
     }
+
+    public playNo(){
+        Laya.SoundManager.playMusic("res/audio/spider-no.mp3",1);
+    }
     
     // private mouseClick(){
     //     SpiderAndWord.targetPos = {x:this.x,y:this.y};

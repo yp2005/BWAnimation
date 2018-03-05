@@ -33,6 +33,9 @@ var HSPicture = /** @class */ (function (_super) {
         this.isRight = true;
         this.bg.visible = true;
     };
+    HSPicture.prototype.playNo = function () {
+        Laya.SoundManager.playMusic("res/audio/spider-no.mp3", 1);
+    };
     return HSPicture;
 }(Laya.Sprite));
 //# sourceMappingURL=SWPicture.js.map

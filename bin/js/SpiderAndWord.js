@@ -169,6 +169,9 @@ var SpiderAndWord = /** @class */ (function () {
         if (_word === "spider_right") {
             this.currentPic.showBg();
         }
+        else {
+            this.currentPic.playNo();
+        }
         if (this.checkAllRight()) {
             Laya.timer.once(3000, this, this.showWellDone);
         }
@@ -211,10 +214,10 @@ var SpiderAndWord = /** @class */ (function () {
     };
     // 游戏结束
     SpiderAndWord.prototype.gameOver = function () {
-        SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
-        SpiderAndWord.spiderAndWordMain.showSetting(true);
-        SpiderAndWord.started = false;
+        // SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
+        // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
+        // SpiderAndWord.spiderAndWordMain.showSetting(true);
+        // SpiderAndWord.started = false;
     };
     SpiderAndWord.started = false; //游戏是否开始
     // 八个位置，第一排1234，第二排5678

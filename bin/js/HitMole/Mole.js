@@ -3,7 +3,9 @@ var Mole = /** @class */ (function () {
     function Mole(mouseImg, wordBg, word) {
         this.mouseImg = mouseImg;
         this.wordBg = wordBg;
+        this.wordBg.y = -10;
         this.word = word;
+        this.word.y = -7;
         this.reset();
     }
     // 重置老鼠状态
@@ -22,6 +24,10 @@ var Mole = /** @class */ (function () {
     };
     // 显示老鼠
     Mole.prototype.showMouse = function (audio) {
+        this.word.width = this.word.text.length > 8 ? this.word.text.length * 16 + 40 : 150;
+        this.word.x = (160 - this.word.width) / 2;
+        this.wordBg.width = this.word.width;
+        this.wordBg.centerX = 0;
         this.mouseImg.visible = true;
         this.wordBg.visible = true;
         this.word.visible = true;

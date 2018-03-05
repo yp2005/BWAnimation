@@ -4,10 +4,12 @@ R D6AFB7DA .gitignore
 D common
 P 96015AC9 btn_start.png
 P 5A05FAAE configBG.png
+P 18FAF2E0 gameover.png
 P BC4E3960 img_radio_checked.png
 P 838697A5 img_radio_notCheck.png
 P EA6A5058 replay.png
 P 6F2E1E3C setting.png
+P 5097AE90 well-done.png
 D HitBalloon
 R 6D88006A .DS_Store
 P CA009A06 ball.png

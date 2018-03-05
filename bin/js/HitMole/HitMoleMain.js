@@ -59,11 +59,11 @@ var HitMoleMain = /** @class */ (function (_super) {
     };
     // 显示well done文字效果
     HitMoleMain.prototype.showWellDone = function (that, callBack) {
-        this.wellDone.y = this.wellDoneY;
+        this.wellDone.y = this.wellDoneY + this.wellDone.height;
         this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
         this.wellDone.scale(0, 0);
         this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100 }, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
+        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30 }, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
     };
     return HitMoleMain;
 }(ui.HitMoleUI));

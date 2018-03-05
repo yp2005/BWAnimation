@@ -205,6 +205,8 @@ class SpiderAndWord {
         let _word = (this.currentWord === SpiderAndWord.gameConfig.word) ? "spider_right" : "spider_wrong";
         if(_word === "spider_right"){
             this.currentPic.showBg();
+        }else{
+            this.currentPic.playNo();
         }
 
         if(this.checkAllRight()){
@@ -251,9 +253,9 @@ class SpiderAndWord {
 
     // 游戏结束
     public gameOver() {
-        SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
-        SpiderAndWord.spiderAndWordMain.showSetting(true);
-        SpiderAndWord.started = false;
+        // SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
+        // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
+        // SpiderAndWord.spiderAndWordMain.showSetting(true);
+        // SpiderAndWord.started = false;
     }
 }
