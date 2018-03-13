@@ -53,7 +53,7 @@ var Picture = /** @class */ (function (_super) {
                     HitBalloon.finishedWordsNumber++;
                     // 所有单词都完成配对，结束游戏
                     if (HitBalloon.finishedWordsNumber == HitBalloon.hitBalloonMain.getBalloonsNumber()) {
-                        HitBalloon.hitBalloonMain.gameOver();
+                        Laya.timer.once(2000, this, this.gameOver);
                     }
                 }
             }
@@ -61,6 +61,10 @@ var Picture = /** @class */ (function (_super) {
                 this.shake();
             }
         }
+    };
+    // 游戏结束
+    Picture.prototype.gameOver = function () {
+        HitBalloon.hitBalloonMain.gameOver();
     };
     // 图片晃动
     Picture.prototype.shake = function () {
