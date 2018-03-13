@@ -45,7 +45,7 @@ class Picture extends ui.PictureUI {
                     HitBalloon.finishedWordsNumber++;
                     // 所有单词都完成配对，结束游戏
                     if(HitBalloon.finishedWordsNumber == HitBalloon.hitBalloonMain.getBalloonsNumber()) {
-                        HitBalloon.hitBalloonMain.gameOver();
+                        Laya.timer.once(2000, this, this.gameOver);
                     }
                 } 
             }
@@ -53,6 +53,11 @@ class Picture extends ui.PictureUI {
                 this.shake();
             } 
         }
+    }
+
+    // 游戏结束
+    private gameOver() {
+        HitBalloon.hitBalloonMain.gameOver();
     }
 
     // 图片晃动
