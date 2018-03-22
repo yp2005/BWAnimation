@@ -1,7 +1,7 @@
 // 程序入口，本工程仅用于切换各个动画进行测试
 
 // 游戏名称，修改这个变量值来切换不同游戏，mole：打地鼠，fish：拍鱼，balloon：拍气球，spider：蜘蛛和单词
-let gameName = "fish"; 
+let gameName = "balloon"; 
 
 if(gameName == "mole") {
     //打地鼠游戏
@@ -25,10 +25,12 @@ else if(gameName == "fish") {
 else if(gameName == "balloon") {
     // 拍气球游戏
     let config: any = {
-        gameModel: true, // 是否游戏模式，游戏模式不显示配置按钮
+        gameModel: false, // 是否游戏模式，游戏模式不显示配置按钮
+        backgroundImg: "mainBG.png", // 游戏背景图
+        layout: 3, // 布局 2、3
         words: [
-            {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
-            {word: "train", pictures: ["train.png"]},
+            // {word: "car", pictures: ["car.png"]},
+            // {word: "train", pictures: ["train.png"]},
             {word: "doll", pictures: ["doll.png"]},
             {word: "computer", pictures: ["computer.png"]},
             {word: "bike", pictures: ["bike.png"]},

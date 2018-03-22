@@ -73,8 +73,8 @@ class HitBalloonMain extends ui.HitBalloonUI {
         this.showSetting(true);
     }
 
-    // 将游戏元素添加到游戏主页面
-    public addElement(balloons: Balloon[], pictures: Picture[]) {
+    // 将游戏元素添加到游戏主页面-3行布局
+    public addElement3Line(balloons: Balloon[], pictures: Picture[]) {
         this.balloons = balloons;
         this.pictures = pictures;
         let balloonWidth: number = 1024 / this.balloons.length;
@@ -127,7 +127,55 @@ class HitBalloonMain extends ui.HitBalloonUI {
                 picture.position = "bottom";
             }
             this.addChild(picture);
-            index++;
+        }
+    }
+
+    // 将游戏元素添加到游戏主页面-2行布局
+    public addElement2Line(balloons: Balloon[], pictures: Picture[]) {
+        this.balloons = balloons;
+        this.pictures = pictures;
+        let balloonWidth: number = 1024 / this.balloons.length;
+        let picWidth: number = 1024 / this.pictures.length;
+
+        let indexes: number[] = new Array<number>();
+        for(let i = 0; i < this.pictures.length; i++) {
+            indexes.push(i);
+        }
+        for(let picture of this.pictures) { // 添加所有图片
+            let i: number = Math.floor(Math.random() * indexes.length); // 给图片一个随机的位置
+            let index = indexes[i];
+            indexes.splice(i, 1);
+            picture.x = index * picWidth + (picWidth - picture.width) / 2;
+            picture.y = 150;
+            picture.position = "top";
+            this.addChild(picture);
+        }
+        indexes = new Array<number>();
+        for(let i = 0; i < this.balloons.length; i++) {
+            indexes.push(i);
+        }
+        for(let balloon of this.balloons) { // 添加所有气球
+            let i: number = Math.floor(Math.random() * indexes.length); // 给单词一个随机的位置
+            let index = indexes[i];
+            indexes.splice(i, 1);
+            if(index >= 6) {
+                balloon.picture.skin = "HitBalloon/balloon-" + (index - 5) + ".png";
+            }
+            else {
+                balloon.picture.skin = "HitBalloon/balloon-" + (index + 1)+ ".png";
+            }
+            balloon.x = index * balloonWidth + (balloonWidth - balloon.width) / 2;
+            balloon.y = 480;
+            // 根据气球个数设置单词字号
+            balloon.word.width = balloonWidth;
+            balloon.word.x = (128 - balloonWidth) / 2;
+            if(this.balloons.length < 8) {
+                balloon.word.fontSize = 40;
+            }
+            else {
+                balloon.word.fontSize = 30;
+            }
+            this.addChild(balloon);
         }
     }
 

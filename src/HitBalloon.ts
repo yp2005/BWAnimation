@@ -14,6 +14,8 @@ class HitBalloon {
         if(!config) {
             config = {
                 gameModel: false,
+                backgroundImg: "mainBG.png",
+                layout: 3,
                 words: [
                     {word: "car", pictures: ["car.png","car.png","car.png","car.png","car.png"]},
                     {word: "train", pictures: ["train.png"]},
@@ -74,6 +76,11 @@ class HitBalloon {
                 pictures.push(picture);
             }  
         }
-        HitBalloon.hitBalloonMain.addElement(balloons, pictures);
+        if(HitBalloon.gameConfig.layout == 2) {
+            HitBalloon.hitBalloonMain.addElement2Line(balloons, pictures);
+        } 
+        else if(HitBalloon.gameConfig.layout == 3) {
+            HitBalloon.hitBalloonMain.addElement3Line(balloons, pictures);
+        }
     }
 }
