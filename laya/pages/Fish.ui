@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":3,
+    "selecteID":4,
     "props":{"width":250,"height":200},
     "nodeParent":-1,
     "label":"View",
@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Text",
-            "props":{"y":59,"x":25,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"Helvetica","color":"#fff","align":"center"},
+            "props":{"y":59,"x":25,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"FF","color":"#fff","align":"center"},
             "nodeParent":1,
             "label":"Text(fishWord)",
             "isDirectory":false,
