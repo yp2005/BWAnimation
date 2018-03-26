@@ -8,7 +8,8 @@ class SpiderAndWord {
     private currentPic: HSPicture; // 当前图片对象
     public static currentPics: Array<HSPicture>; // 当前图片数组
     public static targetPos: any; //目标位置
-    private speed: number = 3; //移动速度
+    private speed: number = 4; //移动速度
+    private speedPlus: number = 0; //增加的移动速度
     private offset: number = 50; //偏移量
     private startPos: any = {x:40,y:50} //起始位置-左
     private endPos: any = {x:880,y:50} //起始位置-右
@@ -91,6 +92,8 @@ class SpiderAndWord {
     private mouseClick(hsPic:HSPicture){
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
         if(SpiderAndWord.started && !this.isChecking){
+            this.speedPlus = 5;
+
             // SpiderAndWord.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
             SpiderAndWord.targetPos = {x:hsPic.x,y:hsPic.y};
             this.currentWord = hsPic.word;
@@ -139,6 +142,11 @@ class SpiderAndWord {
             SpiderAndWord.currentPics.push(hsPic);
             Laya.stage.addChild(hsPic);
         }
+
+        // 如果是蝴蝶游戏，基础速度变快
+        // if(SpiderAndWord.gameConfig.word === 'beautiful' || SpiderAndWord.gameConfig.word === 'ugly'){
+
+        // }
     }
 
     // 游戏开始
@@ -164,17 +172,24 @@ class SpiderAndWord {
                 let _y = this.getDistanceValue(SpiderAndWord.targetPos.y,spiderY);
                 SpiderAndWord.currentSpider.pos(spiderX,spiderY + _y);
             }else if(spiderX != SpiderAndWord.targetPos.x){
-                // 不必回到起点才可以选择
-                this.isBack = false;
-                this.isChecking = false;
-                let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
-                SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
+                this.speedPlus = 0;
+                // u3、u4反馈0323.excel，游戏结束的话蜘蛛回到上面就不再横向移动了
+                if(SpiderAndWord.started){
+                    // 不必回到起点才可以选择
+                    this.isBack = false;
+                    this.isChecking = false;
+                    let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
+                    SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
+                }else{
+                    Laya.timer.clear(this,this.onLoop);
+                }
             }
         }else{
             if(spiderX != SpiderAndWord.targetPos.x){
                 let _x = this.getDistanceValue(SpiderAndWord.targetPos.x,spiderX);
                 SpiderAndWord.currentSpider.pos(spiderX + _x,spiderY);
             }else if(spiderY != SpiderAndWord.targetPos.y){
+                // this.speedPlus = 6;
                 let _y = this.getDistanceValue(SpiderAndWord.targetPos.y,spiderY);
                 SpiderAndWord.currentSpider.pos(spiderX,spiderY + _y);
             }
@@ -217,12 +232,14 @@ class SpiderAndWord {
     }
 
     showWellDone(){
-        SpiderAndWord.currentSpider.visible = false;
-        for(let picture of SpiderAndWord.currentPics) {
-            picture.removeSelf();
-            picture.destroy();
-        }
-        SpiderAndWord.spiderAndWordMain.showWellDone(this,this.gameOver);
+        // u3、u4反馈0323.excel，去掉gameover
+        this.gameOver();
+        // SpiderAndWord.currentSpider.visible = false;
+        // for(let picture of SpiderAndWord.currentPics) {
+        //     picture.removeSelf();
+        //     picture.destroy();
+        // }
+        // SpiderAndWord.spiderAndWordMain.showWellDone(this,this.gameOver);
     }
 
     // 验证是否所有对的图片都选出
@@ -247,7 +264,7 @@ class SpiderAndWord {
     getDistanceValue(target:number = 0,pos:number = 0):number{
         let _value = target - pos;
         if(_value === 0) return 0;
-        let absValue = Math.min(Math.abs(_value),this.speed)
+        let absValue = Math.min(Math.abs(_value),(this.speed+this.speedPlus))
         return (_value/Math.abs(_value)) * absValue;
     }
 
@@ -256,6 +273,6 @@ class SpiderAndWord {
         // SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
         // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         // SpiderAndWord.spiderAndWordMain.showSetting(true);
-        // SpiderAndWord.started = false;
+        SpiderAndWord.started = false;
     }
 }

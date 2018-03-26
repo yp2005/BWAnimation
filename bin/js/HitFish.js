@@ -46,7 +46,7 @@ var HitFish = /** @class */ (function () {
         HitFish.hitFishMain.replayBtn.visible = false;
         HitFish.hitFishMain.startBtn.visible = true;
         SoundManager.playMusic("res/audio/fish_bg.mp3", 0);
-        SoundManager.setMusicVolume(0.3);
+        SoundManager.setMusicVolume(0.1);
         SoundManager.setSoundVolume(1);
     };
     // 游戏开始
@@ -70,8 +70,8 @@ var HitFish = /** @class */ (function () {
     HitFish.prototype.gameOver = function () {
         HitFish.hitFishMain.wellDone.visible = false;
         HitFish.started = false;
-        HitFish.hitFishMain.replayBtn.visible = true;
-        HitFish.hitFishMain.showSetting(true);
+        HitFish.hitFishMain.replayBtn.visible = false;
+        HitFish.hitFishMain.showSetting(false);
     };
     // 初始化单词
     HitFish.prototype.initWords = function () {
@@ -120,11 +120,13 @@ var HitFish = /** @class */ (function () {
             isAllRight = isAllRight && HitFish.gameFish[i].isRight;
         }
         if (isAllRight) {
-            for (var i = 0; i < HitFish.gameFish.length; i++) {
-                HitFish.gameFish[i].removeSelf();
-            }
-            HitFish.gameFish = [];
-            HitFish.hitFishMain.showWellDone(this, this.gameOver);
+            // u3、u4反馈0323.excel，去掉gameover
+            this.gameOver();
+            // for(let i = 0;i<HitFish.gameFish.length;i++){
+            //     HitFish.gameFish[i].removeSelf();
+            // }
+            // HitFish.gameFish = [];
+            // HitFish.hitFishMain.showWellDone(this, this.gameOver);
         }
     };
     HitFish.started = false; // 游戏是否开始

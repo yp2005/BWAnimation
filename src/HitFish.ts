@@ -63,7 +63,7 @@ class HitFish {
         HitFish.hitFishMain.startBtn.visible = true;
 
         SoundManager.playMusic("res/audio/fish_bg.mp3",0);
-        SoundManager.setMusicVolume(0.3);
+        SoundManager.setMusicVolume(0.1);
         SoundManager.setSoundVolume(1   );
     }
 
@@ -89,8 +89,8 @@ class HitFish {
     private gameOver() {
         HitFish.hitFishMain.wellDone.visible = false;
         HitFish.started = false;
-        HitFish.hitFishMain.replayBtn.visible = true;
-        HitFish.hitFishMain.showSetting(true);
+        HitFish.hitFishMain.replayBtn.visible = false;
+        HitFish.hitFishMain.showSetting(false);
     }
 
     // 初始化单词
@@ -146,11 +146,13 @@ class HitFish {
         }
 
         if(isAllRight){
-            for(let i = 0;i<HitFish.gameFish.length;i++){
-                HitFish.gameFish[i].removeSelf();
-            }
-            HitFish.gameFish = [];
-            HitFish.hitFishMain.showWellDone(this, this.gameOver);
+            // u3、u4反馈0323.excel，去掉gameover
+            this.gameOver();
+            // for(let i = 0;i<HitFish.gameFish.length;i++){
+            //     HitFish.gameFish[i].removeSelf();
+            // }
+            // HitFish.gameFish = [];
+            // HitFish.hitFishMain.showWellDone(this, this.gameOver);
         }
     }
 

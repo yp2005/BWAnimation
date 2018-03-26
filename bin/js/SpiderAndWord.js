@@ -4,7 +4,8 @@ var WebGL = Laya.WebGL;
 var Sprite = Laya.Sprite;
 var SpiderAndWord = /** @class */ (function () {
     function SpiderAndWord(config) {
-        this.speed = 3; //移动速度
+        this.speed = 4; //移动速度
+        this.speedPlus = 0; //增加的移动速度
         this.offset = 50; //偏移量
         this.startPos = { x: 40, y: 50 }; //起始位置-左
         this.endPos = { x: 880, y: 50 }; //起始位置-右
@@ -63,6 +64,7 @@ var SpiderAndWord = /** @class */ (function () {
     SpiderAndWord.prototype.mouseClick = function (hsPic) {
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
         if (SpiderAndWord.started && !this.isChecking) {
+            this.speedPlus = 5;
             // SpiderAndWord.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
             SpiderAndWord.targetPos = { x: hsPic.x, y: hsPic.y };
             this.currentWord = hsPic.word;
@@ -105,6 +107,9 @@ var SpiderAndWord = /** @class */ (function () {
             SpiderAndWord.currentPics.push(hsPic);
             Laya.stage.addChild(hsPic);
         }
+        // 如果是蝴蝶游戏，基础速度变快
+        // if(SpiderAndWord.gameConfig.word === 'beautiful' || SpiderAndWord.gameConfig.word === 'ugly'){
+        // }
     };
     // 游戏开始
     SpiderAndWord.prototype.gameStart = function () {
@@ -127,11 +132,18 @@ var SpiderAndWord = /** @class */ (function () {
                 SpiderAndWord.currentSpider.pos(spiderX, spiderY + _y);
             }
             else if (spiderX != SpiderAndWord.targetPos.x) {
-                // 不必回到起点才可以选择
-                this.isBack = false;
-                this.isChecking = false;
-                var _x = this.getDistanceValue(SpiderAndWord.targetPos.x, spiderX);
-                SpiderAndWord.currentSpider.pos(spiderX + _x, spiderY);
+                this.speedPlus = 0;
+                // u3、u4反馈0323.excel，游戏结束的话蜘蛛回到上面就不再横向移动了
+                if (SpiderAndWord.started) {
+                    // 不必回到起点才可以选择
+                    this.isBack = false;
+                    this.isChecking = false;
+                    var _x = this.getDistanceValue(SpiderAndWord.targetPos.x, spiderX);
+                    SpiderAndWord.currentSpider.pos(spiderX + _x, spiderY);
+                }
+                else {
+                    Laya.timer.clear(this, this.onLoop);
+                }
             }
         }
         else {
@@ -140,6 +152,7 @@ var SpiderAndWord = /** @class */ (function () {
                 SpiderAndWord.currentSpider.pos(spiderX + _x, spiderY);
             }
             else if (spiderY != SpiderAndWord.targetPos.y) {
+                // this.speedPlus = 6;
                 var _y = this.getDistanceValue(SpiderAndWord.targetPos.y, spiderY);
                 SpiderAndWord.currentSpider.pos(spiderX, spiderY + _y);
             }
@@ -178,13 +191,14 @@ var SpiderAndWord = /** @class */ (function () {
         return _word;
     };
     SpiderAndWord.prototype.showWellDone = function () {
-        SpiderAndWord.currentSpider.visible = false;
-        for (var _i = 0, _a = SpiderAndWord.currentPics; _i < _a.length; _i++) {
-            var picture = _a[_i];
-            picture.removeSelf();
-            picture.destroy();
-        }
-        SpiderAndWord.spiderAndWordMain.showWellDone(this, this.gameOver);
+        // u3、u4反馈0323.excel，去掉gameover
+        this.gameOver();
+        // SpiderAndWord.currentSpider.visible = false;
+        // for(let picture of SpiderAndWord.currentPics) {
+        //     picture.removeSelf();
+        //     picture.destroy();
+        // }
+        // SpiderAndWord.spiderAndWordMain.showWellDone(this,this.gameOver);
     };
     // 验证是否所有对的图片都选出
     SpiderAndWord.prototype.checkAllRight = function () {
@@ -209,7 +223,7 @@ var SpiderAndWord = /** @class */ (function () {
         var _value = target - pos;
         if (_value === 0)
             return 0;
-        var absValue = Math.min(Math.abs(_value), this.speed);
+        var absValue = Math.min(Math.abs(_value), (this.speed + this.speedPlus));
         return (_value / Math.abs(_value)) * absValue;
     };
     // 游戏结束
@@ -217,7 +231,7 @@ var SpiderAndWord = /** @class */ (function () {
         // SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
         // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         // SpiderAndWord.spiderAndWordMain.showSetting(true);
-        // SpiderAndWord.started = false;
+        SpiderAndWord.started = false;
     };
     SpiderAndWord.started = false; //游戏是否开始
     // 八个位置，第一排1234，第二排5678

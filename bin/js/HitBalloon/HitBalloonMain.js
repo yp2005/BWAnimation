@@ -73,8 +73,8 @@ var HitBalloonMain = /** @class */ (function (_super) {
         HitBalloon.finishedWordsNumber = 0;
         this.showSetting(true);
     };
-    // 将游戏元素添加到游戏主页面
-    HitBalloonMain.prototype.addElement = function (balloons, pictures) {
+    // 将游戏元素添加到游戏主页面-3行布局
+    HitBalloonMain.prototype.addElement3Line = function (balloons, pictures) {
         this.balloons = balloons;
         this.pictures = pictures;
         var balloonWidth = 1024 / this.balloons.length;
@@ -129,7 +129,55 @@ var HitBalloonMain = /** @class */ (function (_super) {
                 picture.position = "bottom";
             }
             this.addChild(picture);
-            index++;
+        }
+    };
+    // 将游戏元素添加到游戏主页面-2行布局
+    HitBalloonMain.prototype.addElement2Line = function (balloons, pictures) {
+        this.balloons = balloons;
+        this.pictures = pictures;
+        var balloonWidth = 1024 / this.balloons.length;
+        var picWidth = 1024 / this.pictures.length;
+        var indexes = new Array();
+        for (var i = 0; i < this.pictures.length; i++) {
+            indexes.push(i);
+        }
+        for (var _i = 0, _a = this.pictures; _i < _a.length; _i++) {
+            var picture = _a[_i];
+            var i = Math.floor(Math.random() * indexes.length); // 给图片一个随机的位置
+            var index = indexes[i];
+            indexes.splice(i, 1);
+            picture.x = index * picWidth + (picWidth - picture.width) / 2;
+            picture.y = 150;
+            picture.position = "top";
+            this.addChild(picture);
+        }
+        indexes = new Array();
+        for (var i = 0; i < this.balloons.length; i++) {
+            indexes.push(i);
+        }
+        for (var _b = 0, _c = this.balloons; _b < _c.length; _b++) {
+            var balloon = _c[_b];
+            var i = Math.floor(Math.random() * indexes.length); // 给单词一个随机的位置
+            var index = indexes[i];
+            indexes.splice(i, 1);
+            if (index >= 6) {
+                balloon.picture.skin = "HitBalloon/balloon-" + (index - 5) + ".png";
+            }
+            else {
+                balloon.picture.skin = "HitBalloon/balloon-" + (index + 1) + ".png";
+            }
+            balloon.x = index * balloonWidth + (balloonWidth - balloon.width) / 2;
+            balloon.y = 480;
+            // 根据气球个数设置单词字号
+            balloon.word.width = balloonWidth;
+            balloon.word.x = (128 - balloonWidth) / 2;
+            if (this.balloons.length < 8) {
+                balloon.word.fontSize = 40;
+            }
+            else {
+                balloon.word.fontSize = 30;
+            }
+            this.addChild(balloon);
         }
     };
     // 获取气球数量
