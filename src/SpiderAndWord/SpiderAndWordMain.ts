@@ -1,14 +1,14 @@
 // 游戏主界面
 class SpiderAndWordMain extends ui.SpiderAndWordUI {
-    private wellDoneY: number; // well done效果Y坐标
-    private wellDoneX: number; // well done效果X坐标
+    // private wellDoneY: number; // well done效果Y坐标
+    // private wellDoneX: number; // well done效果X坐标
     private configView: HSConfigView; // 配置页
 
     constructor() {
         super(); 
-        this.wellDone.visible = false;
-        this.wellDoneY = this.wellDone.y;
-        this.wellDoneX = this.wellDone.x;
+        // this.wellDone.visible = false;
+        // this.wellDoneY = this.wellDone.y;
+        // this.wellDoneX = this.wellDone.x;
         this.configView = new HSConfigView(this.configBox);
         this.tip.visible = false;
         this.setting.on(Laya.Event.CLICK, this, this.showConfigView)
@@ -30,14 +30,14 @@ class SpiderAndWordMain extends ui.SpiderAndWordUI {
 
     // 显示游戏配置页面 
     private showConfigView() {
-        this.setting.visible = false;
+        //this.setting.visible = false;
         if(SpiderAndWord.started){
             SpiderAndWord.currentSpider.visible = false;
             for(let picture of SpiderAndWord.currentPics) {
                 picture.removeSelf();
                 picture.destroy();
             }
-            SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
+            SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-abled.png";
         }
 
         this.configView.show();
@@ -50,31 +50,31 @@ class SpiderAndWordMain extends ui.SpiderAndWordUI {
         }
     }
 
-    // 游戏结束
-    public gameOver() {
-        // 显示well done文字效果
-        this.wellDone.y = this.wellDoneY;
-        console.log("2222");
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100}, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
+    // // 游戏结束
+    // public gameOver() {
+    //     // 显示well done文字效果
+    //     this.wellDone.y = this.wellDoneY;
+    //     console.log("2222");
+    //     this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
+    //     this.wellDone.scale(0, 0);
+    //     this.wellDone.visible = true;
+    //     Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100}, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
    
-    }
+    // }
     
-    // 显示well done文字效果
-    public showWellDone(that, callBack: Function) {
-        this.wellDone.y = this.wellDoneY + this.wellDone.height;
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30}, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
-    }
+    // // 显示well done文字效果
+    // public showWellDone(that, callBack: Function) {
+    //     this.wellDone.y = this.wellDoneY + this.wellDone.height;
+    //     this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
+    //     this.wellDone.scale(0, 0);
+    //     this.wellDone.visible = true;
+    //     Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30}, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
+    // }
 
-    // 重置游戏为初始状态
-    private reset() {
-        this.wellDone.visible = false;
-        this.showSetting(true);
-    }
+    // // 重置游戏为初始状态
+    // private reset() {
+    //     this.wellDone.visible = false;
+    //     this.showSetting(true);
+    // }
 
 }

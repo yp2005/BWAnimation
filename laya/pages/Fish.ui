@@ -3,7 +3,7 @@
     "type":"View",
     "selectedBox":1,
     "selecteID":4,
-    "props":{"width":250,"height":200},
+    "props":{"width":220,"height":200},
     "nodeParent":-1,
     "label":"View",
     "isOpen":true,
@@ -15,7 +15,7 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":56,"x":11,"var":"wordBg","skin":"HitFish/wordbg.png"},
+            "props":{"y":56,"x":3,"width":214,"var":"wordBg","skin":"HitFish/wordbg.png","height":88},
             "nodeParent":1,
             "label":"Image(wordBg)",
             "isDirectory":false,
@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Text",
-            "props":{"y":59,"x":25,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"FF","color":"#fff","align":"center"},
+            "props":{"y":57,"x":10,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"FF","color":"#fff","align":"center"},
             "nodeParent":1,
             "label":"Text(fishWord)",
             "isDirectory":false,

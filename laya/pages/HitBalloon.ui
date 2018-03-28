@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":1,
-    "selecteID":2,
+    "selecteID":43,
     "props":{"width":1024,"sceneColor":"#ffffff","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -29,7 +29,7 @@
         {
             "x":15,
             "type":"Text",
-            "props":{"y":28,"x":276,"text":"Listen and repeat.","fontSize":55,"color":"#e3e345","bold":true},
+            "props":{"y":22,"x":276,"text":"Listen and match.","fontSize":55,"font":"FF","color":"#e3e345","bold":true},
             "nodeParent":1,
             "label":"Text",
             "isDirectory":false,
@@ -41,21 +41,8 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
-            "nodeParent":1,
-            "label":"Button(startBtn)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":8,
-            "child":[
-                ]
-        },
-        {
-            "x":15,
             "type":"Image",
-            "props":{"y":348,"x":426,"var":"replayBtn","skin":"common/replay.png"},
+            "props":{"y":672,"x":806,"var":"replayBtn","skin":"common/replay-disabled.png"},
             "nodeParent":1,
             "label":"Image(replayBtn)",
             "isDirectory":false,
@@ -94,7 +81,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":201,"x":558,"text":"单词：","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":201,"x":558,"text":"单词：","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":18,
                     "label":"Label",
                     "isDirectory":false,
@@ -120,7 +107,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":195,"x":641,"width":286,"name":"textInput","height":31,"fontSize":16,"color":"#3b3232"},
+                    "props":{"y":195,"x":641,"width":286,"name":"textInput","height":31,"fontSize":16,"font":"FF","color":"#3b3232"},
                     "nodeParent":18,
                     "label":"TextInput(textInput)",
                     "isDirectory":false,
@@ -159,7 +146,7 @@
                 {
                     "x":30,
                     "type":"Text",
-                    "props":{"y":238,"x":634,"text":"示例：car:car1.png,car2.png;ball:ball.png","fontSize":17,"color":"#666666"},
+                    "props":{"y":238,"x":634,"text":"示例：car:car1.png,car2.png;ball:ball.png","fontSize":17,"font":"FF","color":"#666666"},
                     "nodeParent":18,
                     "label":"Text",
                     "isDirectory":false,
@@ -172,7 +159,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":82,"x":539,"width":98,"text":"背景图：","height":20,"fontSize":20,"color":"#2a2121"},
+                    "props":{"y":82,"x":539,"width":98,"text":"背景图：","height":20,"fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":18,
                     "label":"Label",
                     "isDirectory":false,
@@ -198,7 +185,7 @@
                 {
                     "x":30,
                     "type":"TextInput",
-                    "props":{"y":76,"x":640,"width":286,"name":"backgroundImg","height":31,"fontSize":16,"color":"#3b3232"},
+                    "props":{"y":76,"x":640,"width":286,"name":"backgroundImg","height":31,"fontSize":16,"font":"FF","color":"#3b3232"},
                     "nodeParent":18,
                     "label":"TextInput(backgroundImg)",
                     "isDirectory":false,
@@ -211,7 +198,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":139,"x":558,"text":"布局：","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":139,"x":558,"text":"布局：","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":18,
                     "label":"Label",
                     "isDirectory":false,
@@ -224,7 +211,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":139,"x":672,"text":"三行","name":"threeLineRadio","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":139,"x":672,"text":"三行","name":"threeLineRadio","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":18,
                     "label":"Label(threeLineRadio)",
                     "isDirectory":false,
@@ -237,7 +224,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":139,"x":776,"text":"两行","name":"twoLineRadio","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":139,"x":776,"text":"两行","name":"twoLineRadio","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":18,
                     "label":"Label(twoLineRadio)",
                     "isDirectory":false,
@@ -272,12 +259,13 @@
                     "compId":42,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":true
         },
         {
             "x":15,
             "type":"Text",
-            "props":{"y":135,"x":141,"width":300,"var":"tip","text":"操作不正确！","pivotY":2,"pivotX":8,"height":30,"fontSize":30,"color":"#17a817","align":"center"},
+            "props":{"y":135,"x":141,"width":300,"var":"tip","text":"操作不正确！","pivotY":2,"pivotX":8,"height":33,"fontSize":30,"font":"FF","color":"#17a817","align":"center"},
             "nodeParent":1,
             "label":"Text(tip)",
             "isDirectory":false,
@@ -302,14 +290,14 @@
         },
         {
             "x":15,
-            "type":"Image",
-            "props":{"y":256,"x":261,"var":"wellDone","skin":"common/well-done.png"},
+            "type":"Text",
+            "props":{"y":686,"x":807,"width":168,"var":"replayText","text":"Replay","strokeColor":"#000000","stroke":5,"height":39,"fontSize":27,"font":"FF","color":"#ffffff","align":"center"},
             "nodeParent":1,
-            "label":"Image(wellDone)",
+            "label":"Text(replayText)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":34,
+            "compId":43,
             "child":[
                 ]
         }],

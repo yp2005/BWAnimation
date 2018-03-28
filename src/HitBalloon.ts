@@ -50,18 +50,19 @@ class HitBalloon {
     // 游戏资源加载完成进行游戏初始化设置
     private onload() {
         HitBalloon.hitBalloonMain = new HitBalloonMain();
-        HitBalloon.hitBalloonMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitBalloon.hitBalloonMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        HitBalloon.hitBalloonMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
         Laya.stage.addChild(HitBalloon.hitBalloonMain);
-        HitBalloon.hitBalloonMain.replayBtn.visible = false;
+        this.init(); 
     }
 
-    // 游戏开始
-    private gameStart() {
-        HitBalloon.hitBalloonMain.showSetting(false);
-        HitBalloon.hitBalloonMain.replayBtn.visible = false;
-        HitBalloon.hitBalloonMain.startBtn.visible = false;
-        this.init();  
+    // 重新开始
+    private restart() {
+        if(HitBalloon.hitBalloonMain.replayBtn.skin.indexOf("disabled") != -1) {
+            return;
+        }
+        HitBalloon.hitBalloonMain.replayBtn.skin = "common/replay-disabled.png";
+        HitBalloon.hitBalloonMain.reset();
+        this.init(); 
     }
 
     // 初始化

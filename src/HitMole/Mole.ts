@@ -11,7 +11,7 @@ class Mole {
         this.wordBg = wordBg;
         this.wordBg.y = -10;
         this.word = word;
-        this.word.y = -7;
+        this.word.y = -10;
         this.reset();
     }
 
@@ -30,6 +30,14 @@ class Mole {
     // 设置图片
     public setPic(pic: string) {
         this.mouseImg.skin = pic;
+    }
+
+    // 开始结束游戏动画
+    public startOverAni() {
+        this.mouseImg.visible = true;
+        Laya.SoundManager.playSound("res/audio/mole-out.mp3", 1);
+        this.mouseImg.y = 118;
+        Laya.Tween.to(this.mouseImg, {y: 52}, 500, Laya.Ease.backOut);
     }
 
     // 显示老鼠

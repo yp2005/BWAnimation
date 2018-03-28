@@ -80,6 +80,8 @@ class HitFishMain extends ui.HitFishUI {
     public showConfig() {
         this.fishConfig.visible = true;
         this.fishConfigBtn.visible = false;
+        this.fishConfig.removeSelf()
+        this.addChild(this.fishConfig);
     }
 
     // 隐藏游戏配置页面 

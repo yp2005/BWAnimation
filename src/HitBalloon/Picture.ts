@@ -23,20 +23,20 @@ class Picture extends ui.PictureUI {
                 // 画线
                 let line = new Sprite();
                 Laya.stage.addChild(line);
-                let fromX: number = HitBalloon.currentBalloon.x + 64;
+                let fromX: number = HitBalloon.currentBalloon.x + HitBalloon.currentBalloon.width / 2;
                 let fromY: number;
-                let toX: number = this.x + 102;
+                let toX: number = this.x + this.width / 2;
                 let toY: number;
                 if(this.position == "top") {
                     fromY = HitBalloon.currentBalloon.y + 50;
-                    toY = this.y + this.height - 10;
+                    toY = this.y + this.picture.y + this.picture.height + 10;
                 }
                 else {
-                    fromY = HitBalloon.currentBalloon.y + 95;
-                    toY = this.y + this.height - this.picture.height - (this.height - this.picture.height) / 2 - 10;
+                    fromY = HitBalloon.currentBalloon.y + 100;
+                    toY = this.y + this.picture.y - 10;
                 }
                 HitBalloon.hitBalloonMain.addChild(line);
-                line.graphics.drawLine(fromX, fromY, toX, toY, "#f63e10", 5); 
+                line.graphics.drawLine(fromX, fromY, toX, toY, "#07259e", 3); 
                 this.line = line;
                 HitBalloon.currentBalloon.linedNumber++;
                 // 单词应配对的图片都已连线，单词完成配对
@@ -45,7 +45,11 @@ class Picture extends ui.PictureUI {
                     HitBalloon.finishedWordsNumber++;
                     // 所有单词都完成配对，结束游戏
                     if(HitBalloon.finishedWordsNumber == HitBalloon.hitBalloonMain.getBalloonsNumber()) {
-                        Laya.timer.once(2000, this, this.gameOver);
+                        HitBalloon.hitBalloonMain.replayBtn.skin = "common/replay-abled.png";
+                        HitBalloon.hitBalloonMain.replayBtn.removeSelf();
+                        HitBalloon.hitBalloonMain.addChild(HitBalloon.hitBalloonMain.replayBtn);
+                        HitBalloon.hitBalloonMain.replayText.removeSelf();
+                        HitBalloon.hitBalloonMain.addChild(HitBalloon.hitBalloonMain.replayText); 
                     }
                 } 
             }
@@ -53,11 +57,6 @@ class Picture extends ui.PictureUI {
                 this.shake();
             } 
         }
-    }
-
-    // 游戏结束
-    private gameOver() {
-        HitBalloon.hitBalloonMain.gameOver();
     }
 
     // 图片晃动

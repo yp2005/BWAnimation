@@ -47,8 +47,7 @@ class HitFish {
         // 鱼的类型固定6种;
         HitFish.fishType = 6;
         HitFish.hitFishMain = new HitFishMain();
-        HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitFish.hitFishMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
         // HitFish.hitFishMain.initConfig();
 
         this.theCounter = HitFish.hitFishMain.getChildByName("theCounter") as Laya.Animation;
@@ -58,21 +57,30 @@ class HitFish {
 
         Laya.stage.addChild(HitFish.hitFishMain);
         HitFish.gameFish = [];
-        this.gameOver();
-        HitFish.hitFishMain.replayBtn.visible = false;
-        HitFish.hitFishMain.startBtn.visible = true;
 
         SoundManager.playMusic("res/audio/fish_bg.mp3",0);
         SoundManager.setMusicVolume(0.1);
-        SoundManager.setSoundVolume(1   );
+        SoundManager.setSoundVolume(1);
+        this.gameStart();
+    }
+
+    // 重新开始游戏
+    private restart() {
+        if(HitFish.hitFishMain.replayBtn.skin.indexOf("disabled") != -1) {
+            return;
+        }
+        HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
+        for(let i = 0;i<HitFish.gameFish.length;i++){
+            HitFish.gameFish[i].removeSelf();
+        }
+        HitFish.gameFish = [];
+        this.gameStart();
     }
 
     // 游戏开始
     private gameStart() {
         if(HitFish.gameConfig.leftWords && HitFish.gameConfig.leftWords.length>0 && HitFish.gameConfig.rightWords && HitFish.gameConfig.rightWords.length>0){
-            HitFish.hitFishMain.fishConfigBtn.visible = false;
-            HitFish.hitFishMain.replayBtn.visible = false;
-            HitFish.hitFishMain.startBtn.visible = false;
+            HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
             this.initWords();
             Laya.timer.once(500, this, this.setStartState);
         }else{
@@ -87,10 +95,8 @@ class HitFish {
 
     // 游戏结束
     private gameOver() {
-        HitFish.hitFishMain.wellDone.visible = false;
+        HitFish.hitFishMain.replayBtn.skin = "common/replay-abled.png";
         HitFish.started = false;
-        HitFish.hitFishMain.replayBtn.visible = false;
-        HitFish.hitFishMain.showSetting(false);
     }
 
     // 初始化单词
@@ -103,9 +109,9 @@ class HitFish {
         let arr = CommonTools.getRandomArr(HitFish.fishType);
         for(let i = 0; i< HitFish.gameConfig.leftWords.length;i++){
             let fish = new Fish(arr[i],HitFish.gameConfig.leftWords[i]);
-            fish.x = 155;
+            fish.x = 180;
             fish.y = fishHeigthL * i + (fishHeigthL-200)/2;
-            Laya.stage.addChild(fish);
+            HitFish.hitFishMain.addChild(fish);
             HitFish.gameFish.push(fish);
         }
 
@@ -113,9 +119,9 @@ class HitFish {
         arr = CommonTools.getRandomArr(HitFish.fishType);
         for(let i = 0; i< HitFish.gameConfig.rightWords.length;i++){
             let fish = new Fish(arr[i],HitFish.gameConfig.rightWords[i]);
-            fish.x = 610;
+            fish.x = 600;
             fish.y = fishHeigthR * i + (fishHeigthR-200)/2;
-            Laya.stage.addChild(fish);
+            HitFish.hitFishMain.addChild(fish);
             HitFish.gameFish.push(fish);
         }
     }
@@ -135,7 +141,7 @@ class HitFish {
     public countEnd(){
         HitFish.hitFishMain.stopCount();
         // 延迟两秒，让老师可以点击单词变回图片
-        Laya.timer.once(2000, this, this.checkWellDone);
+        this.checkWellDone();
     }
 
     // 判断是否完成游戏
@@ -148,10 +154,6 @@ class HitFish {
         if(isAllRight){
             // u3、u4反馈0323.excel，去掉gameover
             this.gameOver();
-            // for(let i = 0;i<HitFish.gameFish.length;i++){
-            //     HitFish.gameFish[i].removeSelf();
-            // }
-            // HitFish.gameFish = [];
             // HitFish.hitFishMain.showWellDone(this, this.gameOver);
         }
     }

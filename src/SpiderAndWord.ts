@@ -65,11 +65,8 @@ class SpiderAndWord {
     // 游戏资源加载完成进行游戏初始化设置
     private onload() {
         SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
-        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        SpiderAndWord.spiderAndWordMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
         Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
-        SpiderAndWord.spiderAndWordMain.startBtn.visible = true;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
         SpiderAndWord.started = false;
 
         this.startPos.x = this.startPos.x+this.offset;
@@ -86,6 +83,20 @@ class SpiderAndWord {
         SpiderAndWord.posArr = SpiderAndWord.posArr.map(p=>{
             return {x:(p.x+this.offset),y:(p.y+this.offset)}
         })
+        this.gameStart();
+    }
+
+    private restart() {
+        if(SpiderAndWord.spiderAndWordMain.replayBtn.skin.indexOf("disabled") != -1) {
+            return;
+        }
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-disabled.png";
+        SpiderAndWord.currentSpider.visible = false;
+        for(let picture of SpiderAndWord.currentPics) {
+            picture.removeSelf();
+            picture.destroy();
+        }
+        this.gameStart();
     }
 
     // 图片点击事件
@@ -151,9 +162,7 @@ class SpiderAndWord {
 
     // 游戏开始
     private gameStart() {
-        SpiderAndWord.spiderAndWordMain.setting.visible = false;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
-        SpiderAndWord.spiderAndWordMain.startBtn.visible = false;
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-disabled.png";
         this.init();  
         
         //恢复游戏循环
@@ -225,7 +234,7 @@ class SpiderAndWord {
         }
 
         if(this.checkAllRight()){
-            Laya.timer.once(3000, this, this.showWellDone);
+            Laya.timer.once(3000, this, this.gameOver);
         }
 
         return _word;
@@ -274,5 +283,6 @@ class SpiderAndWord {
         // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         // SpiderAndWord.spiderAndWordMain.showSetting(true);
         SpiderAndWord.started = false;
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-abled.png";
     }
 }

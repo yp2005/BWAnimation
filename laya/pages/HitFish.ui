@@ -2,7 +2,7 @@
     "x":0,
     "type":"View",
     "selectedBox":8,
-    "selecteID":23,
+    "selecteID":9,
     "props":{"width":1024,"sceneColor":"#000000","sceneBg":"laya/views/HitFish.png","height":768},
     "nodeParent":-1,
     "label":"View",
@@ -23,7 +23,8 @@
             "hasChild":false,
             "compId":2,
             "child":[
-                ]
+                ],
+            "$LOCKED":true
         },
         {
             "x":15,
@@ -41,7 +42,7 @@
         {
             "x":15,
             "type":"Box",
-            "props":{"y":124,"x":581,"width":985,"var":"fishConfig","pivotY":100,"pivotX":554,"height":242},
+            "props":{"y":120,"x":576,"width":985,"var":"fishConfig","pivotY":100,"pivotX":554,"height":242},
             "nodeParent":1,
             "label":"Box(fishConfig)",
             "isOpen":true,
@@ -53,7 +54,7 @@
                 {
                     "x":30,
                     "type":"Image",
-                    "props":{"y":9,"x":332,"width":653,"skin":"common/configBG.png","height":233,"alpha":1},
+                    "props":{"y":9,"x":332,"width":653,"skin":"common/configBG.png","sizeGrid":"5,15,5,15","height":233,"alpha":1},
                     "nodeParent":8,
                     "label":"Image",
                     "isDirectory":false,
@@ -67,7 +68,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":119,"x":370,"text":"右边单词：","fontSize":20,"font":"FF","color":"#2a2121"},
+                    "props":{"y":117,"x":370,"text":"右边单词：","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":8,
                     "label":"Label",
                     "isDirectory":false,
@@ -80,7 +81,7 @@
                 {
                     "x":30,
                     "type":"Label",
-                    "props":{"y":54,"x":370,"text":"左边单词：","fontSize":20,"font":"FF","color":"#2a2121"},
+                    "props":{"y":52,"x":370,"text":"左边单词：","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":8,
                     "label":"Label",
                     "isDirectory":false,
@@ -197,36 +198,6 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "props":{"y":356,"x":433,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
-            "nodeParent":1,
-            "label":"Button(startBtn)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":26,
-            "child":[
-                ],
-            "$LOCKED":true,
-            "$HIDDEN":true
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":358,"x":436,"var":"replayBtn","skin":"common/replay.png"},
-            "nodeParent":1,
-            "label":"Image(replayBtn)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":27,
-            "child":[
-                ],
-            "$LOCKED":true,
-            "$HIDDEN":true
-        },
-        {
-            "x":15,
             "type":"Image",
             "props":{"y":287,"x":273,"var":"wellDone","skin":"common/well-done.png"},
             "nodeParent":1,
@@ -235,6 +206,32 @@
             "isAniNode":true,
             "hasChild":false,
             "compId":29,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":681,"x":832,"var":"replayBtn","skin":"common/replay-disabled.png"},
+            "nodeParent":1,
+            "label":"Image(replayBtn)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":30,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "props":{"y":695,"x":833,"width":168,"var":"replayText","text":"Replay","strokeColor":"#000000","stroke":5,"height":39,"fontSize":27,"font":"FF","color":"#ffffff","align":"center"},
+            "nodeParent":1,
+            "label":"Text(replayText)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":31,
             "child":[
                 ]
         }],

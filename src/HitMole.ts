@@ -53,24 +53,33 @@ class HitMole {
     private onload() {
         HitMole.hitMoleMain = new HitMoleMain();
         HitMole.hitMoleMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitMole.hitMoleMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
         Laya.stage.addChild(HitMole.hitMoleMain);
         this.initMoles();
-        this.gameOver();
-        HitMole.hitMoleMain.replayBtn.visible = false;
+        this.moles[5].startOverAni();
+        Laya.stage.on(Laya.Event.CLICK, this, this.start);
+    }
+
+    // 开始
+    private start() {
+        Laya.stage.off(Laya.Event.CLICK, this, this.start);
+        this.moles[5].hit(HitMole.gameConfig.game);
+        HitMole.hitMoleMain.showHammer(this.moles[5]);
+        Laya.timer.once(500, this, this.gameStart, [true]);
     }
 
     // 游戏开始
-    private gameStart() {
+    private gameStart(first: boolean) {
         HitMole.hitMoleMain.showSetting(false);
-        HitMole.hitMoleMain.replayBtn.visible = false;
-        HitMole.hitMoleMain.startBtn.visible = false;
-        //this.initWords();
+        HitMole.hitMoleMain.startOverBg.visible = false;
+        HitMole.hitMoleMain.startOverText.visible = false;
+        HitMole.hitMoleMain.replayBtn.skin = "common/replay-disabled.png";
+        this.initMoles();
         this.wordTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.words));
         this.pictureTmp = JSON.parse(JSON.stringify(HitMole.gameConfig.pictures));
         Laya.stage.on(Laya.Event.CLICK, this, this.showMole);
         // 晚一点开始游戏，否则点击开始按钮就会触发舞台点击事件，调用showMole方法
         Laya.timer.once(500, this, this.setStartState);
+        this.showMole(first)
     }
 
     // 设置游戏开始状态
@@ -132,8 +141,8 @@ class HitMole {
     // }
 
     // 显示老鼠
-    private showMole() {
-        if(!HitMole.started) {
+    private showMole(first: boolean) {
+        if(!HitMole.started && first !== true) {
             return;
         }
         if(this.currentMole) { // 已经有老鼠冒出来，敲打老鼠
@@ -177,20 +186,23 @@ class HitMole {
                 }
             }
             else { // 单词或图片都已经显示，游戏结束
-                this.initMoles();
+                HitMole.hitMoleMain.replayBtn.skin = "common/replay-abled.png";
                 Laya.stage.off(Laya.Event.CLICK, this, this.showMole);
-                HitMole.hitMoleMain.showWellDone(this, this.gameOver);
+                this.gameOver();
             }
         }
     }
 
     // 游戏结束
     private gameOver() {
-        HitMole.hitMoleMain.wellDone.visible = false;
         HitMole.started = false;
-        HitMole.hitMoleMain.replayBtn.visible = true;
         HitMole.hitMoleMain.hidHammer();
         HitMole.hitMoleMain.showSetting(true);
+        this.moles[5].startOverAni();
+        HitMole.hitMoleMain.startOverText.text = "Well Done";
+        HitMole.hitMoleMain.startOverText.fontSize = 27;
+        HitMole.hitMoleMain.startOverBg.visible = true;
+        HitMole.hitMoleMain.startOverText.visible = true;
     }
 
 }

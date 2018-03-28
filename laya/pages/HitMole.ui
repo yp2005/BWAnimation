@@ -53,7 +53,7 @@
                 },
                 {
                     "type":"Text",
-                    "props":{"y":-7,"x":5,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-13,"x":5,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":9,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -96,14 +96,13 @@
             "props":{"y":61,"x":513,"width":161,"name":"item1","height":180},
             "nodeParent":1,
             "label":"Box(item1)",
-            "isOpen":true,
+            "isOpen":false,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":219,
             "child":[
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":0,"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":219,
@@ -117,9 +116,8 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":219,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -130,7 +128,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":219,
@@ -144,7 +141,6 @@
                         ]
                 },
                 {
-                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask2.png"},
                     "nodeParent":219,
@@ -185,7 +181,7 @@
                 },
                 {
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":224,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -228,13 +224,14 @@
             "props":{"y":139,"x":767,"width":161,"name":"item3","height":180},
             "nodeParent":1,
             "label":"Box(item3)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":229,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":229,
@@ -248,8 +245,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":229,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -260,6 +258,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":229,
@@ -273,6 +272,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask4.png"},
                     "nodeParent":229,
@@ -292,13 +292,14 @@
             "props":{"y":216,"x":43,"width":161,"name":"item4","height":180},
             "nodeParent":1,
             "label":"Box(item4)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":234,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":234,
@@ -312,8 +313,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":234,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -324,6 +326,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":234,
@@ -337,6 +340,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask5.png"},
                     "nodeParent":234,
@@ -356,13 +360,14 @@
             "props":{"y":262,"x":538,"width":161,"name":"item5","height":180},
             "nodeParent":1,
             "label":"Box(item5)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":239,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":239,
@@ -376,8 +381,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":239,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -388,6 +394,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":239,
@@ -401,6 +408,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask6.png"},
                     "nodeParent":239,
@@ -420,13 +428,14 @@
             "props":{"y":340,"x":228,"width":161,"name":"item6","height":180},
             "nodeParent":1,
             "label":"Box(item6)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":244,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":244,
@@ -440,8 +449,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":244,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -452,6 +462,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":244,
@@ -465,6 +476,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask7.png"},
                     "nodeParent":244,
@@ -484,13 +496,14 @@
             "props":{"y":345,"x":828,"width":161,"name":"item7","height":180},
             "nodeParent":1,
             "label":"Box(item7)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":249,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":249,
@@ -504,8 +517,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":249,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -516,6 +530,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":249,
@@ -529,6 +544,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask8.png"},
                     "nodeParent":249,
@@ -548,13 +564,14 @@
             "props":{"y":440,"x":449,"width":161,"name":"item8","height":180},
             "nodeParent":1,
             "label":"Box(item8)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":254,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":254,
@@ -568,8 +585,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":254,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -580,6 +598,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":254,
@@ -593,6 +612,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask9.png"},
                     "nodeParent":254,
@@ -613,13 +633,14 @@
             "props":{"y":494,"x":60,"width":161,"name":"item9","height":180},
             "nodeParent":1,
             "label":"Box(item9)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":259,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":259,
@@ -633,8 +654,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":259,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -645,6 +667,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":259,
@@ -658,6 +681,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask10.png"},
                     "nodeParent":259,
@@ -677,13 +701,14 @@
             "props":{"y":518,"x":729,"width":161,"name":"item10","height":180},
             "nodeParent":1,
             "label":"Box(item10)",
-            "isOpen":false,
+            "isOpen":true,
             "isDirectory":true,
             "isAniNode":true,
             "hasChild":true,
             "compId":264,
             "child":[
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"x":1,"width":150,"skin":"HitMole/word_bg.png","name":"wordBg","height":50},
                     "nodeParent":264,
@@ -697,8 +722,9 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":264,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -709,6 +735,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":118,"x":23,"skin":"HitMole/mouse.png","name":"mouseImg"},
                     "nodeParent":264,
@@ -722,6 +749,7 @@
                         ]
                 },
                 {
+                    "x":30,
                     "type":"Image",
                     "props":{"y":126,"x":-31,"skin":"HitMole/mask11.png"},
                     "nodeParent":264,
@@ -733,7 +761,8 @@
                     "compId":268,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":false
         },
         {
             "x":15,
@@ -764,7 +793,7 @@
                 {
                     "x":30,
                     "type":"Text",
-                    "props":{"y":3,"width":150,"name":"word","height":40,"fontSize":30,"color":"#ffffff","align":"center"},
+                    "props":{"y":-3,"x":0,"width":150,"name":"word","height":40,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
                     "nodeParent":269,
                     "label":"Text(word)",
                     "isDirectory":false,
@@ -806,36 +835,6 @@
         },
         {
             "x":15,
-            "type":"Button",
-            "props":{"y":346,"x":423,"var":"startBtn","stateNum":"2","skin":"common/btn_start.png"},
-            "nodeParent":1,
-            "label":"Button(startBtn)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":56,
-            "child":[
-                ],
-            "$LOCKED":true,
-            "$HIDDEN":true
-        },
-        {
-            "x":15,
-            "type":"Image",
-            "props":{"y":348,"x":426,"var":"replayBtn","skin":"common/replay.png"},
-            "nodeParent":1,
-            "label":"Image(replayBtn)",
-            "isDirectory":false,
-            "isAniNode":true,
-            "hasChild":false,
-            "compId":55,
-            "child":[
-                ],
-            "$LOCKED":true,
-            "$HIDDEN":true
-        },
-        {
-            "x":15,
             "type":"Image",
             "props":{"y":14,"x":17,"width":30,"var":"setting","skin":"common/setting.png","height":30},
             "nodeParent":1,
@@ -874,7 +873,7 @@
                 },
                 {
                     "type":"Label",
-                    "props":{"y":119,"x":566,"text":"单词：","name":"wordLabel","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":116,"x":566,"text":"单词：","name":"wordLabel","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":298,
                     "label":"Label(wordLabel)",
                     "isDirectory":false,
@@ -886,7 +885,7 @@
                 },
                 {
                     "type":"Label",
-                    "props":{"y":119,"x":566,"text":"图片：","name":"picLabel","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":116,"x":566,"text":"图片：","name":"picLabel","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":298,
                     "label":"Label(picLabel)",
                     "isDirectory":false,
@@ -898,7 +897,7 @@
                 },
                 {
                     "type":"Label",
-                    "props":{"y":54,"x":566,"text":"游戏：","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":51,"x":566,"text":"游戏：","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":298,
                     "label":"Label",
                     "isDirectory":false,
@@ -910,7 +909,7 @@
                 },
                 {
                     "type":"Label",
-                    "props":{"y":54,"x":680,"text":"单词","name":"wordRadio","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":54,"x":680,"text":"单词","name":"wordRadio","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":298,
                     "label":"Label(wordRadio)",
                     "isDirectory":false,
@@ -922,7 +921,7 @@
                 },
                 {
                     "type":"Label",
-                    "props":{"y":54,"x":784,"text":"图片","name":"picRadio","fontSize":20,"color":"#2a2121"},
+                    "props":{"y":54,"x":784,"text":"图片","name":"picRadio","fontSize":20,"font":"FF","color":"#2a2121"},
                     "nodeParent":298,
                     "label":"Label(picRadio)",
                     "isDirectory":false,
@@ -970,7 +969,7 @@
                 },
                 {
                     "type":"TextInput",
-                    "props":{"y":113,"x":649,"width":292,"name":"textInput","height":31,"fontSize":16,"color":"#3b3232"},
+                    "props":{"y":113,"x":649,"width":292,"name":"textInput","height":31,"fontSize":16,"font":"FF","color":"#3b3232"},
                     "nodeParent":298,
                     "label":"TextInput(textInput)",
                     "isDirectory":false,
@@ -1003,12 +1002,13 @@
                     "compId":301,
                     "child":[
                         ]
-                }]
+                }],
+            "$HIDDEN":true
         },
         {
             "x":15,
             "type":"Text",
-            "props":{"y":74,"x":212,"width":300,"var":"tip","text":"操作不正确！","pivotY":2,"pivotX":8,"height":30,"fontSize":30,"color":"#ffffff","align":"center"},
+            "props":{"y":74,"x":212,"width":300,"var":"tip","text":"操作不正确！","pivotY":2,"pivotX":8,"height":30,"fontSize":30,"font":"FF","color":"#ffffff","align":"center"},
             "nodeParent":1,
             "label":"Text(tip)",
             "isDirectory":false,
@@ -1021,13 +1021,52 @@
         {
             "x":15,
             "type":"Image",
-            "props":{"y":256,"x":261,"var":"wellDone","skin":"common/well-done.png"},
+            "props":{"y":681,"x":832,"var":"replayBtn","skin":"common/replay-disabled.png"},
             "nodeParent":1,
-            "label":"Image(wellDone)",
+            "label":"Image(replayBtn)",
             "isDirectory":false,
             "isAniNode":true,
             "hasChild":false,
-            "compId":302,
+            "compId":303,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "props":{"y":695,"x":833,"width":168,"text":"Replay","strokeColor":"#000000","stroke":5,"height":39,"fontSize":27,"font":"FF","color":"#ffffff","align":"center"},
+            "nodeParent":1,
+            "label":"Text",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":304,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Image",
+            "props":{"y":246,"x":467,"var":"startOverBg","skin":"HitMole/star-over-bg.png"},
+            "nodeParent":1,
+            "label":"Image(startOverBg)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":305,
+            "child":[
+                ]
+        },
+        {
+            "x":15,
+            "type":"Text",
+            "props":{"y":255,"x":467,"width":176,"var":"startOverText","text":"Start","height":50,"fontSize":30,"font":"FF","color":"#000000","bold":true,"align":"center"},
+            "nodeParent":1,
+            "label":"Text(startOverText)",
+            "isDirectory":false,
+            "isAniNode":true,
+            "hasChild":false,
+            "compId":306,
             "child":[
                 ]
         }],

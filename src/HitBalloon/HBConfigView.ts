@@ -88,6 +88,8 @@ class HBConfigView {
     public show() {
         this.init();
         this.configBox.visible = true;
+        this.configBox.removeSelf()
+        HitBalloon.hitBalloonMain.addChild(this.configBox);
     }
 
     // 隐藏配置

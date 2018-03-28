@@ -41,7 +41,7 @@
         {
             "x":15,
             "type":"Text",
-            "props":{"y":49,"x":0,"width":128,"var":"word","text":"computer","strokeColor":"#ffffff","stroke":2,"height":30,"fontSize":30,"font":"Arial","color":"#000000","align":"center"},
+            "props":{"y":49,"x":0,"width":128,"var":"word","text":"computer","strokeColor":"#ffffff","stroke":2,"height":30,"fontSize":30,"font":"FF","color":"#000000","align":"center"},
             "nodeParent":1,
             "label":"Text(word)",
             "isDirectory":false,
