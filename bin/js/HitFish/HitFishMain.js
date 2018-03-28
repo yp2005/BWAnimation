@@ -77,6 +77,8 @@ var HitFishMain = /** @class */ (function (_super) {
     HitFishMain.prototype.showConfig = function () {
         this.fishConfig.visible = true;
         this.fishConfigBtn.visible = false;
+        this.fishConfig.removeSelf();
+        this.addChild(this.fishConfig);
     };
     // 隐藏游戏配置页面 
     HitFishMain.prototype.hideConfig = function () {

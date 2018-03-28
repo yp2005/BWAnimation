@@ -42,11 +42,8 @@ var SpiderAndWord = /** @class */ (function () {
     SpiderAndWord.prototype.onload = function () {
         var _this = this;
         SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
-        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        SpiderAndWord.spiderAndWordMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
         Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
-        SpiderAndWord.spiderAndWordMain.startBtn.visible = true;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
         SpiderAndWord.started = false;
         this.startPos.x = this.startPos.x + this.offset;
         this.startPos.y = this.startPos.y + this.offset;
@@ -59,12 +56,26 @@ var SpiderAndWord = /** @class */ (function () {
         SpiderAndWord.posArr = SpiderAndWord.posArr.map(function (p) {
             return { x: (p.x + _this.offset), y: (p.y + _this.offset) };
         });
+        this.gameStart();
+    };
+    SpiderAndWord.prototype.restart = function () {
+        if (SpiderAndWord.spiderAndWordMain.replayBtn.skin.indexOf("disabled") != -1) {
+            return;
+        }
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-disabled.png";
+        SpiderAndWord.currentSpider.visible = false;
+        for (var _i = 0, _a = SpiderAndWord.currentPics; _i < _a.length; _i++) {
+            var picture = _a[_i];
+            picture.removeSelf();
+            picture.destroy();
+        }
+        this.gameStart();
     };
     // 图片点击事件
     SpiderAndWord.prototype.mouseClick = function (hsPic) {
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
         if (SpiderAndWord.started && !this.isChecking) {
-            this.speedPlus = 5;
+            this.speedPlus = 4;
             // SpiderAndWord.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
             SpiderAndWord.targetPos = { x: hsPic.x, y: hsPic.y };
             this.currentWord = hsPic.word;
@@ -113,9 +124,7 @@ var SpiderAndWord = /** @class */ (function () {
     };
     // 游戏开始
     SpiderAndWord.prototype.gameStart = function () {
-        SpiderAndWord.spiderAndWordMain.setting.visible = false;
-        SpiderAndWord.spiderAndWordMain.replayBtn.visible = false;
-        SpiderAndWord.spiderAndWordMain.startBtn.visible = false;
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-disabled.png";
         this.init();
         //恢复游戏循环
         Laya.timer.frameLoop(1, this, this.onLoop);
@@ -186,7 +195,7 @@ var SpiderAndWord = /** @class */ (function () {
             this.currentPic.playNo();
         }
         if (this.checkAllRight()) {
-            Laya.timer.once(3000, this, this.showWellDone);
+            Laya.timer.once(3000, this, this.gameOver);
         }
         return _word;
     };
@@ -232,6 +241,7 @@ var SpiderAndWord = /** @class */ (function () {
         // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         // SpiderAndWord.spiderAndWordMain.showSetting(true);
         SpiderAndWord.started = false;
+        SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-abled.png";
     };
     SpiderAndWord.started = false; //游戏是否开始
     // 八个位置，第一排1234，第二排5678

@@ -103,7 +103,7 @@ class SpiderAndWord {
     private mouseClick(hsPic:HSPicture){
         // 只有当游戏已经开始并且蜘蛛空闲状态，才能执行任务
         if(SpiderAndWord.started && !this.isChecking){
-            this.speedPlus = 5;
+            this.speedPlus = 4;
 
             // SpiderAndWord.targetPos = {x:(hsPic.x+this.offset),y:(hsPic.y+this.offset)};
             SpiderAndWord.targetPos = {x:hsPic.x,y:hsPic.y};

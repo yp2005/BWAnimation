@@ -13,9 +13,6 @@ var HitBalloonMain = /** @class */ (function (_super) {
     __extends(HitBalloonMain, _super);
     function HitBalloonMain() {
         var _this = _super.call(this) || this;
-        _this.wellDone.visible = false;
-        _this.wellDoneY = _this.wellDone.y;
-        _this.wellDoneX = _this.wellDone.x;
         _this.configView = new HBConfigView(_this.configBox);
         _this.tip.visible = false;
         _this.setting.on(Laya.Event.CLICK, _this, _this.showConfigView);
@@ -28,6 +25,8 @@ var HitBalloonMain = /** @class */ (function (_super) {
     HitBalloonMain.prototype.showTip = function (text) {
         this.tip.text = text;
         this.tip.visible = true;
+        this.tip.removeSelf();
+        this.addChild(this.tip);
         Laya.timer.once(1500, this, this.hideTip);
     };
     HitBalloonMain.prototype.hideTip = function () {
@@ -43,20 +42,8 @@ var HitBalloonMain = /** @class */ (function (_super) {
             this.setting.visible = state;
         }
     };
-    // 游戏结束
-    HitBalloonMain.prototype.gameOver = function () {
-        // 显示well done文字效果
-        this.wellDone.y = this.wellDoneY + this.wellDone.height;
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        this.wellDone.removeSelf();
-        this.addChild(this.wellDone);
-        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30 }, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
-    };
     // 重置游戏为初始状态
     HitBalloonMain.prototype.reset = function () {
-        this.wellDone.visible = false;
         for (var _i = 0, _a = this.balloons; _i < _a.length; _i++) {
             var balloon = _a[_i];
             balloon.removeSelf();
@@ -69,7 +56,6 @@ var HitBalloonMain = /** @class */ (function (_super) {
             picture.removeSelf();
             picture.destroy();
         }
-        HitBalloon.hitBalloonMain.replayBtn.visible = true;
         HitBalloon.finishedWordsNumber = 0;
         this.showSetting(true);
     };
@@ -97,7 +83,7 @@ var HitBalloonMain = /** @class */ (function (_super) {
                 balloon.picture.skin = "HitBalloon/balloon-" + (index + 1) + ".png";
             }
             balloon.x = index * balloonWidth + (balloonWidth - balloon.width) / 2;
-            balloon.y = 330;
+            balloon.y = 315;
             // 根据气球个数设置单词字号
             balloon.word.width = balloonWidth;
             balloon.word.x = (128 - balloonWidth) / 2;
@@ -125,7 +111,7 @@ var HitBalloonMain = /** @class */ (function (_super) {
             }
             else {
                 picture.x = (index - topPicNumber) * picWidthBottom + (picWidthBottom - picture.width) / 2;
-                picture.y = 564;
+                picture.y = 480;
                 picture.position = "bottom";
             }
             this.addChild(picture);

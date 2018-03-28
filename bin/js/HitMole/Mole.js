@@ -5,7 +5,7 @@ var Mole = /** @class */ (function () {
         this.wordBg = wordBg;
         this.wordBg.y = -10;
         this.word = word;
-        this.word.y = -7;
+        this.word.y = -10;
         this.reset();
     }
     // 重置老鼠状态
@@ -21,6 +21,13 @@ var Mole = /** @class */ (function () {
     // 设置图片
     Mole.prototype.setPic = function (pic) {
         this.mouseImg.skin = pic;
+    };
+    // 开始结束游戏动画
+    Mole.prototype.startOverAni = function () {
+        this.mouseImg.visible = true;
+        Laya.SoundManager.playSound("res/audio/mole-out.mp3", 1);
+        this.mouseImg.y = 118;
+        Laya.Tween.to(this.mouseImg, { y: 52 }, 500, Laya.Ease.backOut);
     };
     // 显示老鼠
     Mole.prototype.showMouse = function (audio) {

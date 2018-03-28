@@ -1,32 +1,31 @@
 D .
-R 4E1CE516 .DS_Store
-R D6AFB7DA .gitignore
 D common
 P 96015AC9 btn_start.png
 P 5A05FAAE configBG.png
 P 18FAF2E0 gameover.png
 P BC4E3960 img_radio_checked.png
 P 838697A5 img_radio_notCheck.png
+P EF605369 replay-abled.png
+P 7F8CE93B replay-disabled.png
 P EA6A5058 replay.png
 P 6F2E1E3C setting.png
 P 5097AE90 well-done.png
 D HitBalloon
-R 6D88006A .DS_Store
-P CA009A06 ball.png
+P 77D65795 ball.png
 P 0DF6FC46 balloon-1.png
 P 735D276D balloon-2.png
 P 5575E700 balloon-3.png
 P 6264EEB3 balloon-4.png
 P C1BB1E11 balloon-5.png
 P 7F2B1D51 balloon-6.png
-P AD25C1D8 bike.png
+P C7FD4EB8 bike.png
 P F4571C10 blast.png
-P 8DA7BA5D car.png
-P 040F6286 computer.png
-P 2A13E28A doll.png
+P BDA013A1 car.png
+P 43200BF8 computer.png
+P 42C1D9B9 doll.png
 R DEF0998F mainBG.png
-P 15850473 pic_bg.png
-P A70DFB69 train.png
+P E14EEBF2 pic_bg.png
+P CF64234A train.png
 D HitFish
 R F7D06829 bg.png
 P A7559FF1 count1-0.png
@@ -47,7 +46,6 @@ P 49C273DA fish-5.png
 P 5E7830E4 fish-6.png
 P 3F6B8200 wordbg.png
 D HitMole
-R F195EA17 .DS_Store
 P C350AC0B hammer.png
 R 0B37EEC3 mainBG.jpg
 P 3E0FDE98 mask1.png
@@ -67,9 +65,9 @@ P 305864E4 mouse_1.png
 P 57045DD4 mouse_2.png
 P ED6B845C mouse_3.png
 P F4FE58D2 picture1.png
-P 1B90368E word_bg.png
+P AAE40B6C star-over-bg.png
+P 86D3EDC6 word_bg.png
 D SpiderAndWord
-R 6D88006A .DS_Store
 R FADEA11C bg.png
 P 6B8BBD8F spider-move-1.png
 P EA902713 spider-move-2.png
@@ -116,7 +114,6 @@ P 3F12044D spiderpic-young-2.png
 P 6811BCB3 spiderpic-young-3.png
 P 2F64D5CF spiderpic-young-4.png
 D template
-R 57C1A4A0 .DS_Store
 D template/ButtonTab
 P AE499BA2 btn_LargeTabButton_Middle.png
 D template/Text

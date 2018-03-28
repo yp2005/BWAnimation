@@ -75,6 +75,8 @@ var HBConfigView = /** @class */ (function () {
     HBConfigView.prototype.show = function () {
         this.init();
         this.configBox.visible = true;
+        this.configBox.removeSelf();
+        HitBalloon.hitBalloonMain.addChild(this.configBox);
     };
     // 隐藏配置
     HBConfigView.prototype.hide = function () {

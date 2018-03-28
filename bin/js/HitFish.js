@@ -33,8 +33,7 @@ var HitFish = /** @class */ (function () {
         // 鱼的类型固定6种;
         HitFish.fishType = 6;
         HitFish.hitFishMain = new HitFishMain();
-        HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        HitFish.hitFishMain.startBtn.on(Laya.Event.CLICK, this, this.gameStart);
+        HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
         // HitFish.hitFishMain.initConfig();
         this.theCounter = HitFish.hitFishMain.getChildByName("theCounter");
         // this.theCounter.stop();
@@ -42,19 +41,27 @@ var HitFish = /** @class */ (function () {
         this.theCounter.on(Laya.Event.COMPLETE, this, this.countEnd);
         Laya.stage.addChild(HitFish.hitFishMain);
         HitFish.gameFish = [];
-        this.gameOver();
-        HitFish.hitFishMain.replayBtn.visible = false;
-        HitFish.hitFishMain.startBtn.visible = true;
         SoundManager.playMusic("res/audio/fish_bg.mp3", 0);
         SoundManager.setMusicVolume(0.1);
         SoundManager.setSoundVolume(1);
+        this.gameStart();
+    };
+    // 重新开始游戏
+    HitFish.prototype.restart = function () {
+        if (HitFish.hitFishMain.replayBtn.skin.indexOf("disabled") != -1) {
+            return;
+        }
+        HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
+        for (var i = 0; i < HitFish.gameFish.length; i++) {
+            HitFish.gameFish[i].removeSelf();
+        }
+        HitFish.gameFish = [];
+        this.gameStart();
     };
     // 游戏开始
     HitFish.prototype.gameStart = function () {
         if (HitFish.gameConfig.leftWords && HitFish.gameConfig.leftWords.length > 0 && HitFish.gameConfig.rightWords && HitFish.gameConfig.rightWords.length > 0) {
-            HitFish.hitFishMain.fishConfigBtn.visible = false;
-            HitFish.hitFishMain.replayBtn.visible = false;
-            HitFish.hitFishMain.startBtn.visible = false;
+            HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
             this.initWords();
             Laya.timer.once(500, this, this.setStartState);
         }
@@ -68,10 +75,8 @@ var HitFish = /** @class */ (function () {
     };
     // 游戏结束
     HitFish.prototype.gameOver = function () {
-        HitFish.hitFishMain.wellDone.visible = false;
+        HitFish.hitFishMain.replayBtn.skin = "common/replay-abled.png";
         HitFish.started = false;
-        HitFish.hitFishMain.replayBtn.visible = false;
-        HitFish.hitFishMain.showSetting(false);
     };
     // 初始化单词
     HitFish.prototype.initWords = function () {
@@ -82,18 +87,18 @@ var HitFish = /** @class */ (function () {
         var arr = CommonTools.getRandomArr(HitFish.fishType);
         for (var i = 0; i < HitFish.gameConfig.leftWords.length; i++) {
             var fish = new Fish(arr[i], HitFish.gameConfig.leftWords[i]);
-            fish.x = 155;
+            fish.x = 180;
             fish.y = fishHeigthL * i + (fishHeigthL - 200) / 2;
-            Laya.stage.addChild(fish);
+            HitFish.hitFishMain.addChild(fish);
             HitFish.gameFish.push(fish);
         }
         // 初始化右边
         arr = CommonTools.getRandomArr(HitFish.fishType);
         for (var i = 0; i < HitFish.gameConfig.rightWords.length; i++) {
             var fish = new Fish(arr[i], HitFish.gameConfig.rightWords[i]);
-            fish.x = 610;
+            fish.x = 600;
             fish.y = fishHeigthR * i + (fishHeigthR - 200) / 2;
-            Laya.stage.addChild(fish);
+            HitFish.hitFishMain.addChild(fish);
             HitFish.gameFish.push(fish);
         }
     };
@@ -111,7 +116,7 @@ var HitFish = /** @class */ (function () {
     HitFish.prototype.countEnd = function () {
         HitFish.hitFishMain.stopCount();
         // 延迟两秒，让老师可以点击单词变回图片
-        Laya.timer.once(2000, this, this.checkWellDone);
+        this.checkWellDone();
     };
     // 判断是否完成游戏
     HitFish.prototype.checkWellDone = function () {
@@ -122,10 +127,6 @@ var HitFish = /** @class */ (function () {
         if (isAllRight) {
             // u3、u4反馈0323.excel，去掉gameover
             this.gameOver();
-            // for(let i = 0;i<HitFish.gameFish.length;i++){
-            //     HitFish.gameFish[i].removeSelf();
-            // }
-            // HitFish.gameFish = [];
             // HitFish.hitFishMain.showWellDone(this, this.gameOver);
         }
     };

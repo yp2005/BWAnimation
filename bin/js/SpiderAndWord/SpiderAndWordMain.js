@@ -13,9 +13,9 @@ var SpiderAndWordMain = /** @class */ (function (_super) {
     __extends(SpiderAndWordMain, _super);
     function SpiderAndWordMain() {
         var _this = _super.call(this) || this;
-        _this.wellDone.visible = false;
-        _this.wellDoneY = _this.wellDone.y;
-        _this.wellDoneX = _this.wellDone.x;
+        // this.wellDone.visible = false;
+        // this.wellDoneY = this.wellDone.y;
+        // this.wellDoneX = this.wellDone.x;
         _this.configView = new HSConfigView(_this.configBox);
         _this.tip.visible = false;
         _this.setting.on(Laya.Event.CLICK, _this, _this.showConfigView);
@@ -35,7 +35,7 @@ var SpiderAndWordMain = /** @class */ (function (_super) {
     };
     // 显示游戏配置页面 
     SpiderAndWordMain.prototype.showConfigView = function () {
-        this.setting.visible = false;
+        //this.setting.visible = false;
         if (SpiderAndWord.started) {
             SpiderAndWord.currentSpider.visible = false;
             for (var _i = 0, _a = SpiderAndWord.currentPics; _i < _a.length; _i++) {
@@ -43,7 +43,7 @@ var SpiderAndWordMain = /** @class */ (function (_super) {
                 picture.removeSelf();
                 picture.destroy();
             }
-            SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
+            SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-abled.png";
         }
         this.configView.show();
     };
@@ -52,29 +52,6 @@ var SpiderAndWordMain = /** @class */ (function (_super) {
         if (!SpiderAndWord.gameConfig.gameModel) {
             this.setting.visible = state;
         }
-    };
-    // 游戏结束
-    SpiderAndWordMain.prototype.gameOver = function () {
-        // 显示well done文字效果
-        this.wellDone.y = this.wellDoneY;
-        console.log("2222");
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 100 }, 1500, Laya.Ease.backOut, Laya.Handler.create(this, this.reset));
-    };
-    // 显示well done文字效果
-    SpiderAndWordMain.prototype.showWellDone = function (that, callBack) {
-        this.wellDone.y = this.wellDoneY + this.wellDone.height;
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30 }, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
-    };
-    // 重置游戏为初始状态
-    SpiderAndWordMain.prototype.reset = function () {
-        this.wellDone.visible = false;
-        this.showSetting(true);
     };
     return SpiderAndWordMain;
 }(ui.SpiderAndWordUI));
