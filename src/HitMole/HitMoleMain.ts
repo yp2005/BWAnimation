@@ -2,15 +2,10 @@
 class HitMoleMain extends ui.HitMoleUI {
     private hammer: Hammer; // 锤子
     private configView: HMConfigView;
-    private wellDoneY: number; // well done效果Y坐标
-    private wellDoneX: number; // well done效果X坐标
     constructor() {
         super();
         this.hammer = new Hammer();
         this.hammer.visible = false;
-        this.wellDone.visible = false;
-        this.wellDoneY = this.wellDone.y;
-        this.wellDoneX = this.wellDone.x;
         this.configView = new HMConfigView(this.configBox);
         this.tip.visible = false;
         this.addChild(this.hammer);
@@ -54,14 +49,5 @@ class HitMoleMain extends ui.HitMoleUI {
     // 隐藏锤子
     public hidHammer() {
         this.hammer.visible = false;
-    }
-    
-    // 显示well done文字效果
-    public showWellDone(that, callBack: Function) {
-        this.wellDone.y = this.wellDoneY + this.wellDone.height;
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, {scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30}, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
     }
 }
