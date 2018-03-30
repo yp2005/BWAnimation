@@ -28,7 +28,8 @@ class HitMoleMain extends ui.HitMoleUI {
     }
 
     // 显示游戏配置页面 
-    private showConfigView() {
+    private showConfigView(e: laya.events.Event) {
+        e.stopPropagation();
         this.configView.show();
     }
 

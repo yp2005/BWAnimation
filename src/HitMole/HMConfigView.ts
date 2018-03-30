@@ -32,6 +32,9 @@ class HMConfigView {
         this.picRadioImg.on(Laya.Event.CLICK, this, this.switchPic);
         this.submitBtn.on(Laya.Event.CLICK, this, this.submit);
         this.closeBtn.on(Laya.Event.CLICK, this, this.hide);
+        this.configBox.on(Laya.Event.CLICK, this, function(e: laya.events.Event) {
+            e.stopPropagation();
+        });
     }
 
     // 显示配置
@@ -65,7 +68,8 @@ class HMConfigView {
     }
 
     // 点击单词单选
-    private switchWord() {
+    private switchWord(e: laya.events.Event) {
+        e.stopPropagation();
         if(this.game == "picture") {
             this.game = "word";         
             this.wordRadioImg.skin = "common/img_radio_checked.png";
@@ -77,7 +81,8 @@ class HMConfigView {
     }
 
     // 点击图片单选
-    private switchPic() {
+    private switchPic(e: laya.events.Event) {
+        e.stopPropagation();
         if(this.game == "word") {
             this.game = "picture";
             this.wordRadioImg.skin = "common/img_radio_notCheck.png";

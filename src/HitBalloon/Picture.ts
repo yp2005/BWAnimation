@@ -36,7 +36,7 @@ class Picture extends ui.PictureUI {
                     toY = this.y + this.picture.y - 10;
                 }
                 HitBalloon.hitBalloonMain.addChild(line);
-                line.graphics.drawLine(fromX, fromY, toX, toY, "#07259e", 3); 
+                line.graphics.drawLine(fromX, fromY, toX, toY, "#07259e", 2); 
                 this.line = line;
                 HitBalloon.currentBalloon.linedNumber++;
                 // 单词应配对的图片都已连线，单词完成配对
