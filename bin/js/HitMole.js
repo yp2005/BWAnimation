@@ -33,12 +33,18 @@ var HitMole = /** @class */ (function () {
     }
     // 游戏资源加载完成进行游戏初始化设置
     HitMole.prototype.onload = function () {
-        HitMole.hitMoleMain = new HitMoleMain();
-        HitMole.hitMoleMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
-        Laya.stage.addChild(HitMole.hitMoleMain);
-        this.initMoles();
-        this.moles[5].startOverAni();
-        Laya.stage.on(Laya.Event.CLICK, this, this.start);
+        var text = new Laya.Text();
+        text.text = "fffff";
+        text.font = "ff";
+        // ff字体加载完再加载主页面
+        Laya.timer.once(100, this, function () {
+            HitMole.hitMoleMain = new HitMoleMain();
+            HitMole.hitMoleMain.replayBtn.on(Laya.Event.CLICK, this, this.gameStart);
+            Laya.stage.addChild(HitMole.hitMoleMain);
+            this.initMoles();
+            this.moles[5].startOverAni();
+            Laya.stage.on(Laya.Event.CLICK, this, this.start);
+        });
     };
     // 开始
     HitMole.prototype.start = function () {

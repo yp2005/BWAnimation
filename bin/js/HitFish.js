@@ -30,21 +30,27 @@ var HitFish = /** @class */ (function () {
     }
     // 游戏资源加载完成进行游戏初始化设置
     HitFish.prototype.onload = function () {
-        // 鱼的类型固定6种;
-        HitFish.fishType = 6;
-        HitFish.hitFishMain = new HitFishMain();
-        HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
-        // HitFish.hitFishMain.initConfig();
-        this.theCounter = HitFish.hitFishMain.getChildByName("theCounter");
-        // this.theCounter.stop();
-        this.theCounter.visible = false;
-        this.theCounter.on(Laya.Event.COMPLETE, this, this.countEnd);
-        Laya.stage.addChild(HitFish.hitFishMain);
-        HitFish.gameFish = [];
-        SoundManager.playMusic("res/audio/fish_bg.mp3", 0);
-        SoundManager.setMusicVolume(0.1);
-        SoundManager.setSoundVolume(1);
-        this.gameStart();
+        var text = new Laya.Text();
+        text.text = "fffff";
+        text.font = "ff";
+        // ff字体加载完再加载主页面
+        Laya.timer.once(100, this, function () {
+            // 鱼的类型固定6种;
+            HitFish.fishType = 6;
+            HitFish.hitFishMain = new HitFishMain();
+            HitFish.hitFishMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
+            // HitFish.hitFishMain.initConfig();
+            this.theCounter = HitFish.hitFishMain.getChildByName("theCounter");
+            // this.theCounter.stop();
+            this.theCounter.visible = false;
+            this.theCounter.on(Laya.Event.COMPLETE, this, this.countEnd);
+            Laya.stage.addChild(HitFish.hitFishMain);
+            HitFish.gameFish = [];
+            SoundManager.playMusic("res/audio/fish_bg.mp3", 0);
+            SoundManager.setMusicVolume(0.1);
+            SoundManager.setSoundVolume(1);
+            this.gameStart();
+        });
     };
     // 重新开始游戏
     HitFish.prototype.restart = function () {

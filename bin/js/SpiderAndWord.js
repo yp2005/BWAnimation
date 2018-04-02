@@ -40,23 +40,29 @@ var SpiderAndWord = /** @class */ (function () {
     }
     // 游戏资源加载完成进行游戏初始化设置
     SpiderAndWord.prototype.onload = function () {
-        var _this = this;
-        SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
-        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
-        Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
-        SpiderAndWord.started = false;
-        this.startPos.x = this.startPos.x + this.offset;
-        this.startPos.y = this.startPos.y + this.offset;
-        this.endPos.x = this.endPos.x + this.offset;
-        this.endPos.y = this.endPos.y + this.offset;
-        SpiderAndWord.currentSpider = new Spider();
-        SpiderAndWord.currentSpider.visible = false;
-        SpiderAndWord.currentSpider.zOrder = 10;
-        Laya.stage.addChild(SpiderAndWord.currentSpider);
-        SpiderAndWord.posArr = SpiderAndWord.posArr.map(function (p) {
-            return { x: (p.x + _this.offset), y: (p.y + _this.offset) };
+        var text = new Laya.Text();
+        text.text = "fffff";
+        text.font = "ff";
+        // ff字体加载完再加载主页面
+        Laya.timer.once(100, this, function () {
+            var _this = this;
+            SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
+            SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
+            Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
+            SpiderAndWord.started = false;
+            this.startPos.x = this.startPos.x + this.offset;
+            this.startPos.y = this.startPos.y + this.offset;
+            this.endPos.x = this.endPos.x + this.offset;
+            this.endPos.y = this.endPos.y + this.offset;
+            SpiderAndWord.currentSpider = new Spider();
+            SpiderAndWord.currentSpider.visible = false;
+            SpiderAndWord.currentSpider.zOrder = 10;
+            Laya.stage.addChild(SpiderAndWord.currentSpider);
+            SpiderAndWord.posArr = SpiderAndWord.posArr.map(function (p) {
+                return { x: (p.x + _this.offset), y: (p.y + _this.offset) };
+            });
+            this.gameStart();
         });
-        this.gameStart();
     };
     SpiderAndWord.prototype.restart = function () {
         if (SpiderAndWord.spiderAndWordMain.replayBtn.skin.indexOf("disabled") != -1) {

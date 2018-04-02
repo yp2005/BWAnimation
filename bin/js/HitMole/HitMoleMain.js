@@ -15,9 +15,6 @@ var HitMoleMain = /** @class */ (function (_super) {
         var _this = _super.call(this) || this;
         _this.hammer = new Hammer();
         _this.hammer.visible = false;
-        _this.wellDone.visible = false;
-        _this.wellDoneY = _this.wellDone.y;
-        _this.wellDoneX = _this.wellDone.x;
         _this.configView = new HMConfigView(_this.configBox);
         _this.tip.visible = false;
         _this.addChild(_this.hammer);
@@ -38,7 +35,8 @@ var HitMoleMain = /** @class */ (function (_super) {
         this.tip.visible = false;
     };
     // 显示游戏配置页面 
-    HitMoleMain.prototype.showConfigView = function () {
+    HitMoleMain.prototype.showConfigView = function (e) {
+        e.stopPropagation();
         this.configView.show();
     };
     // 设置设置按钮是否显示
@@ -56,14 +54,6 @@ var HitMoleMain = /** @class */ (function (_super) {
     // 隐藏锤子
     HitMoleMain.prototype.hidHammer = function () {
         this.hammer.visible = false;
-    };
-    // 显示well done文字效果
-    HitMoleMain.prototype.showWellDone = function (that, callBack) {
-        this.wellDone.y = this.wellDoneY + this.wellDone.height;
-        this.wellDone.x = this.wellDoneX + this.wellDone.width / 2;
-        this.wellDone.scale(0, 0);
-        this.wellDone.visible = true;
-        Laya.Tween.to(this.wellDone, { scaleX: 1, scaleY: 1, x: this.wellDoneX, y: this.wellDoneY - 30 }, 1500, Laya.Ease.backOut, Laya.Handler.create(that, callBack));
     };
     return HitMoleMain;
 }(ui.HitMoleUI));

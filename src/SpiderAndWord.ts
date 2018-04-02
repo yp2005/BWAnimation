@@ -64,26 +64,33 @@ class SpiderAndWord {
 
     // 游戏资源加载完成进行游戏初始化设置
     private onload() {
-        SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
-        SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
-        Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
-        SpiderAndWord.started = false;
+        let text = new Laya.Text();
+        text.text = "fffff";
+        text.font = "ff";
+        // ff字体加载完再加载主页面
+        Laya.timer.once(100, this, function() {
+            SpiderAndWord.spiderAndWordMain = new SpiderAndWordMain();
+            SpiderAndWord.spiderAndWordMain.replayBtn.on(Laya.Event.CLICK, this, this.restart);
+            Laya.stage.addChild(SpiderAndWord.spiderAndWordMain);
+            SpiderAndWord.started = false;
 
-        this.startPos.x = this.startPos.x+this.offset;
-        this.startPos.y = this.startPos.y+this.offset;
-        this.endPos.x = this.endPos.x+this.offset;
-        this.endPos.y = this.endPos.y+this.offset;
+            this.startPos.x = this.startPos.x+this.offset;
+            this.startPos.y = this.startPos.y+this.offset;
+            this.endPos.x = this.endPos.x+this.offset;
+            this.endPos.y = this.endPos.y+this.offset;
 
-        SpiderAndWord.currentSpider = new Spider();
-        SpiderAndWord.currentSpider.visible = false;
-        SpiderAndWord.currentSpider.zOrder = 10;
+            SpiderAndWord.currentSpider = new Spider();
+            SpiderAndWord.currentSpider.visible = false;
+            SpiderAndWord.currentSpider.zOrder = 10;
 
-        Laya.stage.addChild(SpiderAndWord.currentSpider);
+            Laya.stage.addChild(SpiderAndWord.currentSpider);
 
-        SpiderAndWord.posArr = SpiderAndWord.posArr.map(p=>{
-            return {x:(p.x+this.offset),y:(p.y+this.offset)}
-        })
-        this.gameStart();
+            SpiderAndWord.posArr = SpiderAndWord.posArr.map(p=>{
+                return {x:(p.x+this.offset),y:(p.y+this.offset)}
+            })
+            this.gameStart();
+        });    
+        
     }
 
     private restart() {

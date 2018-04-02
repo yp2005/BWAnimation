@@ -20,6 +20,9 @@ var HMConfigView = /** @class */ (function () {
         this.picRadioImg.on(Laya.Event.CLICK, this, this.switchPic);
         this.submitBtn.on(Laya.Event.CLICK, this, this.submit);
         this.closeBtn.on(Laya.Event.CLICK, this, this.hide);
+        this.configBox.on(Laya.Event.CLICK, this, function (e) {
+            e.stopPropagation();
+        });
     }
     // 显示配置
     HMConfigView.prototype.show = function () {
@@ -49,7 +52,8 @@ var HMConfigView = /** @class */ (function () {
         }
     };
     // 点击单词单选
-    HMConfigView.prototype.switchWord = function () {
+    HMConfigView.prototype.switchWord = function (e) {
+        e.stopPropagation();
         if (this.game == "picture") {
             this.game = "word";
             this.wordRadioImg.skin = "common/img_radio_checked.png";
@@ -60,7 +64,8 @@ var HMConfigView = /** @class */ (function () {
         }
     };
     // 点击图片单选
-    HMConfigView.prototype.switchPic = function () {
+    HMConfigView.prototype.switchPic = function (e) {
+        e.stopPropagation();
         if (this.game == "word") {
             this.game = "picture";
             this.wordRadioImg.skin = "common/img_radio_notCheck.png";

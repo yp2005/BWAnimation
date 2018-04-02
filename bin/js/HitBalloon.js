@@ -22,7 +22,7 @@ var HitBalloon = /** @class */ (function () {
         }
         HitBalloon.gameConfig = config;
         // 初始化舞台设置
-        Laya.init(1024, 768, WebGL);
+        Laya.init(1024, 768);
         Laya.stage.alignV = Stage.ALIGN_MIDDLE;
         Laya.stage.alignH = Stage.ALIGN_CENTER;
         Laya.stage.scaleMode = "showall";
