@@ -42,7 +42,7 @@
         {
             "x":15,
             "type":"Text",
-            "props":{"y":67,"x":10,"width":200,"var":"fishWord","valign":"middle","text":"computer","height":65,"fontSize":40,"font":"FF","color":"#fff","align":"center"},
+            "props":{"y":67,"x":10,"width":200,"var":"fishWord","valign":"top","text":"computer","height":65,"fontSize":40,"font":"FF","color":"#fff","align":"center"},
             "nodeParent":1,
             "label":"Text(fishWord)",
             "isDirectory":false,
