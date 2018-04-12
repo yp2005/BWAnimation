@@ -25,6 +25,7 @@ class HSPicture extends Laya.Sprite {
     }
 
     public showBg(){
+        Laya.SoundManager.playMusic("res/audio/spider-catch.mp3",1);
         this.isRight = true;
         this.bg.visible = true;
     }
