@@ -68,6 +68,7 @@ class Mole {
 
     // 老鼠受击
     public hit(game: string) {
+        Laya.SoundManager.playSound("res/audio/hit-mole.mp3", 1);
         if(game == "word") {
             this.mouseImg.y = 52;
             Laya.Tween.to(this.mouseImg, {y: 118}, 500, Laya.Ease.backOut, Laya.Handler.create(this, this.hideWord));

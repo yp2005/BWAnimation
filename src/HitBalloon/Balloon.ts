@@ -24,7 +24,7 @@ class Balloon extends ui.BalloonUI {
         // 停止气球晃动，炸开气球显示单词
         this.shake.stop();
         this.blast.play(0, false);
-        Laya.timer.once(1200, this, this.showBlast);
+        Laya.timer.once(750, this, this.showBlast);
     }
 
     // 显示爆炸效果图片
