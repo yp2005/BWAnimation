@@ -1,5 +1,8 @@
 D .
+R A88A105D .DS_Store
+R D6AFB7DA .gitignore
 D common
+R 09705FB6 .DS_Store
 P 96015AC9 btn_start.png
 P 5A05FAAE configBG.png
 P 18FAF2E0 gameover.png
@@ -11,6 +14,7 @@ P EA6A5058 replay.png
 P 6F2E1E3C setting.png
 P 5097AE90 well-done.png
 D HitBalloon
+R 6D88006A .DS_Store
 P 77D65795 ball.png
 P 0DF6FC46 balloon-1.png
 P 735D276D balloon-2.png
@@ -46,6 +50,7 @@ P 49C273DA fish-5.png
 P 5E7830E4 fish-6.png
 P 3F6B8200 wordbg.png
 D HitMole
+R F195EA17 .DS_Store
 P C350AC0B hammer.png
 R 0B37EEC3 mainBG.jpg
 P 3E0FDE98 mask1.png
@@ -68,6 +73,7 @@ P F4FE58D2 picture1.png
 P AAE40B6C star-over-bg.png
 P 86D3EDC6 word_bg.png
 D SpiderAndWord
+R 6D88006A .DS_Store
 R FADEA11C bg.png
 P 6B8BBD8F spider-move-1.png
 P EA902713 spider-move-2.png
@@ -114,6 +120,7 @@ P 3F12044D spiderpic-young-2.png
 P 6811BCB3 spiderpic-young-3.png
 P 2F64D5CF spiderpic-young-4.png
 D template
+R 57C1A4A0 .DS_Store
 D template/ButtonTab
 P AE499BA2 btn_LargeTabButton_Middle.png
 D template/Text

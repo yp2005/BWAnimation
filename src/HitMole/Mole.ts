@@ -11,7 +11,7 @@ class Mole {
         this.wordBg = wordBg;
         this.wordBg.y = -10;
         this.word = word;
-        this.word.y = -15;
+        this.word.y = -7;
         this.reset();
     }
 

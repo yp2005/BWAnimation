@@ -246,6 +246,7 @@ var SpiderAndWord = /** @class */ (function () {
         // SpiderAndWord.spiderAndWordMain.wellDone.visible = false;
         // SpiderAndWord.spiderAndWordMain.replayBtn.visible = true;
         // SpiderAndWord.spiderAndWordMain.showSetting(true);
+        Laya.SoundManager.playMusic("res/audio/spider-success.mp3", 1);
         SpiderAndWord.started = false;
         SpiderAndWord.spiderAndWordMain.replayBtn.skin = "common/replay-abled.png";
     };

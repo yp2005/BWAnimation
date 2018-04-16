@@ -5,7 +5,7 @@ var Mole = /** @class */ (function () {
         this.wordBg = wordBg;
         this.wordBg.y = -10;
         this.word = word;
-        this.word.y = -10;
+        this.word.y = -7;
         this.reset();
     }
     // 重置老鼠状态
@@ -55,6 +55,7 @@ var Mole = /** @class */ (function () {
     };
     // 老鼠受击
     Mole.prototype.hit = function (game) {
+        Laya.SoundManager.playSound("res/audio/hit-mole.mp3", 1);
         if (game == "word") {
             this.mouseImg.y = 52;
             Laya.Tween.to(this.mouseImg, { y: 118 }, 500, Laya.Ease.backOut, Laya.Handler.create(this, this.hideWord));
