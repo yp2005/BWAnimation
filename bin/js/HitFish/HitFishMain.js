@@ -45,10 +45,38 @@ var HitFishMain = /** @class */ (function (_super) {
             this.showTip("左右两边单词个数分别在1-6之间");
             return;
         }
+        var pngArr = ["doll.png", "cost.png", "dot.png", "flop.png", "hop.png", "lost.png", "lot.png",
+            "mop.png", "odd.png", "pod.png", "pop.png", "top.png", "pod.png", "pod.png"];
+        var wrongWords = [];
+        for (var i = 0; i < lefts.length; i++) {
+            var word = lefts[i];
+            if (word.indexOf('.png') !== -1) {
+                if (pngArr.indexOf(word) === -1) {
+                    wrongWords.push(word);
+                }
+            }
+        }
+        for (var i = 0; i < rights.length; i++) {
+            var word = rights[i];
+            if (word.indexOf('.png') !== -1) {
+                if (pngArr.indexOf(word) === -1) {
+                    wrongWords.push(word);
+                }
+            }
+        }
+        if (wrongWords.length > 0) {
+            this.showTip("不存在单词 " + wrongWords.join(","));
+            return;
+        }
         HitFish.gameConfig.leftWords = lefts;
         HitFish.gameConfig.rightWords = rights;
         this.showTip("提交成功！");
         this.hideConfig();
+        for (var i = 0; i < HitFish.gameFish.length; i++) {
+            HitFish.gameFish[i].removeSelf();
+        }
+        HitFish.gameFish = [];
+        HitFish.gameStart();
     };
     // 开始倒数
     HitFishMain.prototype.startCount = function () {

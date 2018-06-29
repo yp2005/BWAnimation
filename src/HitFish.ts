@@ -66,12 +66,12 @@ class HitFish {
             SoundManager.playMusic("res/audio/fish_bg.mp3",0);
             SoundManager.setMusicVolume(0.1);
             SoundManager.setSoundVolume(1);
-            this.gameStart();
+            HitFish.gameStart();
         }); 
     }
 
     // 重新开始游戏
-    private restart() {
+    public static restart() {
         if(HitFish.hitFishMain.replayBtn.skin.indexOf("disabled") != -1) {
             return;
         }
@@ -84,7 +84,7 @@ class HitFish {
     }
 
     // 游戏开始
-    private gameStart() {
+    public static gameStart() {
         if(HitFish.gameConfig.leftWords && HitFish.gameConfig.leftWords.length>0 && HitFish.gameConfig.rightWords && HitFish.gameConfig.rightWords.length>0){
             HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
             this.initWords();
@@ -95,7 +95,7 @@ class HitFish {
     }
 
     // 设置游戏开始状态
-    private setStartState() {
+    private static setStartState() {
         HitFish.started = true;
     }
 
@@ -106,7 +106,7 @@ class HitFish {
     }
 
     // 初始化单词
-    public initWords() { 
+    public static initWords() { 
         let totalY = 768;
         let fishHeigthL = totalY/HitFish.gameConfig.leftWords.length;
         let fishHeigthR = totalY/HitFish.gameConfig.rightWords.length;

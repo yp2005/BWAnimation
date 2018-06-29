@@ -14,7 +14,14 @@ var Fish = /** @class */ (function (_super) {
     function Fish(picNo, word) {
         var _this = _super.call(this) || this;
         _this.fishImg.skin = "HitFish/fish-" + picNo + ".png";
-        _this.fishWord.text = word;
+        var isred = (word.indexOf('.png') !== -1);
+        if (isred) {
+            _this.wordBg.skin = "HitFish/" + word;
+            _this.fishWord.text = "";
+        }
+        else {
+            _this.fishWord.text = word;
+        }
         _this.reset();
         _this.fishImg.on(Laya.Event.CLICK, _this, _this.showWord);
         _this.wordBg.on(Laya.Event.CLICK, _this, _this.hideWord);

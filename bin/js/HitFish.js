@@ -49,11 +49,11 @@ var HitFish = /** @class */ (function () {
             SoundManager.playMusic("res/audio/fish_bg.mp3", 0);
             SoundManager.setMusicVolume(0.1);
             SoundManager.setSoundVolume(1);
-            this.gameStart();
+            HitFish.gameStart();
         });
     };
     // 重新开始游戏
-    HitFish.prototype.restart = function () {
+    HitFish.restart = function () {
         if (HitFish.hitFishMain.replayBtn.skin.indexOf("disabled") != -1) {
             return;
         }
@@ -65,7 +65,7 @@ var HitFish = /** @class */ (function () {
         this.gameStart();
     };
     // 游戏开始
-    HitFish.prototype.gameStart = function () {
+    HitFish.gameStart = function () {
         if (HitFish.gameConfig.leftWords && HitFish.gameConfig.leftWords.length > 0 && HitFish.gameConfig.rightWords && HitFish.gameConfig.rightWords.length > 0) {
             HitFish.hitFishMain.replayBtn.skin = "common/replay-disabled.png";
             this.initWords();
@@ -76,7 +76,7 @@ var HitFish = /** @class */ (function () {
         }
     };
     // 设置游戏开始状态
-    HitFish.prototype.setStartState = function () {
+    HitFish.setStartState = function () {
         HitFish.started = true;
     };
     // 游戏结束
@@ -85,7 +85,7 @@ var HitFish = /** @class */ (function () {
         HitFish.started = false;
     };
     // 初始化单词
-    HitFish.prototype.initWords = function () {
+    HitFish.initWords = function () {
         var totalY = 768;
         var fishHeigthL = totalY / HitFish.gameConfig.leftWords.length;
         var fishHeigthR = totalY / HitFish.gameConfig.rightWords.length;

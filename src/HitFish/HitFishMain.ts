@@ -42,11 +42,42 @@ class HitFishMain extends ui.HitFishUI {
             return;
         }
 
+        let pngArr = ["doll.png","cost.png","dot.png","flop.png","hop.png","lost.png","lot.png"
+        ,"mop.png","odd.png","pod.png","pop.png","top.png","pod.png","pod.png"];
+        
+        let wrongWords = [];
+        for(let i = 0; i< lefts.length;i++){
+            let word = lefts[i];
+            if(word.indexOf('.png')!==-1){
+                if(pngArr.indexOf(word) === -1) {
+                    wrongWords.push(word);
+                }
+            }
+        }
+        for(let i = 0; i< rights.length;i++){
+            let word = rights[i];
+            if(word.indexOf('.png')!==-1){
+                if(pngArr.indexOf(word) === -1) {
+                    wrongWords.push(word);
+                }
+            }
+        }
+        if(wrongWords.length>0){
+            this.showTip("不存在单词 "+wrongWords.join(","));
+            return;
+        }
+
         HitFish.gameConfig.leftWords = lefts;
         HitFish.gameConfig.rightWords = rights;
 
         this.showTip("提交成功！");
         this.hideConfig();
+
+        for(let i = 0;i<HitFish.gameFish.length;i++){
+            HitFish.gameFish[i].removeSelf();
+        }
+        HitFish.gameFish = [];
+        HitFish.gameStart();
     }
 
     // 开始倒数

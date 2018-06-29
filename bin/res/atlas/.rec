@@ -1,8 +1,5 @@
 D .
-R A88A105D .DS_Store
-R D6AFB7DA .gitignore
 D common
-R 09705FB6 .DS_Store
 P 96015AC9 btn_start.png
 P 5A05FAAE configBG.png
 P 18FAF2E0 gameover.png
@@ -14,7 +11,6 @@ P EA6A5058 replay.png
 P 6F2E1E3C setting.png
 P 5097AE90 well-done.png
 D HitBalloon
-R 6D88006A .DS_Store
 P 77D65795 ball.png
 P 0DF6FC46 balloon-1.png
 P 735D276D balloon-2.png
@@ -24,14 +20,23 @@ P C1BB1E11 balloon-5.png
 P 7F2B1D51 balloon-6.png
 P C7FD4EB8 bike.png
 P F4571C10 blast.png
+P EF03E5D9 blue-bag.png
+P 01D96293 boy-happy-1.png
+P 66CCD872 boy-happy-2.png
 P BDA013A1 car.png
+P 09E90CDB cat1.png
+P 698FE1E7 cat2.png
 P 43200BF8 computer.png
 P 42C1D9B9 doll.png
+P 6CDBB2ED girl-sad.png
+P 038EF323 goat-sad.png
 R DEF0998F mainBG.png
 P E14EEBF2 pic_bg.png
+P 81803C18 pink-pen.png
 P CF64234A train.png
 D HitFish
 R F7D06829 bg.png
+P D42B470F cost.png
 P A7559FF1 count1-0.png
 P 79C4DB2C count1-1.png
 P 29BD01AB count2-0.png
@@ -42,15 +47,25 @@ P 100EBD8D count4-0.png
 P 0B5D66BF count4-1.png
 P 6DA2897A count5-0.png
 P B3AFA00D count5-1.png
+P 9D87B96B doll.png
+P 7A2AB0EC dot.png
 P 638471FC fish-1.png
 P 351D1A1F fish-2.png
 P B89AC67C fish-3.png
 P C92FB794 fish-4.png
 P 49C273DA fish-5.png
 P 5E7830E4 fish-6.png
+P E8D2B116 flop.png
+P 9EE8634F hop.png
+P 5805D7D1 lost.png
+P 70C2558D lot.png
+P A15A286D mop.png
+P 99DDC0EC odd.png
+P 3F0AC9B2 pod.png
+P 68C4635C pop.png
+P 475D08C8 top.png
 P 3F6B8200 wordbg.png
 D HitMole
-R F195EA17 .DS_Store
 P C350AC0B hammer.png
 R 0B37EEC3 mainBG.jpg
 P 3E0FDE98 mask1.png
@@ -73,7 +88,6 @@ P F4FE58D2 picture1.png
 P AAE40B6C star-over-bg.png
 P 86D3EDC6 word_bg.png
 D SpiderAndWord
-R 6D88006A .DS_Store
 R FADEA11C bg.png
 P 6B8BBD8F spider-move-1.png
 P EA902713 spider-move-2.png
@@ -120,7 +134,6 @@ P 3F12044D spiderpic-young-2.png
 P 6811BCB3 spiderpic-young-3.png
 P 2F64D5CF spiderpic-young-4.png
 D template
-R 57C1A4A0 .DS_Store
 D template/ButtonTab
 P AE499BA2 btn_LargeTabButton_Middle.png
 D template/Text

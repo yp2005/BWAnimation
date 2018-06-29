@@ -7,7 +7,13 @@ class Fish extends ui.FishUI {
     constructor(picNo: number, word: string) {
         super();
         this.fishImg.skin = "HitFish/fish-"+picNo+".png";
-        this.fishWord.text = word;
+        var isred = (word.indexOf('.png') !== -1);
+        if(isred){
+            this.wordBg.skin = "HitFish/"+word;
+            this.fishWord.text = "";
+        }else{
+            this.fishWord.text = word;
+        }
         this.reset();
         this.fishImg.on(Laya.Event.CLICK,this,this.showWord);
         this.wordBg.on(Laya.Event.CLICK,this,this.hideWord);
