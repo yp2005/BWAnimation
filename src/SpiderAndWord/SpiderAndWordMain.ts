@@ -21,7 +21,7 @@ class SpiderAndWordMain extends ui.SpiderAndWordUI {
     public showTip(text: string) {
         this.tip.text = text;
         this.tip.visible = true;
-        Laya.timer.once(1500, this, this.hideTip);
+        Laya.timer.once(3000, this, this.hideTip);
     }
 
     private hideTip() {

@@ -29,6 +29,9 @@ var HSPicture = /** @class */ (function (_super) {
         return _this;
         // this.body.on(Laya.Event.CLICK,this,this.mouseClick);
     }
+    HSPicture.prototype.changePic = function (pic) {
+        this.body.skin = "SpiderAndWord/" + pic;
+    };
     HSPicture.prototype.showBg = function () {
         Laya.SoundManager.playMusic("res/audio/spider-catch.mp3", 1);
         this.isRight = true;

@@ -28,7 +28,7 @@ var SpiderAndWordMain = /** @class */ (function (_super) {
     SpiderAndWordMain.prototype.showTip = function (text) {
         this.tip.text = text;
         this.tip.visible = true;
-        Laya.timer.once(1500, this, this.hideTip);
+        Laya.timer.once(3000, this, this.hideTip);
     };
     SpiderAndWordMain.prototype.hideTip = function () {
         this.tip.visible = false;

@@ -1,6 +1,6 @@
 // 程序入口，本工程仅用于切换各个动画进行测试
 // 游戏名称，修改这个变量值来切换不同游戏，mole：打地鼠，fish：拍鱼，balloon：拍气球，spider：蜘蛛和单词
-var gameName = "fish";
+var gameName = "spider";
 if (gameName == "mole") {
     //打地鼠游戏
     var config = {
@@ -48,8 +48,10 @@ else if (gameName == "spider") {
     // 蜘蛛游戏
     var config = {
         gameModel: false,
-        word: "happy",
-        wordNum: 3
+        rightWord: "beautiful",
+        wrongWord: "ugly",
+        wordNum: 8,
+        rightNum: 4,
     };
     new SpiderAndWord(config);
 }

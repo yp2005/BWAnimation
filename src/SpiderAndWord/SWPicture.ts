@@ -24,6 +24,10 @@ class HSPicture extends Laya.Sprite {
         // this.body.on(Laya.Event.CLICK,this,this.mouseClick);
     }
 
+    public changePic(pic: string){
+        this.body.skin = "SpiderAndWord/" + pic;
+    }
+
     public showBg(){
         Laya.SoundManager.playMusic("res/audio/spider-catch.mp3",1);
         this.isRight = true;
